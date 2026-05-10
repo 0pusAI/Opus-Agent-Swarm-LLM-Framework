@@ -1,0 +1,40 @@
+/*
+ * OPUS — design tokens.
+ * The same palette is mirrored in tailwind.config.ts and docs/whitepaper.md.
+ */
+
+:root {
+  /* Palette */
+  --opus-black:  #000000;
+  --opus-bone:   #F2EFE6;
+  --opus-silver: #BEBCB4;
+  --opus-dim:    #787870;
+  --opus-gold:   #D4AF7A;
+
+  /* Spacing rhythm */
+  --opus-rhythm-xs:  0.25rem;
+  --opus-rhythm-sm:  0.5rem;
+  --opus-rhythm-md:  1rem;
+  --opus-rhythm-lg:  2rem;
+  --opus-rhythm-xl:  4rem;
+  --opus-rhythm-xxl: 8rem;
+
+  /* Type scale (anchored to a generous baseline) */
+  --opus-type-eyebrow:  0.75rem;
+  --opus-type-body:     1.0625rem;
+  --opus-type-lead:     1.25rem;
+  --opus-type-h3:       2rem;
+  --opus-type-h2:       3rem;
+  --opus-type-h1:       5rem;
+  --opus-type-display:  9rem;
+
+  /* Letter spacing */
+  --opus-track-wide:    0.08em;
+  --opus-track-wider:   0.18em;
+  --opus-track-ritual:  0.32em;
+
+  /* Line heights */
+  --opus-leading-tight:    1.05;
+  --opus-leading-snug:     1.25;
+  --opus-leading-relaxed:  1.65;
+}

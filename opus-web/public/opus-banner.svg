@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <rect width="1200" height="630" fill="#000000"/>
+  <g transform="translate(600 315)">
+    <circle r="180" stroke="#F2EFE6" stroke-width="1.5"/>
+    <ellipse rx="180" ry="60" stroke="#F2EFE6" stroke-width="1"/>
+    <ellipse rx="60" ry="180" stroke="#F2EFE6" stroke-width="1"/>
+    <line x1="0" y1="-180" x2="0" y2="180" stroke="#F2EFE6" stroke-width="1"/>
+    <line x1="-180" y1="0" x2="180" y2="0" stroke="#F2EFE6" stroke-width="1"/>
+    <circle r="40" stroke="#F2EFE6" stroke-width="1" fill="none"/>
+    <circle r="14" fill="#D4AF7A"/>
+  </g>
+  <text x="600" y="100" text-anchor="middle" fill="#F2EFE6" font-family="Cinzel, serif" font-size="72" font-weight="500" letter-spacing="20">O P U S</text>
+  <text x="600" y="560" text-anchor="middle" fill="#BEBCB4" font-family="JetBrains Mono, monospace" font-size="18" letter-spacing="6">— ARS · MAGNA —</text>
+</svg>

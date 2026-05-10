@@ -1,259 +1,108 @@
-<div align="center">
+# OPUS
 
-```
-                            ╱─────────────────╲
-                          ╱     ✦       ✦       ╲
-                        ╱   ◯─────────────────◯   ╲
-                       │  ╱                     ╲  │
-                       │ │    ⊙             ⊙    │ │
-                       │ │       ╲       ╱       │ │
-                       │ │        ╲     ╱        │ │
-                       │ │    ─────●─────        │ │
-                       │ │        ╱     ╲        │ │
-                       │ │       ╱       ╲       │ │
-                       │  ╲                     ╱  │
-                        ╲   ◯─────────────────◯   ╱
-                          ╲     ✦       ✦       ╱
-                            ╲─────────────────╱
-```
+> *Ars Magna — The Great Work*
 
-# **OPUS**
-
-### ⸻ *Ars Magna* ⸻
-
-***A Bio-Inspired Multi-Agent Swarm Architecture for Collective Reasoning***
-
-<br>
-
-> *Where one model answers, the swarm deliberates.*
-> *Where one model guesses, the swarm proves.*
-
-<br>
-
-**[📜 Read the Whitepaper](./Opus_Whitepaper_v0.1.pdf)** &nbsp;·&nbsp;
-**[🐝 Follow the Build](#status)** &nbsp;·&nbsp;
-**[⚙ Architecture](#the-beehive-brain)** &nbsp;·&nbsp;
-**[🜂 Lineage](#lineage)**
-
-</div>
+A bio-inspired multi-agent swarm architecture for collective reasoning.
 
 ---
 
-## ✦ &nbsp; What Is Opus?
+## Premise
 
-**Opus is not a model. It is a colony.**
+OPUS is not a model. It is a colony.
 
-A swarm of specialised agents reasoning in parallel, coordinating through a shared cognitive substrate, and converging on truths no single mind could reach alone.
+A single language model, however large, reasons in one voice. It produces a stream of plausible tokens, defends them, and moves on. It cannot meaningfully disagree with itself, cannot triangulate, and cannot be falsified except from outside.
 
-Where one model produces a single trajectory of thought — biased by its first tokens, constrained by its prompt, blind to its own errors — a swarm produces a **dialectic**. Researchers generate hypotheses. Critics attack them. Synthesisers merge what survives. Verifiers attempt to falsify the result. The answer that emerges is not a guess refined into prose, but a **consensus refined out of disagreement**.
+OPUS replaces that lonely soliloquy with a structured swarm.
 
-This is *Ars Magna* — the Great Work — rebuilt in code.
+Three concentric tiers — **Scouts** at the perimeter, **Workers** in the middle, a **Hive Core** at the centre — coordinate through a single shared substrate: the **Blackboard**, an append-only event log. Agents do not speak to each other. They write typed records to the Blackboard, read what others have written, and let the environment carry the conversation. This is the stigmergic principle from social insects, applied to cognition.
 
----
+When the colony has deliberated enough, three stages of consensus run:
 
-## 🜂 &nbsp; The Beehive Brain
+1. **Borda aggregation** — weighted ranking across all Worker outputs.
+2. **Judge adjudication** — an LLM-as-Judge resolves near-ties.
+3. **Verifier pass** — a final agent attempts to *falsify* the chosen answer.
 
-```
+If verification fails, the swarm re-deliberates with the falsification as a new constraint. The loop is bounded: at most three attempts, then the colony surfaces what it has, with confidence and trace.
 
-   ┌─────────────────────────────────────────────────────────────┐
-   │                                                             │
-   │     SCOUT TIER       →   Exploration · Retrieval · Sensing  │
-   │         ↓                                                   │
-   │     WORKER TIER      →   Hypothesis · Critique · Synthesis  │
-   │                          Planning · Execution · Verification│
-   │         ↓                                                   │
-   │     HIVE CORE        →   Orchestration · Consensus · Output │
-   │                                                             │
-   └─────────────────────────────────────────────────────────────┘
-
-```
-
-### The Three Tiers
-
-| Tier             | Role                                                                                          | Population         |
-| :--------------- | :-------------------------------------------------------------------------------------------- | :----------------- |
-| 🔍 **Scouts**    | Lightweight retrieval agents that enlarge the perimeter of available information              | 8 – 32 per run     |
-| 🐝 **Workers**   | Specialised reasoning agents — Researcher, Critic, Synthesiser, Planner, Executor, Verifier   | 12 – 48 per run    |
-| 🜔 **Hive Core** | Orchestrator and consensus layer — never reasons, only conducts                               | Singleton          |
-
-### The Three Principles
-
-> **① Parallel Exploration** — N specialised agents, each pursuing a different hypothesis, simultaneously.
->
-> **② Stigmergic Memory** — Agents communicate indirectly through a shared workspace. Pheromones for code.
->
-> **③ Consensus Synthesis** — Partial solutions cross-evaluated, pruned, and merged into a single emergent answer.
+That is the Great Work — *solve et coagula*. Dissolve a single mind into many; recombine the many into one well-considered answer.
 
 ---
 
-## ⚙ &nbsp; How a Swarm Run Works
+## Repository
 
-```mermaid
-flowchart TD
-    A([Query]) --> B[Hive Core spawns swarm]
-    B --> C[Scouts gather context]
-    C --> D[Workers reason in parallel]
-    D --> E{Blackboard}
-    E --> D
-    D --> F[Weighted Borda aggregation]
-    F --> G{Clear winner?}
-    G -- No --> H[LLM-as-Judge adjudication]
-    G -- Yes --> I[Verifier pass]
-    H --> I
-    I --> J{Falsified?}
-    J -- Yes --> D
-    J -- No --> K([Final Output])
+This is a monorepo with two parallel tracks.
 
-    style A fill:#000,stroke:#d4af7a,color:#f2efe6
-    style K fill:#000,stroke:#d4af7a,color:#f2efe6
-    style E fill:#1a1a1a,stroke:#888,color:#f2efe6
-    style B fill:#1a1a1a,stroke:#888,color:#f2efe6
-```
+- **[`opus-core/`](opus-core/)** — the Python swarm engine. The real product. Runs as a CLI today; one query, one consensus answer, full provenance, honest cost in USD.
+- **[`opus-web/`](opus-web/)** — the Next.js storefront. Manifesto, architecture, lineage, live swarm visualisation. Built and broadcast in public.
 
-A query enters. The Hive Core spawns Scouts to gather context, then Workers to deliberate. Workers write hypotheses, critiques, and partial syntheses to a shared **Blackboard** — they never speak to one another directly. Their rankings feed a weighted Borda count. Ties trigger a Judge. The winner faces a Verifier that attempts falsification. Only then does an answer leave the colony.
+Plus **[`docs/`](docs/)** — whitepaper, architecture deep-dive, glossary, and lineage essay.
 
 ---
 
-## 🜍 &nbsp; The Stack
+## Quickstart
 
-<div align="center">
+### opus-core — the swarm
 
-|                  Layer | Component                                                                |
-| ---------------------: | :----------------------------------------------------------------------- |
-|           **LLM Core** | Claude Opus 4.7 · Claude Sonnet 4.6 *(cost-tiered per role)*             |
-|      **Orchestration** | `asyncio` + `anyio` event bus · supervisor pattern                       |
-|       **Vector Store** | Qdrant *(default)* · Weaviate · pgvector                                 |
-|        **Graph Store** | Neo4j Community Edition                                                  |
-|         **Blackboard** | Redis-backed append-only event log · optimistic concurrency              |
-|            **Runtime** | Modal *(ephemeral)* · Ray *(persistent cluster)*                         |
-|      **Observability** | OpenTelemetry · per-agent reasoning logs · token-level provenance        |
-|           **Front-end** | Next.js 14 · React Three Fiber · GSAP                                   |
-|         **Deployment** | Vercel *(edge)* · Fly.io *(agent runtime)*                               |
+Requires Python 3.11+ and an Anthropic API key.
 
-</div>
+```bash
+cd opus-core
+uv venv
+uv pip install -e ".[dev]"
+cp .env.example .env             # paste your ANTHROPIC_API_KEY
+opus query "What are the strongest arguments against my own thesis?"
+```
+
+The colony returns a single answer, the full ordered trace of every Record written to the Blackboard, and the total cost in USD.
+
+### opus-web — the storefront
+
+Requires Node 20+.
+
+```bash
+cd opus-web
+npm install
+npm run dev
+# http://localhost:3000
+```
 
 ---
 
-## 🐝 &nbsp; The Daily Build
+## Lineage
 
-Opus is being **live-coded in public**. Every commit, every refactor, every architectural pivot — broadcast.
+OPUS stands on three traditions:
 
-<br>
+- **Ramon Llull's _Ars Magna_** (c. 1305) — the first systematic combinatorial method for generating and testing propositions about the world.
+- **Hearsay-II** (CMU, 1971–1976) — the original blackboard architecture, designed for cooperative speech understanding by independent knowledge sources.
+- **Stigmergy** (Grassé, 1959) — communication through modification of a shared environment, first observed in termite mound construction.
 
-</div>
-
----
-
-## 🗺 &nbsp; Roadmap
-
-```
-  ●─────●─────○─────○─────○
-  α     β     γ     δ     ∞
-```
-
-| Phase           | Status           | Milestone                                                                            |
-| :-------------- | :--------------- | :----------------------------------------------------------------------------------- |
-| **α — Genesis** | 🟢 **Live**       | Single-machine swarm · 3 Worker roles · naive consensus · daily public build         |
-| **β — Cohort I**| ⚪ Queued         | Distributed runtime · 6 Worker roles · full stigmergic Blackboard · private beta     |
-| **γ — Cohort II**| ⚪ Queued        | Full Judge + Verifier pipeline · observability dashboard · public beta · run gallery |
-| **δ — Open**    | ⚪ Queued         | Third-party agent integrations · community Worker marketplace · whitepaper v1.0      |
+A fuller genealogy lives in [docs/lineage.md](docs/lineage.md).
 
 ---
 
-## 🜔 &nbsp; Lineage
+## Status
 
-Opus does not invent. It synthesises a long lineage of human attempts to build collective intelligence.
+**Alpha.** Built and broadcast in public. The build log is part of the website.
 
-```
-       1280s ───────── Ramon Llull — Ars Magna
-                         (combinatorial reasoning wheels)
-                                  │
-       1970s ───────── Hearsay-II
-                         (blackboard architectures)
-                                  │
-       1987  ───────── Reynolds — Boids
-                         (emergent flocking)
-                                  │
-       1992  ───────── Dorigo — Ant Colony Optimisation
-                                  │
-       1995  ───────── Kennedy & Eberhart — Particle Swarm
-                                  │
-       2023  ───────── Multi-Agent LLM Frameworks
-                                  │
-       2026  ───────── ✦  OPUS
-```
+What works today:
 
-The architecture descends, conceptually, from Llull's thirteenth-century wheels — the first serious attempt to mechanise reasoning by combination. It descends, algorithmically, from ant colonies, particle swarms, and the boids of Craig Reynolds. It descends, in software-engineering form, from the blackboard architectures of Hearsay-II. And it descends, in spirit, from the alchemical *magnum opus*: the slow refinement of base material into something rare.
+- The full swarm lifecycle, end-to-end, against the Anthropic API.
+- In-memory Blackboard with optimistic concurrency.
+- Three-stage consensus: Borda · Judge · Verifier.
+- Provenance ledger with cost tracked in plain USD.
 
-> *Solve et coagula. Dissolve and re-form.*
-> *The colony reasons by separation and recombination.*
+What is deliberately not built yet:
+
+- Distributed Blackboard (Redis backend slot is reserved in the interface).
+- Persistent vector + graph memory (Qdrant / Neo4j stubs only).
+- Auth, accounts, payments, marketplace — all Phase β and beyond.
 
 ---
 
-## 📜 &nbsp; The Whitepaper
+## License
 
-The full technical schematic — architecture, consensus mechanism, cognitive substrate, reference implementation, lineage.
-
-<br>
-
-<div align="center">
-
-### **[📜 &nbsp; READ THE WHITEPAPER &nbsp; 📜](./Opus_Whitepaper_v0.1.pdf)**
-
-*v0.1 · Magnum Opus · MMXXVI*
-
-</div>
+See [LICENSE](LICENSE).
 
 ---
 
-## 🛠 &nbsp; Status
-
-```
-  CURRENT PHASE:    α — Genesis
-  BUILD STATUS:     Live-coded daily
-  CODEBASE:         Closed (will open at Phase β)
-  WHITEPAPER:       v0.1 published
-  ACCESS:           By invitation
-```
-
-This repository will progressively open as the project moves through its phases. The whitepaper and brand assets are public from day one. The codebase opens at Phase β. Watch this space.
-
----
-
-## 🤝 &nbsp; Join the Hive
-
-Opus is being built in public, by one person, in real time. If the work resonates — if you want to watch a multi-agent reasoning system get built from first principles, with the work shown — there are three things you can do:
-
-1. **⭐ Star this repo** — and watch the colony grow.
-2. **🐝 Follow the daily build** on [X](https://x.com/0pusAI)
-3. **📬 Request early access** — drop a note on X with the word `VIITE`.
-
----
-
-## ⚖ &nbsp; License
-
-All rights reserved · *(license to be finalised at Phase β)*
-
-The whitepaper is released under CC-BY 4.0 — quote freely, attribute *Opus · Ars Magna · 2026*.
-
----
-
-<div align="center">
-
-```
-                            ╱─────────────────╲
-                          ╱                     ╲
-                        ╱        OPUS              ╲
-                       │                            │
-                       │      ARS · MAGNA           │
-                       │                            │
-                        ╲                          ╱
-                          ╲                       ╱
-                            ╲─────────────────╱
-```
-
-### *— Magnum Opus · MMXXVI —*
-
-***The work is the work. The work is in progress.***
-
-</div>
+*Magnum Opus · MMXXVI*

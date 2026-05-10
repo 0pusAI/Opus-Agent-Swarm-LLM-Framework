@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "../styles/tokens.css";
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Base                                                              */
+/* ──────────────────────────────────────────────────────────────── */
+
+html {
+  background-color: var(--opus-black);
+  color: var(--opus-bone);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--opus-black);
+  color: var(--opus-bone);
+  font-family: var(--font-inter), Inter, ui-sans-serif, system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background-color: var(--opus-gold);
+  color: var(--opus-black);
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Film-grain overlay — fixed to viewport, low opacity, animated.    */
+/* ──────────────────────────────────────────────────────────────── */
+
+.opus-grain::before {
+  content: "";
+  position: fixed;
+  inset: -50%;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.06;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.7'/></svg>");
+  animation: opus-grain-drift 8s steps(8) infinite;
+}
+
+@keyframes opus-grain-drift {
+  0%   { transform: translate(0, 0); }
+  20%  { transform: translate(-2%, 1%); }
+  40%  { transform: translate(2%, -1%); }
+  60%  { transform: translate(-1%, 2%); }
+  80%  { transform: translate(1%, -2%); }
+  100% { transform: translate(0, 0); }
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Typography utility classes                                        */
+/* ──────────────────────────────────────────────────────────────── */
+
+.opus-display {
+  font-family: var(--font-cinzel), Cinzel, "Trajan Pro", serif;
+  font-weight: 500;
+  letter-spacing: var(--opus-track-ritual);
+  text-transform: uppercase;
+  line-height: var(--opus-leading-tight);
+}
+
+.opus-serif {
+  font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  line-height: var(--opus-leading-relaxed);
+}
+
+.opus-mono {
+  font-family: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: var(--opus-track-wide);
+}
+
+.opus-eyebrow {
+  font-family: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+  font-size: var(--opus-type-eyebrow);
+  letter-spacing: var(--opus-track-wider);
+  text-transform: uppercase;
+  color: var(--opus-silver);
+}
+
+/* Drop cap — used in the manifesto's first paragraph */
+.opus-dropcap::first-letter {
+  float: left;
+  font-family: var(--font-cinzel), Cinzel, serif;
+  font-size: 5.5rem;
+  line-height: 0.85;
+  margin: 0.35rem 0.6rem -0.25rem 0;
+  color: var(--opus-gold);
+  font-weight: 700;
+}
+
+/* ──────────────────────────────────────────────────────────────── */
+/* Reduced motion                                                    */
+/* ──────────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
