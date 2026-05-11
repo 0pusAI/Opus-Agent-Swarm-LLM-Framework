@@ -1,0 +1,8 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": "nextjs",
+  "buildCommand": "cd opus-web && npm install && npm run build",
+  "outputDirectory": "opus-web/.next",
+  "installCommand": "echo 'Skipping root install — handled by buildCommand'",
+  "ignoreCommand": "exit 1"
+}
