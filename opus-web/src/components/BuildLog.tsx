@@ -15,17 +15,22 @@ const ENTRIES: Entry[] = [
   {
     date: "2026-05-11",
     headline: "Day 0 — first runnable swarm",
-    body: "opus-core scaffolded end-to-end: Blackboard, eight agent roles, Hive orchestrator with 3-attempt verification loop, full provenance ledger, JSONL trace output, prompt caching plumbed through the LLM client.",
+    body: "opus-core scaffolded end-to-end: Blackboard, eight agent roles, Hive orchestrator with 3-attempt verification loop, full provenance ledger, JSONL trace output, prompt caching plumbed through the LLM client. 18/18 unit tests pass.",
   },
   {
     date: "2026-05-11",
     headline: "Day 0 — storefront online",
-    body: "opus-web scaffolded: Next.js 14, Three.js armillary sphere with mouse parallax, animated storm-cloud shader background, ten sections, custom palette and typography, full mobile fallback.",
+    body: "opus-web scaffolded: Next.js 14, Three.js armillary sphere with mouse parallax, animated storm-cloud shader background, ten sections, custom palette and typography. Live on Vercel with the whitepaper as a downloadable PDF.",
+  },
+  {
+    date: "2026-05-12",
+    headline: "Day 1 — cinematic demo wired",
+    body: "LiveSwarm section upgraded from static mockup to interactive cinematic demo: real input field, animated agent topology (Hive · 6 Workers · 3 Scouts), per-record transcript with confidence + cost, climbing dollar ticker, and a final-answer reveal. Frontend-only for now; doubles as the visual specification for the real-swarm wiring.",
   },
   {
     date: "TBD",
-    headline: "Day N — first cached query",
-    body: "Agent system prompts pushed past 4096 tokens to engage the Anthropic prompt cache; cost per query measurably drops.",
+    headline: "Day N — real swarm in the browser",
+    body: "opus-core deployed on Modal, Vercel API route proxies via Server-Sent Events, the LiveSwarm component begins consuming actual Records from a live deliberation. The demo becomes the product.",
   },
 ];
 
