@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { fontVariables } from "@/lib/fonts";
+import { Nav } from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "OPUS — Ars Magna",
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={fontVariables}>
       <body className="opus-grain min-h-screen bg-opus-black text-opus-bone antialiased">
+        <Nav />
         {children}
       </body>
     </html>
