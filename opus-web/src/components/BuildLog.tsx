@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Divider } from "./ui/Divider";
 import { fadeUp } from "@/lib/motion";
+
+const START_DATE = new Date("2026-04-28T00:00:00Z");
 
 interface Entry {
   date: string; // ISO date
@@ -95,6 +98,66 @@ const ENTRIES: Entry[] = [
   },
 ];
 
+// ──────────────────────────────────────────────────────────────────
+// DaysCounter — small italic line under the heading, day count auto-updates
+// ──────────────────────────────────────────────────────────────────
+
+function spellOut(n: number): string {
+  const ones = ["zero","one","two","three","four","five","six","seven","eight","nine"];
+  const teens = ["ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+  const tens = ["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+  if (n < 0) return String(n);
+  if (n < 10) return ones[n];
+  if (n < 20) return teens[n - 10];
+  if (n < 100) {
+    const t = Math.floor(n / 10);
+    const o = n % 10;
+    return o === 0 ? tens[t] : `${tens[t]}-${ones[o]}`;
+  }
+  return String(n);
+}
+
+function DaysCounter() {
+  // Render the static fallback on the server, then update on the client
+  // to avoid hydration mismatch as the day rolls over.
+  const [days, setDays] = useState<number | null>(null);
+
+  useEffect(() => {
+    const tick = () => {
+      const now = new Date();
+      const diffMs = now.getTime() - START_DATE.getTime();
+      const dayCount = Math.max(1, Math.floor(diffMs / (1000 * 60 * 60 * 24)) + 1);
+      setDays(dayCount);
+    };
+    tick();
+    // Recompute once an hour in case the user leaves the tab open across a midnight.
+    const id = setInterval(tick, 60 * 60 * 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  const display = days ?? 15; // sensible SSR fallback
+  const word = spellOut(display);
+
+  return (
+    <motion.p
+      initial={{ opacity: 0, y: 8 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 0.61, 0.36, 1] }}
+      className="opus-serif italic text-opus-bone text-base md:text-lg text-center mb-16"
+    >
+      In the making for{" "}
+      <span className="opus-display not-italic text-opus-gold tracking-wider">
+        {word}
+      </span>
+      {" "}days
+      <span className="opus-mono not-italic text-opus-dim text-[0.65rem] uppercase tracking-widest ml-3 align-middle">
+        · the work continues
+      </span>
+    </motion.p>
+  );
+}
+
 export function BuildLog() {
   return (
     <section
@@ -117,10 +180,12 @@ export function BuildLog() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="opus-display text-opus-bone text-[clamp(2rem,5vw,3.5rem)] text-center mb-16"
+          className="opus-display text-opus-bone text-[clamp(2rem,5vw,3.5rem)] text-center mb-4"
         >
           Build Log
         </motion.h2>
+
+        <DaysCounter />
 
         <div className="overflow-x-auto pb-6 -mx-6 px-6">
           <div className="flex gap-6 min-w-max">
