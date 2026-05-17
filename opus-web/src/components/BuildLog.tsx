@@ -5,7 +5,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Divider } from "./ui/Divider";
 import { fadeUp } from "@/lib/motion";
-import { BUILD_LOG_ENTRIES, BUILD_LOG_START } from "@/data/buildLog";
+import { BUILD_LOG_ENTRIES, BUILD_LOG_START, formatDate } from "@/data/buildLog";
 
 const START_DATE = BUILD_LOG_START;
 
@@ -116,7 +116,7 @@ export function BuildLog() {
                 className="w-[320px] shrink-0 border border-opus-dim/40 p-6 bg-opus-black"
               >
                 <div className="opus-mono text-opus-gold text-xs uppercase tracking-widest mb-3">
-                  {e.date}
+                  {formatDate(e.date)}
                 </div>
                 <h3 className="opus-serif text-opus-bone text-xl mb-3 italic leading-snug">
                   {e.headline}

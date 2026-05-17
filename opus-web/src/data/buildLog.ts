@@ -15,6 +15,44 @@ export interface BuildLogEntry {
 
 export const BUILD_LOG_START = new Date("2026-04-28T00:00:00Z");
 
+/**
+ * formatDate — render an ISO date in the OPUS register.
+ *   "2026-04-28" → "28 APR"
+ *   "TBD"        → "TBD"
+ *
+ * For places with more room (the sticky indicator, the footer) you
+ * can pass `withYear: true` to get "28 APR · MMXXVI".
+ */
+export function formatDate(iso: string, opts: { withYear?: boolean } = {}): string {
+  if (!iso || iso === "TBD") return "TBD";
+  const d = new Date(iso + "T00:00:00Z");
+  if (Number.isNaN(d.getTime())) return iso;
+  const day = d.getUTCDate();
+  const month = d.toLocaleString("en", { month: "short", timeZone: "UTC" }).toUpperCase();
+  if (!opts.withYear) return `${day} ${month}`;
+  const year = d.getUTCFullYear();
+  const roman = toRoman(year);
+  return `${day} ${month} · ${roman}`;
+}
+
+// Minimal Roman-numeral helper (handles up to 3999 — plenty).
+function toRoman(n: number): string {
+  if (n <= 0 || n >= 4000) return String(n);
+  const map: [number, string][] = [
+    [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
+    [100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
+    [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],
+  ];
+  let result = "";
+  for (const [value, symbol] of map) {
+    while (n >= value) {
+      result += symbol;
+      n -= value;
+    }
+  }
+  return result;
+}
+
 export const BUILD_LOG_ENTRIES: BuildLogEntry[] = [
   {
     date: "2026-04-28",

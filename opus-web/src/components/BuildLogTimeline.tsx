@@ -16,7 +16,7 @@
 import { useRef, useState } from "react";
 import { motion, useScroll, useTransform, useInView } from "framer-motion";
 import clsx from "clsx";
-import { BUILD_LOG_ENTRIES, type BuildLogEntry } from "@/data/buildLog";
+import { BUILD_LOG_ENTRIES, formatDate, type BuildLogEntry } from "@/data/buildLog";
 
 export function BuildLogTimeline() {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -125,7 +125,7 @@ function TimelineEntry({
             isTBD ? "italic text-opus-dim" : "text-opus-gold"
           )}
         >
-          {entry.date}
+          {formatDate(entry.date)}
         </span>
       </div>
 
@@ -217,28 +217,34 @@ function StickyReadingIndicator({
   index: number;
   total: number;
 }) {
-  // Hide on the first scroll position (nothing active yet) and on
-  // very small viewports where the nav already occupies the top-left.
+  // Hide on small viewports where the top-left nav already crowds the
+  // space; on desktop, float a labelled chip below the nav.
   return (
     <div
       aria-hidden
-      className="pointer-events-none sticky top-4 md:top-6 z-30 flex justify-end mb-0"
+      className="pointer-events-none sticky top-20 md:top-24 z-30 flex justify-end mb-0"
     >
       <motion.div
         key={index}
         initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4 }}
-        className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 border border-opus-dim/60
-                   bg-opus-black/70 backdrop-blur-md"
+        transition={{ duration: 0.45, ease: [0.22, 0.61, 0.36, 1] }}
+        className="hidden md:inline-flex items-stretch gap-3 max-w-md
+                   border border-opus-dim/60 bg-opus-black/75 backdrop-blur-md"
       >
-        <span className="opus-mono text-opus-gold text-[0.6rem] uppercase tracking-widest">
-          {entry.date}
-        </span>
-        <span aria-hidden className="h-3 w-px bg-opus-dim/60" />
-        <span className="opus-mono text-opus-silver text-[0.6rem] uppercase tracking-widest">
-          {index + 1} · {total}
-        </span>
+        <div className="flex flex-col justify-center px-3 py-2 border-r border-opus-dim/50">
+          <span className="opus-mono text-opus-gold text-[0.6rem] uppercase tracking-widest leading-none">
+            {formatDate(entry.date, { withYear: true })}
+          </span>
+          <span className="opus-mono text-opus-dim text-[0.55rem] uppercase tracking-widest leading-none mt-1">
+            {index + 1} of {total}
+          </span>
+        </div>
+        <div className="flex items-center pr-4 py-2 max-w-[260px]">
+          <span className="opus-serif italic text-opus-bone text-xs leading-snug line-clamp-2">
+            {entry.headline}
+          </span>
+        </div>
       </motion.div>
     </div>
   );
