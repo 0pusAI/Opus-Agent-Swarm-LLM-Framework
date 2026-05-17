@@ -319,9 +319,9 @@ export function LiveSwarm() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1.2, delay: 0.2 }}
-          className="opus-mono text-opus-dim text-xs uppercase tracking-widest text-center mb-12"
+          className="opus-mono text-opus-gold text-xs uppercase tracking-widest text-center mb-12"
         >
-          Cinematic preview · real swarm wiring shipping shortly
+          REAL-TIME OPUS LLM SWARM · LET THE COLONY WORK
         </motion.p>
 
         {/* Input + action */}
