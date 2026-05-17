@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Three traditions — three overlapping Llull wheels">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <!-- Three overlapping circles, each with Llull-style internal divisions -->
+  <g transform="translate(540,560)" stroke="#F2EFE6" stroke-width="1.3" fill="none">
+    <g id="wheel">
+      <circle cx="0" cy="0" r="220"/>
+      <circle cx="0" cy="0" r="170" stroke-dasharray="3 5" opacity="0.6"/>
+      <circle cx="0" cy="0" r="120" opacity="0.45"/>
+      <line x1="0" y1="-220" x2="0" y2="220" opacity="0.35"/>
+      <line x1="-220" y1="0" x2="220" y2="0" opacity="0.35"/>
+      <line x1="-156" y1="-156" x2="156" y2="156" opacity="0.35"/>
+      <line x1="156" y1="-156" x2="-156" y2="156" opacity="0.35"/>
+      <circle cx="0" cy="-220" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="156" cy="-156" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="220" cy="0" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="156" cy="156" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="0" cy="220" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="-156" cy="156" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="-220" cy="0" r="6" fill="#F2EFE6" stroke="none"/>
+      <circle cx="-156" cy="-156" r="6" fill="#F2EFE6" stroke="none"/>
+    </g>
+    <use href="#wheel" transform="translate(-170,-100)"/>
+    <use href="#wheel" transform="translate(170,-100)"/>
+    <use href="#wheel" transform="translate(0,180)"/>
+    <!-- Gold ember in centre of the triple intersection -->
+    <circle cx="0" cy="0" r="18" fill="#D4AF7A" stroke="none"/>
+  </g>
+</svg>

@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Consensus clicks — central diamond surrounded by voters, with a verifier lance">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.4" fill="none">
+    <!-- Outer voting ring (dashed) -->
+    <circle cx="0" cy="0" r="340" stroke-dasharray="3 6" opacity="0.45"/>
+    <circle cx="0" cy="0" r="240" opacity="0.55"/>
+    <!-- 6 voter nodes around the chosen candidate -->
+    <g>
+      <circle cx="0" cy="-240" r="20"/>
+      <circle cx="208" cy="-120" r="20"/>
+      <circle cx="208" cy="120" r="20"/>
+      <circle cx="0" cy="240" r="20"/>
+      <circle cx="-208" cy="120" r="20"/>
+      <circle cx="-208" cy="-120" r="20"/>
+    </g>
+    <!-- Voting lines (radial) -->
+    <g opacity="0.5">
+      <line x1="0" y1="-220" x2="0" y2="-50"/>
+      <line x1="190" y1="-110" x2="44" y2="-25"/>
+      <line x1="190" y1="110" x2="44" y2="25"/>
+      <line x1="0" y1="220" x2="0" y2="50"/>
+      <line x1="-190" y1="110" x2="-44" y2="25"/>
+      <line x1="-190" y1="-110" x2="-44" y2="-25"/>
+    </g>
+    <!-- Central candidate diamond (gold) -->
+    <g transform="rotate(45)">
+      <rect x="-50" y="-50" width="100" height="100" stroke="#D4AF7A" stroke-width="2" fill="#000"/>
+      <rect x="-22" y="-22" width="44" height="44" fill="#D4AF7A" stroke="none"/>
+    </g>
+    <!-- Verifier lance — single arrow from upper-right attacking the candidate -->
+    <g stroke="#D4AF7A" stroke-width="2.2" fill="none">
+      <line x1="340" y1="-340" x2="80" y2="-80"/>
+      <path d="M70,-80 L80,-80 L80,-90" stroke-width="2.2"/>
+    </g>
+    <!-- Verifier label dot -->
+    <circle cx="356" cy="-356" r="6" fill="#D4AF7A" stroke="none"/>
+  </g>
+</svg>

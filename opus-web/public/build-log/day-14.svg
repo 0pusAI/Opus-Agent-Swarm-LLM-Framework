@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="opus-core ships, the site goes live — sphere with radiating beams of light">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <g transform="translate(540,540)">
+    <!-- 16 radial beams -->
+    <g stroke="#D4AF7A" stroke-width="1" opacity="0.6">
+      <line x1="0" y1="-240" x2="0" y2="-500"/>
+      <line x1="96" y1="-220" x2="200" y2="-460"/>
+      <line x1="180" y1="-180" x2="360" y2="-360"/>
+      <line x1="220" y1="-96" x2="460" y2="-200"/>
+      <line x1="240" y1="0" x2="500" y2="0"/>
+      <line x1="220" y1="96" x2="460" y2="200"/>
+      <line x1="180" y1="180" x2="360" y2="360"/>
+      <line x1="96" y1="220" x2="200" y2="460"/>
+      <line x1="0" y1="240" x2="0" y2="500"/>
+      <line x1="-96" y1="220" x2="-200" y2="460"/>
+      <line x1="-180" y1="180" x2="-360" y2="360"/>
+      <line x1="-220" y1="96" x2="-460" y2="200"/>
+      <line x1="-240" y1="0" x2="-500" y2="0"/>
+      <line x1="-220" y1="-96" x2="-460" y2="-200"/>
+      <line x1="-180" y1="-180" x2="-360" y2="-360"/>
+      <line x1="-96" y1="-220" x2="-200" y2="-460"/>
+    </g>
+    <!-- Fainter secondary beams between -->
+    <g stroke="#F2EFE6" stroke-width="0.7" opacity="0.3">
+      <line x1="48" y1="-235" x2="120" y2="-480"/>
+      <line x1="140" y1="-195" x2="280" y2="-420"/>
+      <line x1="210" y1="-115" x2="420" y2="-260"/>
+      <line x1="235" y1="-48" x2="480" y2="-100"/>
+      <line x1="235" y1="48" x2="480" y2="100"/>
+      <line x1="210" y1="115" x2="420" y2="260"/>
+      <line x1="140" y1="195" x2="280" y2="420"/>
+      <line x1="48" y1="235" x2="120" y2="480"/>
+      <line x1="-48" y1="235" x2="-120" y2="480"/>
+      <line x1="-140" y1="195" x2="-280" y2="420"/>
+      <line x1="-210" y1="115" x2="-420" y2="260"/>
+      <line x1="-235" y1="48" x2="-480" y2="100"/>
+      <line x1="-235" y1="-48" x2="-480" y2="-100"/>
+      <line x1="-210" y1="-115" x2="-420" y2="-260"/>
+      <line x1="-140" y1="-195" x2="-280" y2="-420"/>
+      <line x1="-48" y1="-235" x2="-120" y2="-480"/>
+    </g>
+    <!-- The sphere itself, centered -->
+    <g stroke="#F2EFE6" stroke-width="1.4" fill="#000">
+      <circle cx="0" cy="0" r="220"/>
+    </g>
+    <g stroke="#F2EFE6" stroke-width="1.2" fill="none">
+      <ellipse cx="0" cy="0" rx="220" ry="74"/>
+      <ellipse cx="0" cy="0" rx="74" ry="220"/>
+      <ellipse cx="0" cy="0" rx="155" ry="155" opacity="0.4"/>
+      <line x1="0" y1="-220" x2="0" y2="220" opacity="0.5"/>
+      <line x1="-220" y1="0" x2="220" y2="0" opacity="0.5"/>
+    </g>
+    <!-- Gold core — radiating -->
+    <circle cx="0" cy="0" r="80" fill="#D4AF7A" opacity="0.18" stroke="none"/>
+    <circle cx="0" cy="0" r="44" stroke="#D4AF7A" stroke-width="2" fill="#000"/>
+    <circle cx="0" cy="0" r="18" fill="#D4AF7A" stroke="none"/>
+  </g>
+</svg>

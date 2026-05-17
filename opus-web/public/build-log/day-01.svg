@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="First sketches — nine nodes and chaotic arrows">
+  <rect width="1080" height="1080" fill="#000"/>
+  <!-- Corner brackets -->
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <!-- 9-node grid with brainstorm arrows -->
+  <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.5" fill="none">
+    <g>
+      <circle cx="-230" cy="-230" r="24"/>
+      <circle cx="0" cy="-230" r="24"/>
+      <circle cx="230" cy="-230" r="24"/>
+      <circle cx="-230" cy="0" r="24"/>
+      <circle cx="230" cy="0" r="24"/>
+      <circle cx="-230" cy="230" r="24"/>
+      <circle cx="0" cy="230" r="24"/>
+      <circle cx="230" cy="230" r="24"/>
+    </g>
+    <!-- Center node, highlighted -->
+    <circle cx="0" cy="0" r="36" stroke="#D4AF7A" stroke-width="2"/>
+    <circle cx="0" cy="0" r="9" fill="#D4AF7A" stroke="none"/>
+    <!-- Chaotic curved arrows between nodes -->
+    <path d="M-206,-230 Q-100,-300 -24,-230"/>
+    <path d="M24,-230 Q100,-180 206,-230"/>
+    <path d="M-230,-206 Q-310,-100 -230,-24"/>
+    <path d="M230,-206 Q310,-100 230,-24"/>
+    <path d="M-206,0 Q-100,40 -36,0" stroke="#D4AF7A" opacity="0.85"/>
+    <path d="M36,0 Q100,40 206,0" stroke="#D4AF7A" opacity="0.85"/>
+    <path d="M-230,24 Q-310,120 -230,206"/>
+    <path d="M230,24 Q310,120 230,206"/>
+    <path d="M-206,230 Q-100,300 -24,230"/>
+    <path d="M24,230 Q100,280 206,230"/>
+    <path d="M-220,-200 Q-340,0 -220,200" opacity="0.4"/>
+    <path d="M220,-200 Q340,0 220,200" opacity="0.4"/>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Lost the day to a 400 — a fractured sphere with one ring shattered, gold ember still at the centre">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.4" fill="none">
+    <!-- Outer sphere outline (intact) -->
+    <circle cx="0" cy="0" r="340" opacity="0.4"/>
+    <!-- Vertical meridian (intact) -->
+    <ellipse cx="0" cy="0" rx="115" ry="340" opacity="0.5"/>
+    <!-- Equatorial ring SHATTERED — 4 broken arcs slightly scattered -->
+    <g opacity="0.85">
+      <path d="M -340,-12 A 340,115 0 0,1 -120,-110" transform="rotate(-4) translate(-12,-8)"/>
+      <path d="M -120,-110 A 340,115 0 0,1 100,-110" transform="rotate(2) translate(0,-14)"/>
+      <path d="M 100,-110 A 340,115 0 0,1 340,-12"   transform="rotate(5) translate(14,-2)"/>
+      <path d="M -340,12 A 340,115 0 0,0 340,12"     transform="rotate(-2) translate(0,10)" opacity="0.6"/>
+    </g>
+    <!-- Latitude rings -->
+    <ellipse cx="0" cy="-110" rx="280" ry="40" opacity="0.3"/>
+    <ellipse cx="0" cy="110" rx="280" ry="40" opacity="0.3"/>
+    <!-- Scattered debris dots (fragments of the broken ring) -->
+    <g fill="#F2EFE6" stroke="none" opacity="0.7">
+      <circle cx="-360" cy="-30" r="3"/>
+      <circle cx="-380" cy="20" r="2"/>
+      <circle cx="370" cy="-20" r="3"/>
+      <circle cx="395" cy="5" r="2"/>
+      <circle cx="0" cy="-130" r="2"/>
+      <circle cx="40" cy="-145" r="2.5"/>
+      <circle cx="-50" cy="-125" r="2"/>
+    </g>
+    <!-- Central gold ember — still pulsing through the chaos -->
+    <circle cx="0" cy="0" r="32" stroke="#D4AF7A" stroke-width="1"/>
+    <circle cx="0" cy="0" r="13" fill="#D4AF7A" stroke="none"/>
+    <!-- Faint glow ring -->
+    <circle cx="0" cy="0" r="48" stroke="#D4AF7A" opacity="0.3" stroke-width="0.8"/>
+  </g>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="To be determined — a dashed sphere with an empty centre">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.4" fill="none" stroke-dasharray="6 10" opacity="0.7">
+    <!-- Sphere outline, dashed -->
+    <circle cx="0" cy="0" r="320"/>
+    <ellipse cx="0" cy="0" rx="320" ry="108"/>
+    <ellipse cx="0" cy="0" rx="108" ry="320"/>
+    <line x1="0" y1="-320" x2="0" y2="320"/>
+    <line x1="-320" y1="0" x2="320" y2="0"/>
+  </g>
+  <!-- Empty centre — just an outlined ring, no ember -->
+  <g transform="translate(540,540)" stroke="#787870" stroke-width="1" fill="none" stroke-dasharray="3 5">
+    <circle cx="0" cy="0" r="46"/>
+  </g>
+  <!-- Faint hint of a future gold ember (ghost) -->
+  <circle cx="540" cy="540" r="6" fill="#D4AF7A" stroke="none" opacity="0.25"/>
+</svg>
