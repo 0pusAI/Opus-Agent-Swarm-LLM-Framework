@@ -199,7 +199,7 @@ export default function AutogenesisPage() {
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
             <Link
-              href="/#live-swarm"
+              href="/live-swarm"
               className="opus-mono text-opus-gold text-xs uppercase tracking-widest border border-opus-gold/60 px-4 py-2 hover:bg-opus-gold hover:text-opus-black transition-colors"
             >
               Pose a question

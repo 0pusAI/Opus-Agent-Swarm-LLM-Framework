@@ -181,7 +181,14 @@ function trimContent(text: string, max = 110): string {
 // Main component
 // ──────────────────────────────────────────────────────────────────
 
-export function LiveSwarm() {
+/**
+ * LiveSwarm — cinematic interactive demo of the OPUS swarm deliberating.
+ *
+ * @param embedded - When true, hides the §4 eyebrow / "Live Swarm" title /
+ *   subtitle block, so the dedicated /live-swarm page can wrap the widget
+ *   in its own page hero. Default false (used as the homepage section).
+ */
+export function LiveSwarm({ embedded = false }: { embedded?: boolean } = {}) {
   const [phase, setPhase] = useState<Phase>("idle");
   const [question, setQuestion] = useState(DEFAULT_QUESTION);
   const [activeAgents, setActiveAgents] = useState<Set<string>>(new Set());
@@ -292,37 +299,41 @@ export function LiveSwarm() {
   return (
     <section
       id="live-swarm"
-      className="relative w-full bg-opus-black px-6 py-32 md:py-48"
+      className={`relative w-full bg-opus-black px-6 ${embedded ? "pt-4 pb-16 md:pb-24" : "py-32 md:py-48"}`}
       aria-label="Live Swarm"
     >
       <div className="mx-auto max-w-5xl">
-        <motion.p
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="opus-eyebrow mb-4 text-center"
-        >
-          §4 — A swarm in motion
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="opus-display text-opus-bone text-[clamp(2rem,5vw,3.5rem)] text-center mb-4"
-        >
-          Live Swarm
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2, delay: 0.2 }}
-          className="opus-mono text-opus-gold text-xs uppercase tracking-widest text-center mb-12"
-        >
-          REAL-TIME OPUS LLM SWARM · LET THE COLONY WORK
-        </motion.p>
+        {!embedded && (
+          <>
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="opus-eyebrow mb-4 text-center"
+            >
+              §4 — A swarm in motion
+            </motion.p>
+            <motion.h2
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="opus-display text-opus-bone text-[clamp(2rem,5vw,3.5rem)] text-center mb-4"
+            >
+              Live Swarm
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, delay: 0.2 }}
+              className="opus-mono text-opus-gold text-xs uppercase tracking-widest text-center mb-12"
+            >
+              REAL-TIME OPUS LLM SWARM · LET THE COLONY WORK
+            </motion.p>
+          </>
+        )}
 
         {/* Input + action */}
         <div className="mb-8 flex flex-col gap-3">

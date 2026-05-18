@@ -126,7 +126,7 @@ export default function BuildLogPage() {
             </p>
             <div className="flex gap-3">
               <Link
-                href="/#live-swarm"
+                href="/live-swarm"
                 className="opus-mono text-opus-gold text-xs uppercase tracking-widest border border-opus-gold/60 px-4 py-2 hover:bg-opus-gold hover:text-opus-black transition-colors"
               >
                 Try the Swarm
