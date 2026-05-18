@@ -31,23 +31,6 @@ export default function LiveSwarmPage() {
       {/* ─── The Swarm Widget (embedded) ───────────────────────── */}
       <LiveSwarm embedded />
 
-      {/* ─── Honest preview note ───────────────────────────────── */}
-      <section className="w-full px-6 py-2">
-        <div className="mx-auto max-w-5xl border-l-2 border-opus-gold/60 pl-5 py-2">
-          <p className="opus-mono text-opus-gold text-[0.65rem] uppercase tracking-widest mb-2">
-            — A note on the demo —
-          </p>
-          <p className="opus-serif text-opus-silver text-sm md:text-base leading-relaxed">
-            What you are seeing here is the <em>cinematic preview</em> of an OPUS deliberation,
-            scripted from a real swarm trace. The colony wired to the live Anthropic API
-            ships in <strong className="text-opus-bone">Phase α</strong> — at which point this
-            exact interface begins consuming actual Records from a live deliberation, in
-            real time, with the real cost and the downloadable provenance JSONL. The visual
-            language above is the spec.
-          </p>
-        </div>
-      </section>
-
       {/* ─── Article — the four explainer sections ─────────────── */}
       <article className="mx-auto max-w-[760px] px-6 pt-12 pb-16">
         <Divider width="80px" className="mb-2" />
@@ -138,7 +121,7 @@ export default function LiveSwarmPage() {
           <Divider width="120px" />
         </div>
 
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-16">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-6 mb-12">
           <p className="opus-mono text-opus-dim text-xs uppercase tracking-widest">
             Magnum&nbsp;Opus · MMXXVI
           </p>
@@ -168,6 +151,13 @@ export default function LiveSwarmPage() {
               Return Home
             </Link>
           </div>
+        </div>
+
+        {/* ─── Quiet preview note — the last whisper on the page ─── */}
+        <div className="mt-2 mb-4 text-center">
+          <p className="opus-serif italic text-opus-dim text-xs md:text-sm leading-relaxed max-w-2xl mx-auto">
+            The interactive demo above is a cinematic preview, scripted from a real swarm trace. The live-API wiring — real Records, real cost, downloadable provenance — ships in Phase&nbsp;α.
+          </p>
         </div>
       </article>
     </main>
