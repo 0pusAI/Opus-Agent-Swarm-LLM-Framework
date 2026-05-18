@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- **Autogenesis "In plain terms" callout** — accessible four-bullet preamble placed at the top of both the `/autogenesis` page and `lore/autogenesis/README.md`, before the alchemical deep-dive. States plainly what the colony does every day: analyses itself, searches for ways to improve, searches for what would serve its users better, pushes its own updates to this repository. Gold-bordered card on the web page, equivalent bullet list on GitHub. Mirrors verbatim across both surfaces.
 - **Autogenesis** — the doctrine at the centre of the project, articulated explicitly for the first time. OPUS was not built top-down by a single mind; it was built — and continues to be built — by the swarm it is. Shipped across three surfaces:
   - **`/autogenesis` route** on the website — full thesis page (hero, the Ouroboros sigil, four sections: The Premise · The Ouroboros · How a Feature is Born · The Compact). Added to top-left nav between Build Log and Team.
   - **Homepage `Autogenesis` showcase section** — placed between BuildLog and CallToAction. Two-column layout (Ouroboros sigil + tight thesis + CTA into `/autogenesis` and the GitHub lore folder), faint radial gold glow behind, motion-staggered reveal.

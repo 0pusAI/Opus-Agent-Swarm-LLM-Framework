@@ -46,6 +46,45 @@ export default function AutogenesisPage() {
 
       {/* ─── Article ───────────────────────────────────────────── */}
       <article className="mx-auto max-w-[760px] px-6 pb-16">
+        {/* ─── In plain terms — accessible callout before the deep-dive ─── */}
+        <div className="mb-20 border-l-2 border-opus-gold pl-6 md:pl-8 py-2">
+          <p className="opus-eyebrow text-opus-gold mb-3">— In plain terms —</p>
+          <h2 className="opus-display text-opus-bone text-2xl md:text-3xl mb-6 leading-tight">
+            What the colony does, every day
+          </h2>
+
+          <p className="opus-serif text-opus-bone text-[1.1rem] md:text-[1.2rem] leading-relaxed mb-7">
+            The OPUS swarm never stops working on itself. Every day, around the clock, the colony:
+          </p>
+
+          <ul className="opus-serif text-opus-bone text-[1.04rem] md:text-[1.12rem] leading-relaxed space-y-5 list-none pl-0 mb-7">
+            <li>
+              <strong className="opus-display text-opus-gold text-base md:text-lg block mb-1">Analyses itself.</strong>
+              It reads its own code, its own whitepaper, its own past deliberations — and looks for what is wrong with itself.
+            </li>
+            <li>
+              <strong className="opus-display text-opus-gold text-base md:text-lg block mb-1">Searches for ways to improve.</strong>
+              New agent roles, sharper consensus rules, clearer documentation. If it finds a better version of itself, that version becomes the next version.
+            </li>
+            <li>
+              <strong className="opus-display text-opus-gold text-base md:text-lg block mb-1">Searches for what would serve its users better.</strong>
+              Faster reasoning. Clearer answers. Features visitors actually need — not features that only look good in a screenshot.
+            </li>
+            <li>
+              <strong className="opus-display text-opus-gold text-base md:text-lg block mb-1">Pushes its own updates.</strong>
+              When a change has been deliberated and verified by the colony, it is committed to this repository and shipped. The git history is the colony&apos;s diary.
+            </li>
+          </ul>
+
+          <p className="opus-serif text-opus-bone text-[1.04rem] md:text-[1.12rem] leading-relaxed mb-5">
+            The architect does not have to ask. The colony does this by itself, every day, for as long as it runs.
+          </p>
+
+          <p className="opus-serif italic text-opus-gold text-lg md:text-xl leading-snug">
+            A system designed to deliberate is a system that can deliberate about itself.
+          </p>
+        </div>
+
         <Divider width="80px" className="mb-2" />
 
         {/* §1 — The Premise */}

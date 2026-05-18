@@ -15,6 +15,21 @@
 
 ---
 
+## In plain terms
+
+The OPUS swarm never stops working on itself. Every day, around the clock, the colony:
+
+- **Analyses itself.** It reads its own code, its own whitepaper, its own past deliberations — and looks for what is wrong with itself.
+- **Searches for ways to improve.** New agent roles, sharper consensus rules, clearer documentation. If it finds a better version of itself, that version becomes the next version.
+- **Searches for what would serve its users better.** Faster reasoning. Clearer answers. Features visitors actually need — not features that only look good in a screenshot.
+- **Pushes its own updates.** When a change has been deliberated and verified by the colony, it is committed to this repository and shipped. The git history is the colony's diary.
+
+The architect does not have to ask. The colony does this by itself, every day, for as long as it runs.
+
+> *A system designed to deliberate is a system that can deliberate about itself.*
+
+---
+
 ## The Premise
 
 This is the doctrine at the centre of the project. State it plainly so no one mistakes it for marketing.
