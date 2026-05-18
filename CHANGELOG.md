@@ -6,6 +6,14 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added — `opus-core` (real new code, not just docs)
+
+- **`opus.autogenesis` — functional autonomous-mode module.** Implements the autogenesis loop OPUS uses on itself: pose → deliberate → implement → verify → hand back to the caller. Provides `AutogenesisLoop` (the orchestrator) and `Step` (the per-iteration result, with verified status, plan, implementation, and costs). The `commit_handler` callback is intentionally pluggable — the colony surfaces verified verdicts, the user decides where they land (open a PR, write to disk, drop in Slack, anything). About 200 lines, fully type-hinted, no external dependencies beyond the rest of `opus`.
+- **`examples/autogenesis_demo.py`** — runnable end-to-end demo of the loop with a sample goal, a `commit_handler` that prints each verified step, and a 2-iteration cap.
+- **Public API surfaced in `opus/__init__.py`** — `Hive`, `LLMClient`, `Budget`, `AutogenesisLoop`, `Step` now importable directly from `opus`. Existing submodule imports continue to work.
+- **`docs/api.md`** — full API reference covering install, configuration, CLI, library API (`Hive` · `LLMClient` · `Budget` · `RunResult`), the autogenesis loop (`AutogenesisLoop` · `Step`), provenance & cost format, and FAQ. Linked from main README and `opus-core/README.md`.
+- **`opus-core/README.md` rewritten** with three usage paths (CLI · Library · Autogenesis), with the autogenesis example as a first-class section.
+
 ### Added
 
 - **`/api` — fully dedicated API page (the *multiplicatio* doctrine).** OPUS is fully open-source, so anyone can spawn their own colony — the entire architecture, in your own process, on your own keys. The page makes that landable for non-developers and concrete for developers: hero with the "T H E A P I" wordmark + `OPEN · MIT · SELF-HOSTED · YOUR KEYS · YOUR COLONY` mono subtitle, then five sections — §1 The Premise (multiplicatio, the stage of the Great Work where the stone replicates itself), §2 Spawn a colony (four-line install + the one-verb `hive.deliberate()` library API), §3 Tell it what to build (the directed mode with four real example questions), §4 **Let it build itself** (the autonomous mode, with the loop-pattern code that any user can point at their own repo), §5 Where to start (four doors — repo · whitepaper · autogenesis · live swarm). Closes with: *"The colony is open. Take it. Spawn your own."*
