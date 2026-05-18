@@ -8,10 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
-- **`/sigils` route** — dedicated codex page for the sixteen daily build-log artworks, reframed as a closed set of alchemical sigils. Includes a long-form thesis ("On the Sigils"), a glossary of the recurring visual grammar (sphere · ember · diamond · circle · ledger lines · gold), and the full sequence with title, glyphs, and interpretive note for each piece.
-- **`/public/sigils/`** — the sixteen SVGs renamed as `sigil-i.svg` through `sigil-xvi.svg` and bundled as `opus-sigils.zip` for download. Original `/public/build-log/` paths preserved so the timeline page is unaffected.
-- **"Sigils" added to the top-left nav**, between Build Log and Team.
-- **"Read as Codex" link in the Build Log footer**, pointing to `/sigils`.
+- **New top-level `lore/` folder** — a home for OPUS artifacts that live outside the codebase but belong to the work (sigils, future lineage essays, architect's notes). Sibling to `opus-core/` and `opus-web/`.
+- **`lore/sigils/`** — the sixteen daily build-log artworks reframed as a closed alchemical codex. Contains the 16 SVGs (`sigil-i.svg` through `sigil-xvi.svg`), the bundled `opus-sigils.zip`, and a long-form `README.md` with the full thesis ("On the Sigils"), the visual-grammar glossary (sphere · ember · diamond · circle · ledger lines · gold), and an interpretive note for each piece. Renders as the canonical sigils codex on GitHub. Original `/opus-web/public/build-log/` artwork paths unchanged.
 
 ### Coming next (Phase α)
 

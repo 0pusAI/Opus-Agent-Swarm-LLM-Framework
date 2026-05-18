@@ -13,8 +13,8 @@ A bio-inspired multi-agent swarm architecture for collective LLM reasoning.
 - 🌐 **Live site** → <https://www.tryopusai.com>
 - 📜 **Whitepaper (web)** → <https://www.tryopusai.com/whitepaper> · **(PDF)** → [opus-web/public/whitepaper.pdf](opus-web/public/whitepaper.pdf)
 - 🗓 **Build Log** → <https://www.tryopusai.com/build-log>
-- 🜂 **Sigils (visual codex)** → <https://www.tryopusai.com/sigils>
 - 👤 **On the architect** → <https://www.tryopusai.com/team>
+- 🜂 **The Sigils (lore codex)** → [`lore/sigils/`](lore/sigils/)
 
 ---
 
@@ -47,7 +47,7 @@ This is a monorepo with two parallel tracks.
 - **[`opus-core/`](opus-core/)** — the Python swarm engine. The real product. Runs as a CLI today; one query, one consensus answer, full provenance, honest cost in USD.
 - **[`opus-web/`](opus-web/)** — the Next.js storefront. Manifesto, architecture, lineage, live cinematic swarm preview, dedicated Build Log archive.
 
-Plus **[`docs/`](docs/)** — whitepaper, architecture deep-dive, glossary, lineage essay. And **[`scripts/`](scripts/)** — utility scripts (e.g. the whitepaper PDF renderer).
+Plus **[`docs/`](docs/)** — whitepaper, architecture deep-dive, glossary, lineage essay. **[`lore/`](lore/)** — cultural artefacts of the project (the visual sigil codex, future architect's notes). And **[`scripts/`](scripts/)** — utility scripts (e.g. the whitepaper PDF renderer).
 
 ---
 
