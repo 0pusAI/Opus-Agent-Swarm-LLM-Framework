@@ -1,15 +1,19 @@
 "use client";
 
 /**
- * Nav — fixed top-left navigation.
+ * Nav — fixed top navigation.
  *
- * Three buttons (OpusAI · Whitepaper · Team) in the OPUS aesthetic:
- * mono uppercase labels, animated gold underline on hover, tiny
- * sphere brand mark on the left. Persists across all pages.
+ * Six buttons (OpusAI · Whitepaper · API · Build Log · Autogenesis · Team)
+ * in the OPUS aesthetic: mono uppercase labels, animated gold underline on
+ * hover, tiny sphere brand mark on the left. Persists across all pages.
  *
- * The OpusAI link navigates to the homepage and smooth-scrolls to
- * the LiveSwarm demo. From other pages it navigates first; from the
- * homepage it scrolls in place.
+ * Mobile: the brand mark + divider stay anchored on the left; the six nav
+ * items live in a horizontally scrollable row to their right. A subtle
+ * right-edge fade hints at more items off-screen. Native touch swiping
+ * works out of the box via `overflow-x-auto` + `overscroll-x-contain`.
+ *
+ * Desktop: the row is wide enough that nothing scrolls. Behaviour identical
+ * to the original.
  */
 
 import { useCallback, useEffect, useState } from "react";
@@ -83,67 +87,85 @@ export function Nav() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
       className={clsx(
-        "fixed top-0 left-0 z-50 px-6 md:px-8 py-5 md:py-6 transition-colors duration-500",
+        // Full-width on mobile so the scrollable row has room; on desktop
+        // it collapses back to its natural width on the left.
+        "fixed top-0 left-0 right-0 md:right-auto z-50 transition-colors duration-500",
         scrolled
           ? "bg-opus-black/60 backdrop-blur-md"
           : "bg-transparent"
       )}
       aria-label="Primary"
     >
-      <div className="flex items-center gap-5 md:gap-7">
-        {/* Sphere brand mark */}
-        <Link
-          href="/"
-          aria-label="OPUS — return home"
-          className="group flex items-center"
-        >
-          <SphereIcon className="h-7 w-7 md:h-8 md:w-8 text-opus-bone transition-transform duration-500 group-hover:rotate-180" />
-        </Link>
+      <div className="flex items-stretch">
+        {/* ─── Left: brand mark + divider — anchored, never scrolls ─── */}
+        <div className="flex items-center gap-5 md:gap-7 pl-6 md:pl-8 py-5 md:py-6 shrink-0">
+          <Link
+            href="/"
+            aria-label="OPUS — return home"
+            className="group flex items-center"
+          >
+            <SphereIcon className="h-7 w-7 md:h-8 md:w-8 text-opus-bone transition-transform duration-500 group-hover:rotate-180" />
+          </Link>
 
-        {/* Vertical hairline divider */}
-        <span
-          aria-hidden
-          className="h-5 w-px bg-opus-dim/60"
-        />
+          {/* Vertical hairline divider */}
+          <span
+            aria-hidden
+            className="h-5 w-px bg-opus-dim/60"
+          />
+        </div>
 
-        {/* Nav items */}
-        <ul className="flex items-center gap-4 md:gap-6">
-          {ITEMS.map((item) => {
-            const current = isCurrent(item);
-            return (
-              <li key={item.label}>
-                <Link
-                  href={item.href}
-                  onClick={(e) => handleClick(e, item)}
-                  className={clsx(
-                    "group relative inline-flex items-center gap-2 opus-mono uppercase tracking-widest text-[0.68rem] md:text-[0.72rem] py-1 transition-colors",
-                    current
-                      ? "text-opus-gold"
-                      : "text-opus-silver hover:text-opus-bone"
-                  )}
-                >
-                  {/* Tiny dot */}
-                  <span
-                    aria-hidden
+        {/* ─── Right: nav items — horizontally scrollable on mobile ─── */}
+        <div className="relative flex-1 min-w-0">
+          <ul
+            // overflow-x-auto + native touch swipe; scrollbar hidden across
+            // webkit / Firefox / legacy Edge; overscroll-contain so a
+            // horizontal swipe doesn't chain into the page's vertical scroll.
+            className="flex items-center gap-5 md:gap-6 overflow-x-auto overscroll-x-contain py-5 md:py-6 pl-5 md:pl-7 pr-10 md:pr-8 [&::-webkit-scrollbar]:hidden [scrollbar-width:none] [-ms-overflow-style:none]"
+            style={{ WebkitOverflowScrolling: "touch" }}
+          >
+            {ITEMS.map((item) => {
+              const current = isCurrent(item);
+              return (
+                <li key={item.label} className="shrink-0">
+                  <Link
+                    href={item.href}
+                    onClick={(e) => handleClick(e, item)}
                     className={clsx(
-                      "inline-block h-1 w-1 rotate-45 transition-colors",
-                      current ? "bg-opus-gold" : "bg-opus-dim group-hover:bg-opus-gold"
+                      "group relative inline-flex items-center gap-2 opus-mono uppercase tracking-widest text-[0.68rem] md:text-[0.72rem] py-1 transition-colors whitespace-nowrap",
+                      current
+                        ? "text-opus-gold"
+                        : "text-opus-silver hover:text-opus-bone"
                     )}
-                  />
-                  {item.label}
-                  {/* Animated underline */}
-                  <span
-                    aria-hidden
-                    className={clsx(
-                      "absolute left-3 right-0 -bottom-0.5 h-px origin-left bg-opus-gold transition-transform duration-500",
-                      current ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
-                    )}
-                  />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+                  >
+                    {/* Tiny diamond */}
+                    <span
+                      aria-hidden
+                      className={clsx(
+                        "inline-block h-1 w-1 rotate-45 transition-colors shrink-0",
+                        current ? "bg-opus-gold" : "bg-opus-dim group-hover:bg-opus-gold"
+                      )}
+                    />
+                    {item.label}
+                    {/* Animated underline */}
+                    <span
+                      aria-hidden
+                      className={clsx(
+                        "absolute left-3 right-0 -bottom-0.5 h-px origin-left bg-opus-gold transition-transform duration-500",
+                        current ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      )}
+                    />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* Right-edge fade — mobile only, hints at more items off-screen */}
+          <div
+            aria-hidden
+            className="pointer-events-none absolute top-0 right-0 bottom-0 w-10 md:hidden bg-gradient-to-l from-opus-black via-opus-black/80 to-transparent"
+          />
+        </div>
       </div>
     </motion.nav>
   );
