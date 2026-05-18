@@ -47,7 +47,7 @@ export function TechStack() {
           variants={fadeUp}
           className="opus-eyebrow mb-4 text-center"
         >
-          §4 — Stack
+          §8 — Stack
         </motion.p>
         <motion.h2
           initial="hidden"

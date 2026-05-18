@@ -19,7 +19,7 @@ export function GreatWork() {
           variants={fadeUp}
           className="opus-eyebrow mb-4 text-center"
         >
-          §6 — Philosophy
+          §5 — Philosophy
         </motion.p>
         <motion.h2
           initial="hidden"

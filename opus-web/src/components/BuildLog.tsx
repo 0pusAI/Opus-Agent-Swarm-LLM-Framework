@@ -89,7 +89,7 @@ export function BuildLog() {
           variants={fadeUp}
           className="opus-eyebrow mb-4 text-center"
         >
-          §7 — Built in public
+          §6 — Built in public
         </motion.p>
         <motion.h2
           initial="hidden"

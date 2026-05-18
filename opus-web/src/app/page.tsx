@@ -17,12 +17,12 @@ export default function HomePage() {
       <Manifesto />
       <BeehiveBrain />
       <Architecture />
-      <TechStack />
       <LiveSwarm />
       <GreatWork />
       <BuildLog />
       <Autogenesis />
       <CallToAction />
+      <TechStack />
       <Footer />
     </main>
   );

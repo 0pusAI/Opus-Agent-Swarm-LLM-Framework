@@ -303,7 +303,7 @@ export function LiveSwarm() {
           transition={{ duration: 0.8 }}
           className="opus-eyebrow mb-4 text-center"
         >
-          §5 — A swarm in motion
+          §4 — A swarm in motion
         </motion.p>
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
