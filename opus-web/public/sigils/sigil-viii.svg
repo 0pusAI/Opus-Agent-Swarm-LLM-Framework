@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="The eight roles — central hive surrounded by eight distinct nodes">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.4" fill="none">
+    <!-- Faint guide ring -->
+    <circle cx="0" cy="0" r="290" stroke-dasharray="3 6" opacity="0.4"/>
+    <!-- Connection lines from hive to each role -->
+    <g opacity="0.45">
+      <line x1="0" y1="0" x2="0" y2="-290"/>
+      <line x1="0" y1="0" x2="205" y2="-205"/>
+      <line x1="0" y1="0" x2="290" y2="0"/>
+      <line x1="0" y1="0" x2="205" y2="205"/>
+      <line x1="0" y1="0" x2="0" y2="290"/>
+      <line x1="0" y1="0" x2="-205" y2="205"/>
+      <line x1="0" y1="0" x2="-290" y2="0"/>
+      <line x1="0" y1="0" x2="-205" y2="-205"/>
+    </g>
+    <!-- The eight role nodes — each visually distinct -->
+    <!-- Top: Scout — small open circle -->
+    <circle cx="0" cy="-290" r="26"/>
+    <!-- Top-right: Researcher — circle with inner dot -->
+    <circle cx="205" cy="-205" r="26"/>
+    <circle cx="205" cy="-205" r="8" fill="#F2EFE6" stroke="none"/>
+    <!-- Right: Critic — diamond -->
+    <g transform="translate(290,0) rotate(45)">
+      <rect x="-22" y="-22" width="44" height="44"/>
+    </g>
+    <!-- Bottom-right: Synthesiser — concentric circles -->
+    <circle cx="205" cy="205" r="26"/>
+    <circle cx="205" cy="205" r="16" opacity="0.6"/>
+    <!-- Bottom: Verifier — diamond filled gold -->
+    <g transform="translate(0,290) rotate(45)">
+      <rect x="-22" y="-22" width="44" height="44" stroke="#D4AF7A" fill="#D4AF7A"/>
+    </g>
+    <!-- Bottom-left: Judge — hexagon -->
+    <polygon points="-180,205 -195,180 -225,180 -240,205 -225,230 -195,230" transform="translate(35,0)"/>
+    <!-- Left: Planner — square outline -->
+    <rect x="-316" y="-26" width="52" height="52"/>
+    <!-- Top-left: Executor — triangle -->
+    <polygon points="-205,-235 -175,-185 -235,-185"/>
+    <!-- Central Hive Core -->
+    <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" stroke="#D4AF7A" stroke-width="2" fill="none"/>
+    <circle cx="0" cy="0" r="22" fill="#D4AF7A" stroke="none"/>
+  </g>
+</svg>

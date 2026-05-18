@@ -124,12 +124,18 @@ export default function BuildLogPage() {
             <p className="opus-mono text-opus-dim text-xs uppercase tracking-widest">
               Magnum&nbsp;Opus · MMXXVI
             </p>
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <Link
                 href="/#live-swarm"
                 className="opus-mono text-opus-gold text-xs uppercase tracking-widest border border-opus-gold/60 px-4 py-2 hover:bg-opus-gold hover:text-opus-black transition-colors"
               >
                 Try the Swarm
+              </Link>
+              <Link
+                href="/sigils"
+                className="opus-mono text-opus-silver text-xs uppercase tracking-widest border border-opus-dim/60 px-4 py-2 hover:border-opus-bone hover:text-opus-bone transition-colors"
+              >
+                Read as Codex
               </Link>
               <Link
                 href="/whitepaper"

@@ -111,3 +111,5 @@ $RECYCLE.BIN/
 logs/
 .opus-cache/
 provenance/*.jsonl
+
+.vercel

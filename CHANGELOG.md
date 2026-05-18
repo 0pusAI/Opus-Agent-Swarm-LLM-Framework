@@ -6,6 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **`/sigils` route** — dedicated codex page for the sixteen daily build-log artworks, reframed as a closed set of alchemical sigils. Includes a long-form thesis ("On the Sigils"), a glossary of the recurring visual grammar (sphere · ember · diamond · circle · ledger lines · gold), and the full sequence with title, glyphs, and interpretive note for each piece.
+- **`/public/sigils/`** — the sixteen SVGs renamed as `sigil-i.svg` through `sigil-xvi.svg` and bundled as `opus-sigils.zip` for download. Original `/public/build-log/` paths preserved so the timeline page is unaffected.
+- **"Sigils" added to the top-left nav**, between Build Log and Team.
+- **"Read as Codex" link in the Build Log footer**, pointing to `/sigils`.
+
 ### Coming next (Phase α)
 
 - `opus-core` deployed on Modal exposing the swarm via a Server-Sent Events endpoint

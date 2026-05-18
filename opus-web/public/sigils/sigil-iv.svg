@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Frameworks won't do it — four crossed-out hexagons above one clean sphere">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <!-- Four crossed-out hexagons (rejected frameworks) -->
+  <g stroke="#F2EFE6" stroke-width="1.5" fill="none" opacity="0.85">
+    <g transform="translate(220,300)">
+      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40"/>
+      <line x1="-69" y1="-40" x2="69" y2="40" stroke-width="2"/>
+      <line x1="69" y1="-40" x2="-69" y2="40" stroke-width="2"/>
+    </g>
+    <g transform="translate(434,300)">
+      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40"/>
+      <line x1="-69" y1="-40" x2="69" y2="40" stroke-width="2"/>
+      <line x1="69" y1="-40" x2="-69" y2="40" stroke-width="2"/>
+    </g>
+    <g transform="translate(648,300)">
+      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40"/>
+      <line x1="-69" y1="-40" x2="69" y2="40" stroke-width="2"/>
+      <line x1="69" y1="-40" x2="-69" y2="40" stroke-width="2"/>
+    </g>
+    <g transform="translate(862,300)">
+      <polygon points="0,-80 69,-40 69,40 0,80 -69,40 -69,-40"/>
+      <line x1="-69" y1="-40" x2="69" y2="40" stroke-width="2"/>
+      <line x1="69" y1="-40" x2="-69" y2="40" stroke-width="2"/>
+    </g>
+  </g>
+  <!-- One clean OPUS sphere below — the chosen path -->
+  <g transform="translate(540,720)" stroke="#F2EFE6" stroke-width="1.4" fill="none">
+    <circle cx="0" cy="0" r="180"/>
+    <ellipse cx="0" cy="0" rx="180" ry="60" opacity="0.7"/>
+    <ellipse cx="0" cy="0" rx="60" ry="180" opacity="0.7"/>
+    <line x1="0" y1="-180" x2="0" y2="180" opacity="0.5"/>
+    <line x1="-180" y1="0" x2="180" y2="0" opacity="0.5"/>
+    <circle cx="0" cy="0" r="32" stroke="#D4AF7A"/>
+    <circle cx="0" cy="0" r="11" fill="#D4AF7A" stroke="none"/>
+  </g>
+  <!-- Faint divider between rejection and chosen -->
+  <line x1="280" y1="490" x2="800" y2="490" stroke="#787870" opacity="0.4" stroke-dasharray="4 6"/>
+</svg>

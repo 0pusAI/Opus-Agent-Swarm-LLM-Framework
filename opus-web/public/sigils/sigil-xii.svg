@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="Windows tooling hell — a square labyrinth with a single gold thread tracing through it">
+  <rect width="1080" height="1080" fill="#000"/>
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+  <!-- Square labyrinth walls -->
+  <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.6" fill="none">
+    <!-- Outer wall -->
+    <rect x="-340" y="-340" width="680" height="680"/>
+    <!-- Inner walls (concentric squares with gaps creating a maze) -->
+    <path d="M -280,-280 L 280,-280 L 280,280 L -180,280" />
+    <path d="M -280,-280 L -280,180" />
+    <path d="M -220,-220 L 220,-220 L 220,220" />
+    <path d="M -220,-220 L -220,140" />
+    <path d="M -220,80 L 160,80 L 160,220" />
+    <path d="M -160,-160 L 160,-160 L 160,20" />
+    <path d="M -160,-100 L -160,140" />
+    <path d="M -160,140 L 100,140 L 100,-100" />
+    <path d="M -100,-100 L 100,-100" />
+    <path d="M -100,-100 L -100,80" />
+    <path d="M -100,80 L 40,80 L 40,-40" />
+    <path d="M -40,-40 L 40,-40" />
+    <path d="M -40,-40 L -40,20" />
+    <!-- Entry and exit gaps -->
+    <line x1="-340" y1="0" x2="-340" y2="-30" stroke="#000" stroke-width="3"/>
+    <line x1="340" y1="0" x2="340" y2="30" stroke="#000" stroke-width="3"/>
+    <!-- The thread — solved gold path through the maze -->
+    <path d="M -340,-15 L -300,-15 L -300,-250 L 250,-250 L 250,250 L -150,250 L -150,110 L 130,110 L 130,-130 L -130,-130 L -130,50 L 70,50 L 70,-70 L 0,-70 L 0,0 L 340,15"
+          stroke="#D4AF7A" stroke-width="2.6" opacity="0.95"/>
+  </g>
+</svg>

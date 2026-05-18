@@ -13,6 +13,7 @@ A bio-inspired multi-agent swarm architecture for collective LLM reasoning.
 - 🌐 **Live site** → <https://www.tryopusai.com>
 - 📜 **Whitepaper (web)** → <https://www.tryopusai.com/whitepaper> · **(PDF)** → [opus-web/public/whitepaper.pdf](opus-web/public/whitepaper.pdf)
 - 🗓 **Build Log** → <https://www.tryopusai.com/build-log>
+- 🜂 **Sigils (visual codex)** → <https://www.tryopusai.com/sigils>
 - 👤 **On the architect** → <https://www.tryopusai.com/team>
 
 ---
