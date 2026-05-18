@@ -82,20 +82,35 @@ export function Nav() {
   };
 
   return (
-    <motion.nav
-      initial={{ opacity: 0, y: -8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
-      className={clsx(
-        // Full-width on mobile so the scrollable row has room; on desktop
-        // it collapses back to its natural width on the left.
-        "fixed top-0 left-0 right-0 md:right-auto z-50 transition-colors duration-500",
-        scrolled
-          ? "bg-opus-black/60 backdrop-blur-md"
-          : "bg-transparent"
-      )}
-      aria-label="Primary"
-    >
+    <>
+      {/* ─── Always-on top atmosphere ────────────────────────────────
+          Subtle vertical fade behind the nav — dark at the very top,
+          dissolving to transparent ~130px down. Gives the nav letters
+          their own legibility pocket against any background (cinematic
+          hero, sphere wireframe, scrolling content) without showing as
+          a hard bar. Full viewport width on both mobile and desktop
+          regardless of the nav's own (variable) width. */}
+      <div
+        aria-hidden
+        className="pointer-events-none fixed top-0 left-0 right-0 z-40 h-32 bg-gradient-to-b from-opus-black/90 via-opus-black/55 to-transparent"
+      />
+
+      <motion.nav
+        initial={{ opacity: 0, y: -8 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.9, delay: 0.4, ease: [0.22, 0.61, 0.36, 1] }}
+        className={clsx(
+          // Full-width on mobile so the scrollable row has room; on desktop
+          // it collapses back to its natural width on the left.
+          "fixed top-0 left-0 right-0 md:right-auto z-50 transition-colors duration-500",
+          scrolled
+            // Once the user starts scrolling, layer a soft blurred backdrop
+            // on top of the gradient so passing content gets nicely diffused.
+            ? "bg-opus-black/30 backdrop-blur-md"
+            : ""
+        )}
+        aria-label="Primary"
+      >
       <div className="flex items-stretch">
         {/* ─── Left: brand mark + divider — anchored, never scrolls ─── */}
         <div className="flex items-center gap-5 md:gap-7 pl-6 md:pl-8 py-5 md:py-6 shrink-0">
@@ -167,7 +182,8 @@ export function Nav() {
           />
         </div>
       </div>
-    </motion.nav>
+      </motion.nav>
+    </>
   );
 }
 
