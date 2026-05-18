@@ -91,7 +91,7 @@ First runnable swarm. First live storefront.
 ### Added — Infrastructure
 
 - Public GitHub repository: <https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework>
-- Production deployment on Vercel: <https://opus-agent-swarm-llm-framework.vercel.app>
+- Production deployment on Vercel: <https://www.tryopusai.com>
 - MIT license, comprehensive `.gitignore`, project-rooted README.
 
 ---

@@ -6,14 +6,14 @@
 [![opus-core tests](https://img.shields.io/github/actions/workflow/status/0pusAI/Opus-Agent-Swarm-LLM-Framework/test.yml?branch=main&label=opus-core%20tests&style=flat-square&color=D4AF7A)](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/actions/workflows/test.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-F2EFE6.svg?style=flat-square)](https://www.python.org/downloads/)
 [![Next.js 14](https://img.shields.io/badge/next.js-14-787870.svg?style=flat-square)](https://nextjs.org/)
-[![Deployed on Vercel](https://img.shields.io/badge/deployed%20on-vercel-D4AF7A.svg?style=flat-square)](https://opus-agent-swarm-llm-framework.vercel.app)
+[![Deployed on Vercel](https://img.shields.io/badge/deployed%20on-vercel-D4AF7A.svg?style=flat-square)](https://www.tryopusai.com)
 
 A bio-inspired multi-agent swarm architecture for collective LLM reasoning.
 
-- 🌐 **Live site** → <https://opus-agent-swarm-llm-framework.vercel.app>
-- 📜 **Whitepaper (web)** → <https://opus-agent-swarm-llm-framework.vercel.app/whitepaper> · **(PDF)** → [opus-web/public/whitepaper.pdf](opus-web/public/whitepaper.pdf)
-- 🗓 **Build Log** → <https://opus-agent-swarm-llm-framework.vercel.app/build-log>
-- 👤 **On the architect** → <https://opus-agent-swarm-llm-framework.vercel.app/team>
+- 🌐 **Live site** → <https://www.tryopusai.com>
+- 📜 **Whitepaper (web)** → <https://www.tryopusai.com/whitepaper> · **(PDF)** → [opus-web/public/whitepaper.pdf](opus-web/public/whitepaper.pdf)
+- 🗓 **Build Log** → <https://www.tryopusai.com/build-log>
+- 👤 **On the architect** → <https://www.tryopusai.com/team>
 
 ---
 

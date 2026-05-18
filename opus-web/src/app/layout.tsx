@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "OPUS — Ars Magna",
   description:
     "A bio-inspired multi-agent swarm architecture for collective reasoning. Built and broadcast in public.",
-  metadataBase: new URL("https://opus.local"),
+  metadataBase: new URL("https://www.tryopusai.com"),
   openGraph: {
     title: "OPUS — Ars Magna",
     description: "A bio-inspired multi-agent swarm architecture for collective reasoning.",
