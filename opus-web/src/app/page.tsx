@@ -19,10 +19,10 @@ export default function HomePage() {
       <Architecture />
       <LiveSwarm />
       <GreatWork />
-      <BuildLog />
       <Autogenesis />
-      <CallToAction />
+      <BuildLog />
       <TechStack />
+      <CallToAction />
       <Footer />
     </main>
   );

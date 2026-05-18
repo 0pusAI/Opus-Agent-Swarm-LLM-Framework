@@ -43,7 +43,7 @@ export function Autogenesis() {
           variants={fadeUp}
           className="opus-eyebrow text-center mb-4"
         >
-          §7 — The Ouroboros
+          §6 — The Ouroboros
         </motion.p>
         <motion.h2
           initial="hidden"
