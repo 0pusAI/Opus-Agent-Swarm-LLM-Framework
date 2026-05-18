@@ -6,6 +6,7 @@ import { TechStack } from "@/components/TechStack";
 import { LiveSwarm } from "@/components/LiveSwarm";
 import { GreatWork } from "@/components/GreatWork";
 import { BuildLog } from "@/components/BuildLog";
+import { Autogenesis } from "@/components/Autogenesis";
 import { CallToAction } from "@/components/CallToAction";
 import { Footer } from "@/components/Footer";
 
@@ -20,6 +21,7 @@ export default function HomePage() {
       <LiveSwarm />
       <GreatWork />
       <BuildLog />
+      <Autogenesis />
       <CallToAction />
       <Footer />
     </main>

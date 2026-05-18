@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="The Ouroboros — the colony that builds itself">
+  <rect width="1080" height="1080" fill="#000"/>
+
+  <!-- Corner brackets — consistent with the sigil set -->
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+
+  <g transform="translate(540,540)">
+    <!-- Faint armillary geometry — the sphere this work is set within -->
+    <g stroke="#F2EFE6" fill="none" opacity="0.38">
+      <circle cx="0" cy="0" r="395" stroke-width="1"/>
+      <ellipse cx="0" cy="0" rx="395" ry="128" stroke-width="0.6"/>
+      <ellipse cx="0" cy="0" rx="128" ry="395" stroke-width="0.6"/>
+      <circle cx="0" cy="0" r="215" stroke-width="0.5" opacity="0.7"/>
+    </g>
+
+    <!-- ── THE OUROBOROS ─────────────────────────────────────── -->
+    <!-- A beaded serpent body forming a near-full circle, broken
+         only on the right where the head meets the tail. -->
+
+    <!-- Outer thin continuous line (the serpent's skin) -->
+    <path
+      d="M 280 -94 A 295 295 0 1 0 280 94"
+      stroke="#F2EFE6" stroke-width="1.4" fill="none"
+    />
+    <!-- Beaded scales along the body -->
+    <path
+      d="M 280 -94 A 295 295 0 1 0 280 94"
+      stroke="#F2EFE6" stroke-width="11" fill="none"
+      stroke-linecap="round" stroke-dasharray="1 19"
+    />
+
+    <!-- HEAD — wedge at top-right, mouth opening downward toward its own tail -->
+    <g>
+      <path d="M 268 -86 L 302 -120 L 342 -86 L 330 -50 L 300 -42 L 268 -60 Z"
+            fill="#F2EFE6"/>
+      <!-- Eye — small black dot inside the head -->
+      <circle cx="304" cy="-84" r="3" fill="#000"/>
+    </g>
+
+    <!-- TAIL — thin tip at bottom-right, pointing up into the head's mouth -->
+    <g>
+      <path d="M 268 86 L 332 30 L 314 52 L 296 64 L 278 80 Z"
+            fill="#F2EFE6"/>
+    </g>
+
+    <!-- ── THE GOLD CONVERGENCE ──────────────────────────────── -->
+    <!-- The point where head meets tail — the moment of self-creation. -->
+    <circle cx="324" cy="-12" r="4.5" fill="#D4AF7A"/>
+    <circle cx="324" cy="-12" r="22" fill="none" stroke="#D4AF7A" stroke-width="0.7" opacity="0.55"/>
+    <circle cx="324" cy="-12" r="44" fill="none" stroke="#D4AF7A" stroke-width="0.4" opacity="0.32"/>
+    <circle cx="324" cy="-12" r="70" fill="none" stroke="#D4AF7A" stroke-width="0.3" opacity="0.18"/>
+
+    <!-- ── THE HIVE CORE ─────────────────────────────────────── -->
+    <!-- The colony at the centre — what the ouroboros encloses. -->
+    <g stroke="#F2EFE6" stroke-width="1" fill="none">
+      <circle cx="0" cy="0" r="64"/>
+      <circle cx="0" cy="0" r="34" stroke="#D4AF7A"/>
+    </g>
+    <circle cx="0" cy="0" r="14" fill="#D4AF7A"/>
+
+    <!-- Top finial (matches the brand mark) -->
+    <line x1="0" y1="-395" x2="0" y2="-436" stroke="#F2EFE6" stroke-width="1.2"/>
+    <circle cx="0" cy="-444" r="6" fill="#F2EFE6"/>
+  </g>
+</svg>

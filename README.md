@@ -14,7 +14,8 @@ A bio-inspired multi-agent swarm architecture for collective LLM reasoning.
 - 📜 **Whitepaper (web)** → <https://www.tryopusai.com/whitepaper> · **(PDF)** → [opus-web/public/whitepaper.pdf](opus-web/public/whitepaper.pdf)
 - 🗓 **Build Log** → <https://www.tryopusai.com/build-log>
 - 👤 **On the architect** → <https://www.tryopusai.com/team>
-- 🜂 **The Sigils (lore codex)** → [`lore/sigils/`](lore/sigils/)
+- 🜂 **Autogenesis (the colony that builds itself)** → <https://www.tryopusai.com/autogenesis> · [`lore/autogenesis/`](lore/autogenesis/)
+- 🜍 **The Sigils (visual codex)** → [`lore/sigils/`](lore/sigils/)
 
 ---
 
@@ -37,6 +38,8 @@ When the colony has deliberated enough, three stages of consensus run:
 If verification fails, the swarm re-deliberates with the falsification as a new constraint. The loop is bounded: at most three attempts, then the colony surfaces what it has, with confidence and trace.
 
 That is the Great Work — *solve et coagula*. Dissolve a single mind into many; recombine the many into one well-considered answer.
+
+There is one more thing to know before anything else. OPUS was not built top-down by a single mind; **it was built — and continues to be built — by the swarm it is.** The architect, `0pusAI`, does not propose features; they pose questions, the colony deliberates, and the verdict is transcribed. The doctrine is called **Autogenesis** and it is articulated in full in [`lore/autogenesis/`](lore/autogenesis/) and at [www.tryopusai.com/autogenesis](https://www.tryopusai.com/autogenesis). The Ouroboros is its sigil.
 
 ---
 

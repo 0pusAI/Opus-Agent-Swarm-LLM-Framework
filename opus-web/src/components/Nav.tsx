@@ -25,10 +25,11 @@ interface NavItem {
 }
 
 const ITEMS: NavItem[] = [
-  { label: "OpusAI",     href: "/#live-swarm", scrollTo: "live-swarm" },
-  { label: "Whitepaper", href: "/whitepaper" },
-  { label: "Build Log",  href: "/build-log" },
-  { label: "Team",       href: "/team" },
+  { label: "OpusAI",       href: "/#live-swarm", scrollTo: "live-swarm" },
+  { label: "Whitepaper",   href: "/whitepaper" },
+  { label: "Build Log",    href: "/build-log" },
+  { label: "Autogenesis",  href: "/autogenesis" },
+  { label: "Team",         href: "/team" },
 ];
 
 export function Nav() {
@@ -69,6 +70,7 @@ export function Nav() {
     if (item.href === "/whitepaper") return pathname === "/whitepaper";
     if (item.href === "/team") return pathname === "/team";
     if (item.href === "/build-log") return pathname === "/build-log";
+    if (item.href === "/autogenesis") return pathname === "/autogenesis";
     return false;
   };
 

@@ -8,6 +8,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- **Autogenesis** — the doctrine at the centre of the project, articulated explicitly for the first time. OPUS was not built top-down by a single mind; it was built — and continues to be built — by the swarm it is. Shipped across three surfaces:
+  - **`/autogenesis` route** on the website — full thesis page (hero, the Ouroboros sigil, four sections: The Premise · The Ouroboros · How a Feature is Born · The Compact). Added to top-left nav between Build Log and Team.
+  - **Homepage `Autogenesis` showcase section** — placed between BuildLog and CallToAction. Two-column layout (Ouroboros sigil + tight thesis + CTA into `/autogenesis` and the GitHub lore folder), faint radial gold glow behind, motion-staggered reveal.
+  - **`lore/autogenesis/`** — the canonical doctrine on GitHub. Includes `ouroboros.svg` (the meta-sigil — armillary sphere with its equatorial band become a serpent biting its own tail, gold at the convergence) and a long-form `README.md` covering the premise, the Ouroboros principle, the five-step workflow by which every feature is born, and the compact that shapes everything downstream.
+- **Main `README.md` Premise section** — extended with a single paragraph stating the Autogenesis doctrine plainly, with links to both the lore folder and the live page.
 - **New top-level `lore/` folder** — a home for OPUS artifacts that live outside the codebase but belong to the work (sigils, future lineage essays, architect's notes). Sibling to `opus-core/` and `opus-web/`.
 - **`lore/sigils/`** — the sixteen daily build-log artworks reframed as a closed alchemical codex. Contains the 16 SVGs (`sigil-i.svg` through `sigil-xvi.svg`), the bundled `opus-sigils.zip`, and a long-form `README.md` with the full thesis ("On the Sigils"), the visual-grammar glossary (sphere · ember · diamond · circle · ledger lines · gold), and an interpretive note for each piece. Renders as the canonical sigils codex on GitHub. Original `/opus-web/public/build-log/` artwork paths unchanged.
 
