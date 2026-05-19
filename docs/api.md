@@ -284,6 +284,67 @@ A full runnable demo lives at [`opus-core/examples/autogenesis_demo.py`](../opus
 
 ---
 
+## Introspection — the colony reading itself
+
+`opus.introspection` is the bridge between the autogenesis loop and the *actual codebase* it works on. Without it, `AutogenesisLoop` needs a human to hand it a goal. With it, the colony can walk its own repo, surface structured observations, and feed them back into the Hive as deliberation context. The result: continuous, end-to-end autogenesis.
+
+```python
+from pathlib import Path
+from opus import Hive, LLMClient, AutogenesisLoop
+from opus.introspection import RepoAnalyst, surface_bottlenecks
+
+llm  = LLMClient()
+hive = Hive(llm=llm)
+
+# 1. Scan the repository.
+analyst = RepoAnalyst(repo_root=Path("."))
+observations = analyst.scan()
+# observations is a list of structured findings:
+#   Observation(kind="todo", location="opus-core/src/opus/hive.py:142", ...)
+#   Observation(kind="stale_link", location="docs/whitepaper.md", ...)
+#   Observation(kind="missing_docstring", location=..., ...)
+#   Observation(kind="test_gap", location=..., ...)
+
+# 2. Let the colony decide which ones matter most.
+verdict = await surface_bottlenecks(hive, observations, n=3)
+
+# 3. Feed the verdict back as the goal for an autogenesis loop.
+loop = AutogenesisLoop(hive=hive, goal=str(verdict.answer))
+await loop.run(max_iterations=3, commit_handler=apply)
+```
+
+### `Observation`
+
+```python
+@dataclass(frozen=True)
+class Observation:
+    kind: str           # "todo" | "stale_link" | "missing_docstring" | "test_gap"
+    location: str       # "path:line" or just "path"
+    summary: str        # one-line description
+    severity: int = 1   # 1 (minor) to 5 (urgent)
+```
+
+### `RepoAnalyst`
+
+Four scanners ship out of the box. All four are also run together by `scan()`, which returns the merged list sorted by severity.
+
+| Scanner | What it finds |
+|---|---|
+| `find_todos()` | `TODO` / `FIXME` / `HACK` / `XXX` comments in `.py`, `.ts`, `.tsx`, `.md`, etc. |
+| `find_stale_links()` | Markdown links pointing at files that don't exist. |
+| `find_missing_docstrings()` | Public Python functions and classes with no docstring. |
+| `find_test_gaps()` | Source modules under `src/` with no matching `tests/test_*.py`. |
+
+Construct with a custom ignore set or extension list if your repository needs different exclusions.
+
+### `surface_bottlenecks(hive, observations, *, n=3)`
+
+Hands the observations to the colony as deliberation context, asks for the top `n` highest-conviction next moves with reasoning, and returns a `RunResult` whose `.answer` can be used as the goal for an `AutogenesisLoop`. If `observations` is empty, the colony is asked to propose a goal from scratch.
+
+A full runnable end-to-end demo (scan → surface → loop → commit) lives at [`opus-core/examples/autogenesis_continuous.py`](../opus-core/examples/autogenesis_continuous.py).
+
+---
+
 ## Provenance & cost
 
 Every `RunResult` includes a complete provenance trace — every Record the colony wrote, every parent_id, every model invocation, every cent spent. By default the trace is also written to disk as JSONL at `provenance/<query_uuid>.jsonl` and the path comes back as `result.provenance_path`.

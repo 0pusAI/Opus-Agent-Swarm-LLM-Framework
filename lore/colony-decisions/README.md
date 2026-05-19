@@ -36,6 +36,7 @@ The git history is the colony's diary. This folder is the colony's reasoning.
 
 | Date | Decision |
 |---|---|
+| 2026-05-19 | [Autogenesis goes live](2026-05-19_autogenesis-live.md) — `opus.introspection` ships; the colony can now scan its own repo, surface bottlenecks, and feed them into its own loop |
 | 2026-05-19 | [The next bottleneck](2026-05-19_next-bottleneck.md) — Modal deployment of `opus-core` for the live swarm at tryopusai.com |
 
 *(future decisions are appended above)*

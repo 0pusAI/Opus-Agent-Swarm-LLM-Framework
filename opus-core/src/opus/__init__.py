@@ -18,6 +18,7 @@ __version__ = "0.1.0"
 from .agents.base import Budget
 from .autogenesis import AutogenesisLoop, Step
 from .hive import Hive
+from .introspection import Observation, RepoAnalyst, surface_bottlenecks
 from .llm.client import LLMClient
 
 __all__ = [
@@ -27,4 +28,7 @@ __all__ = [
     "Budget",
     "AutogenesisLoop",
     "Step",
+    "RepoAnalyst",
+    "Observation",
+    "surface_bottlenecks",
 ]
