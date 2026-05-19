@@ -42,6 +42,21 @@ The colony returns three things at end of run:
 - the cost in USD
 - the path to the full provenance trace (`provenance/<query_uuid>.jsonl`)
 
+### Local Web UI — one command, your own colony in the browser
+
+```bash
+uv pip install -e ".[serve]"          # one-time, adds fastapi+uvicorn
+opus serve                             # boots http://127.0.0.1:8000
+```
+
+A single command boots a local FastAPI server with the OPUS web UI on `localhost`. Pose questions, watch the swarm deliberate live (server-sent events stream every Record as it's written to the Blackboard), see the verdict + cost + provenance. Anyone with a terminal can run their own colony — no API gate, no marketing form, no rate limit.
+
+```bash
+opus serve --provider ollama          # local model, $0/query
+opus serve --provider openai          # OpenAI / o-series
+opus serve --port 9000 --no-browser   # custom port, headless
+```
+
 ### Library — embed it in your own code
 
 ```python
@@ -96,7 +111,7 @@ Full module documentation: [`docs/api.md` § Autogenesis loop](../docs/api.md#au
 pytest
 ```
 
-**77 tests pass** — Blackboard (5), Consensus (8), Hive (5), Introspection (27), Providers (32). Run in under 4 seconds. All use isolated fixtures or `httpx.MockTransport`; no network, no API key required.
+**84 tests pass** — Blackboard (5), Consensus (8), Hive (5), Introspection (27), Providers (32), Server (7). Run in under 4 seconds. All use isolated fixtures, `httpx.MockTransport`, or `httpx.ASGITransport`; no network, no API key required.
 
 ## Layout
 
@@ -119,7 +134,10 @@ src/opus/
 │       ├── openai.py   ── GPT-4o / o1 / + OpenAI-compatible gateways
 │       ├── ollama.py   ── local LLM, free, private, no key required
 │       └── mock.py     ── deterministic mock for tests
-└── cli.py             ── `opus query "..."`
+├── server/            ── local web UI + HTTP API (one-command serve)
+│   ├── app.py          ── FastAPI app, SSE streaming, /query, /status
+│   └── ui.py           ── single-file inline web UI (HTML/CSS/JS)
+└── cli.py             ── `opus query "..."`, `opus serve`
 
 examples/
 ├── hello_swarm.py            ── smallest one-query example (Anthropic)

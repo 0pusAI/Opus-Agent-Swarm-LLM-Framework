@@ -6,6 +6,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added — `opus-core` 0.2.0 · local web UI (`opus serve`)
+
+- **`opus serve` — one-command local web UI.** Boots a FastAPI server on `http://127.0.0.1:8000` with a single-page OPUS-register web app where anyone can pose questions to their own colony and watch the swarm deliberate live. The UI is inline (HTML + CSS + JS in one Python string constant), no build step, no external assets, ships entirely as part of the Python install. Browser opens automatically; `--no-browser` to skip; `--host`/`--port`/`--provider` for everything else.
+- **`opus.server` — the server module.** `create_app(llm, ...)` returns a FastAPI app exposing `GET /` (UI), `GET /api/status` (active provider + per-role models), `POST /api/query` (start a deliberation, returns `run_id`), `GET /api/stream/{run_id}` (server-sent events: `phase`, `record`, `complete`, `error`). `run_server(llm, ...)` boots uvicorn synchronously.
+- **`Hive.run()` now accepts an optional `blackboard` kwarg** — non-breaking. Lets outside consumers inject a Blackboard so they can poll it for live Records (which is exactly how the SSE stream works without modifying any agent code). Defaults to creating a fresh `InMemoryBlackboard` per call.
+- **`[serve]` extra in `pyproject.toml`** — `pip install -e ".[serve]"` adds `fastapi>=0.110` + `uvicorn>=0.27`. Kept optional so the core install stays light for users who only want the library.
+- **`tests/test_server.py` — 7 new tests** covering the UI page, `/api/status`, `/api/query` (accepts valid, rejects empty + oversize via pydantic validation), `/api/stream/{run_id}` (404 for unknown, full end-to-end SSE flow including phase + record + complete events). Tests run against the FastAPI app directly via `httpx.ASGITransport`; no real network, no API key. Full repo suite now **84/84 passing** (was 77).
+- **`opus-core/README.md` and `docs/quickstart.md` updated** — new "Local Web UI" sections showing the one-command boot, with `--provider` examples for OpenAI / Ollama / Anthropic.
+
 ### Added — `opus-core` 0.2.0 · multi-provider LLM abstraction
 
 - **`opus.llm.providers` — pluggable LLM backends.** The colony now runs on Anthropic, OpenAI (and every OpenAI-compatible gateway — groq, together, fireworks, openrouter, vLLM, litellm-proxy), local Ollama (free, no API key, fully private), or any custom `LLMProvider` subclass. One protocol, four built-in implementations, zero code changes needed in the agent / consensus / Hive layers. Per-role default model names come from each provider automatically (worker / scout / judge / verifier) so the Hive just works on any backend out of the box. `auto_provider()` picks intelligently based on which API key is in the environment, with `OPUS_PROVIDER` env var as explicit override.

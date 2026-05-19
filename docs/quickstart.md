@@ -95,6 +95,23 @@ Still in the `opus-core` directory:
 uv run opus query "What are the strongest arguments against my own thesis?"
 ```
 
+### Or boot the local web UI in one command
+
+The friendliest way to use OPUS is in your browser. Install the `[serve]` extra once and run `opus serve`:
+
+```powershell
+uv pip install -e ".[serve]"           # adds fastapi + uvicorn
+uv run opus serve                       # boots http://127.0.0.1:8000
+```
+
+The OPUS UI opens in your default browser. Type a question, watch the swarm deliberate live, get back a verified verdict with cost and provenance. No coding required.
+
+```powershell
+uv run opus serve --provider ollama     # use local Ollama (free, no key)
+uv run opus serve --provider openai     # use OpenAI
+uv run opus serve --port 9000 --no-browser
+```
+
 The colony wakes. You will see Scouts gather context, Workers argue across the Blackboard, the Verifier attempt to break the chosen answer. After roughly 30 to 90 seconds you get back three things:
 
 1. The colony's **answer** (verified, or surfaced with unresolved falsifications labelled honestly)

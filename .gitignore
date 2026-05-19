@@ -113,3 +113,4 @@ logs/
 provenance/*.jsonl
 
 .vercel
+opus-core/provenance/

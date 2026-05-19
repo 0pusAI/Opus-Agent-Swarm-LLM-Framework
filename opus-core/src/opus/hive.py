@@ -86,9 +86,21 @@ class Hive:
         self.n_synthesisers = n_synthesisers
         self.provenance_dir = provenance_dir
 
-    async def run(self, query: str, *, budget: Budget | None = None) -> RunResult:
+    async def run(
+        self,
+        query: str,
+        *,
+        budget: Budget | None = None,
+        blackboard: Blackboard | None = None,
+    ) -> RunResult:
+        """Run one deliberation.
+
+        Pass ``blackboard`` to inject a pre-constructed Blackboard so an
+        outside consumer (e.g. the local server's SSE stream) can poll
+        records as they appear. Defaults to a fresh InMemoryBlackboard.
+        """
         budget = budget or Budget()
-        bb = InMemoryBlackboard()
+        bb = blackboard if blackboard is not None else InMemoryBlackboard()
         started_at = datetime.now(timezone.utc)
         query_id = str(uuid4())
 

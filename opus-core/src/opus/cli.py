@@ -3,6 +3,8 @@ opus.cli — typer entrypoint.
 
     opus query "<your question>"
     opus query "<your question>" --budget-usd 1.50
+    opus serve                                  # boot local web UI
+    opus serve --port 9000 --provider ollama
 """
 
 from __future__ import annotations
@@ -21,6 +23,7 @@ from .agents.base import Budget
 from .blackboard import RecordType
 from .hive import Hive
 from .llm.client import LLMClient
+from .llm.providers import auto_provider
 
 app = typer.Typer(
     help="OPUS — Ars Magna. A bio-inspired multi-agent swarm for collective reasoning.",
@@ -139,6 +142,60 @@ def _format_answer(answer: Any) -> str:
             return str(answer["answer"])
         return str(answer)
     return str(answer)
+
+
+@app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1", "--host", help="Interface to bind. Use 0.0.0.0 to expose on LAN."),
+    port: int = typer.Option(8000, "--port", "-p", help="Port to listen on."),
+    provider: str = typer.Option(
+        "auto",
+        "--provider",
+        help="LLM provider: auto | anthropic | openai | ollama. "
+             "Default reads keys from env; falls back to local Ollama.",
+    ),
+    no_browser: bool = typer.Option(False, "--no-browser", help="Do not open the browser."),
+) -> None:
+    """Boot the local OPUS web UI on http://HOST:PORT.
+
+    Anyone with a terminal can now spin up their own colony in one
+    command. The UI streams the deliberation live; the URL is opened
+    in your default browser automatically (unless --no-browser).
+    """
+    load_dotenv()
+
+    # Pick a provider. "auto" honours env vars; explicit names go straight through.
+    if provider == "auto":
+        chosen = auto_provider()
+    else:
+        chosen = auto_provider(provider)  # type: ignore[arg-type]
+
+    llm = LLMClient(provider=chosen)
+
+    url = f"http://{host}:{port}"
+    console.print(Panel(
+        f"[bold cyan]OPUS · Local[/bold cyan]\n\n"
+        f"  Provider: [yellow]{llm.provider_name}[/yellow]\n"
+        f"  URL:      [green]{url}[/green]\n"
+        f"  Models:   {llm.default_worker_model} · {llm.default_scout_model} · "
+        f"{llm.default_judge_model} · {llm.default_verifier_model}\n\n"
+        f"[dim]Ctrl+C to stop.[/dim]",
+        title="The colony is waking",
+        border_style="cyan",
+    ))
+
+    # Importing the server is deferred so the [serve] extra is only
+    # required if the user actually runs this command.
+    try:
+        from .server import run_server
+    except ImportError as e:
+        console.print(
+            "[red]ERROR:[/red] the [serve] extra is not installed.\n"
+            "Install with: [cyan]uv pip install -e \".[serve]\"[/cyan]"
+        )
+        raise typer.Exit(code=1) from e
+
+    run_server(llm, host=host, port=port, open_browser=not no_browser)
 
 
 if __name__ == "__main__":
