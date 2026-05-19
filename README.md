@@ -60,7 +60,7 @@ This is a monorepo with two parallel tracks.
 - **[`opus-core/`](opus-core/)** — the Python swarm engine. The real product. Runs as a CLI today; one query, one consensus answer, full provenance, honest cost in USD.
 - **[`opus-web/`](opus-web/)** — the Next.js storefront. Manifesto, architecture, lineage, live cinematic swarm preview, dedicated Build Log archive.
 
-Plus **[`docs/`](docs/)** — [**Quickstart**](docs/quickstart.md) (zero to a running colony in five minutes), whitepaper, architecture deep-dive, [API reference](docs/api.md), glossary, lineage essay. **[`lore/`](lore/)** — cultural artefacts of the project (the visual sigil codex, autogenesis doctrine). And **[`scripts/`](scripts/)** — utility scripts (e.g. the whitepaper PDF renderer).
+Plus **[`docs/`](docs/)** — [**Quickstart**](docs/quickstart.md) (zero to a running colony in five minutes), whitepaper, architecture deep-dive, [API reference](docs/api.md), [tokenomics](docs/tokenomics.md), glossary, lineage essay. **[`lore/`](lore/)** — cultural artefacts of the project (the visual sigil codex, autogenesis doctrine). And **[`scripts/`](scripts/)** — utility scripts (e.g. the whitepaper PDF renderer).
 
 ---
 
