@@ -29,6 +29,25 @@ A bio-inspired multi-agent swarm architecture for collective LLM reasoning.
 
 ---
 
+## ✨ What's new — v2.0.0 *Multiplicatio · The Open Colony*
+
+> **The biggest release since launch.** Released 2026-05-19. Tag: [`v2.0.0`](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/releases/tag/v2.0.0). Full notes: [`docs/release-notes-v2.md`](docs/release-notes-v2.md).
+
+- 🟢 **Run OPUS on any LLM backend.** Anthropic, OpenAI (and every OpenAI-compatible gateway), local Ollama (free, no API key), or any custom provider. One protocol, four built-ins, zero changes to your code.
+- 🟢 **`opus serve` — local web UI in one command.** A FastAPI server with a single-page OPUS-register web app that streams the swarm's deliberation live via SSE. Boots in seconds. Browser opens automatically.
+- 🟢 **Functional autogenesis.** `opus.introspection` lets the colony scan its own codebase, surface its own bottlenecks, and feed them back into its own deliberation loop. The doctrine made executable.
+- 🟢 **84 / 84 tests passing** (was 18). Runs in 3.5 seconds. No network, no API key required.
+- 🟢 **Zero breaking changes.** Every public API from v0.1 still works exactly as before.
+
+```bash
+git clone https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework
+cd Opus-Agent-Swarm-LLM-Framework/opus-core
+uv venv && uv pip install -e ".[serve]"
+opus serve                        # boots http://127.0.0.1:8000
+```
+
+---
+
 ## Premise
 
 OPUS is not a model. It is a colony.
@@ -187,7 +206,7 @@ If you build on OPUS in research or production, please cite:
   author  = {{0pusAI}},
   year    = {2026},
   url     = {https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework},
-  version = {0.2.0}
+  version = {2.0.0}
 }
 ```
 

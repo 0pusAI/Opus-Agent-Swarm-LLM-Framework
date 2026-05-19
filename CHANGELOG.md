@@ -6,81 +6,114 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
-### Added — `opus-core` 0.2.0 · local web UI (`opus serve`)
+### Coming next (Phase α)
 
-- **`opus serve` — one-command local web UI.** Boots a FastAPI server on `http://127.0.0.1:8000` with a single-page OPUS-register web app where anyone can pose questions to their own colony and watch the swarm deliberate live. The UI is inline (HTML + CSS + JS in one Python string constant), no build step, no external assets, ships entirely as part of the Python install. Browser opens automatically; `--no-browser` to skip; `--host`/`--port`/`--provider` for everything else.
+- `opus-core` deployed on Modal exposing the swarm via a hosted SSE endpoint
+- `LiveSwarm` on the website consuming **real** Records from a public hosted colony (currently still cinematic preview)
+- Per-IP rate limiting via Upstash Redis on the hosted demo
+- Vector memory adapter (Qdrant) for cross-query learning
+- Redis Streams backend for the Blackboard (distributed deployments)
+
+---
+
+## [2.0.0] — 2026-05-19 — *"Multiplicatio · The Open Colony"*
+
+> The biggest release since launch. OPUS is now a fully multi-provider, fully open-source, fully runnable-in-one-command AI LLM swarm framework that anyone with a terminal can use to spin up their own colony — with Anthropic, OpenAI, local Ollama, or any custom backend they bring. The autogenesis doctrine moves from prose to runnable Python. The tokenomics policy locks at 45 / 35 / 20. The test suite goes from 18 to **84 passing in under 4 seconds**, with zero breaking changes.
+
+### Headline features
+
+- **`opus serve`** — one command boots a local web UI on `localhost`. The OPUS-register web app streams the swarm's deliberation live via server-sent events. Anyone with a terminal can now run their own colony in three commands. ([commit](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/commit/eacc5f4))
+- **Multi-provider LLM abstraction** — Anthropic, OpenAI (and every OpenAI-compatible gateway: groq, together, fireworks, openrouter, vLLM, litellm-proxy), local Ollama (free, no API key, fully private), or any custom backend. One protocol, four built-in implementations, zero changes to the agent / consensus / Hive layers. ([commit](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/commit/7cc2e2f))
+- **`opus.autogenesis` + `opus.introspection`** — the colony can now scan its own repository, surface its own bottlenecks, and feed them back into its own deliberation loop. The autogenesis doctrine made executable. ([commit](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/commit/e1367db))
+- **Public tokenomics policy + treasury log** — 45 % Buybacks & Burns, 35 % Swarm Operations, 20 % Scaling & Development. Append-only public ledger. The colony's treasury cannot move funds without leaving a trace in git. ([commit](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/commit/939d7dd))
+- **84 / 84 tests passing** (was 18). Full repo suite runs in under 4 seconds. No network, no API key required.
+- **Zero breaking changes.** Every existing call to `LLMClient()`, every existing agent, every existing example continues to work without modification.
+
+### Added — `opus-core` engine
+
+#### Local web UI (`opus serve`)
+
+- **`opus serve` — one-command local web UI.** Boots a FastAPI server on `http://127.0.0.1:8000` with a single-page OPUS-register web app where anyone can pose questions to their own colony and watch the swarm deliberate live. The UI is inline (HTML + CSS + JS in one Python string constant), no build step, no external assets, ships entirely as part of the Python install. Browser opens automatically; `--no-browser` to skip; `--host` / `--port` / `--provider` for everything else.
 - **`opus.server` — the server module.** `create_app(llm, ...)` returns a FastAPI app exposing `GET /` (UI), `GET /api/status` (active provider + per-role models), `POST /api/query` (start a deliberation, returns `run_id`), `GET /api/stream/{run_id}` (server-sent events: `phase`, `record`, `complete`, `error`). `run_server(llm, ...)` boots uvicorn synchronously.
 - **`Hive.run()` now accepts an optional `blackboard` kwarg** — non-breaking. Lets outside consumers inject a Blackboard so they can poll it for live Records (which is exactly how the SSE stream works without modifying any agent code). Defaults to creating a fresh `InMemoryBlackboard` per call.
 - **`[serve]` extra in `pyproject.toml`** — `pip install -e ".[serve]"` adds `fastapi>=0.110` + `uvicorn>=0.27`. Kept optional so the core install stays light for users who only want the library.
-- **`tests/test_server.py` — 7 new tests** covering the UI page, `/api/status`, `/api/query` (accepts valid, rejects empty + oversize via pydantic validation), `/api/stream/{run_id}` (404 for unknown, full end-to-end SSE flow including phase + record + complete events). Tests run against the FastAPI app directly via `httpx.ASGITransport`; no real network, no API key. Full repo suite now **84/84 passing** (was 77).
-- **`opus-core/README.md` and `docs/quickstart.md` updated** — new "Local Web UI" sections showing the one-command boot, with `--provider` examples for OpenAI / Ollama / Anthropic.
+- **`tests/test_server.py` — 7 new tests** covering the UI page, `/api/status`, `/api/query` (accepts valid, rejects empty + oversize via pydantic validation), `/api/stream/{run_id}` (404 for unknown, full end-to-end SSE flow including phase + record + complete events). Tests run against the FastAPI app directly via `httpx.ASGITransport`; no real network, no API key.
 
-### Added — `opus-core` 0.2.0 · multi-provider LLM abstraction
+#### Multi-provider LLM abstraction
 
 - **`opus.llm.providers` — pluggable LLM backends.** The colony now runs on Anthropic, OpenAI (and every OpenAI-compatible gateway — groq, together, fireworks, openrouter, vLLM, litellm-proxy), local Ollama (free, no API key, fully private), or any custom `LLMProvider` subclass. One protocol, four built-in implementations, zero code changes needed in the agent / consensus / Hive layers. Per-role default model names come from each provider automatically (worker / scout / judge / verifier) so the Hive just works on any backend out of the box. `auto_provider()` picks intelligently based on which API key is in the environment, with `OPUS_PROVIDER` env var as explicit override.
 - **`LLMClient` refactored** to delegate to a swappable provider while preserving its existing public API exactly. Existing code keeps working unchanged; new code can pass `provider=...` to switch backends.
 - **`OpenAIProvider`** — uses raw `httpx` (already a transitive dep, no new SDK) so it works with OpenAI proper, Azure OpenAI, or any OpenAI-API-compatible gateway. Handles the o-series quirks transparently (`max_completion_tokens` vs `max_tokens`, `reasoning_effort` mapping). Pricing table for gpt-4o / gpt-4o-mini / gpt-4.1 / o1 / o3-mini included.
 - **`OllamaProvider`** — local LLM via `http://localhost:11434` (or `OLLAMA_HOST` override). Always-free cost estimation. Lets anyone run the entire OPUS swarm on their own machine with zero recurring expense.
-- **`MockProvider`** — deterministic mock backend for tests, with two modes (static response cycling, templated responder callable). Records every call it received so tests can assert agent prompts. Powers the new test suite without burning a single API dollar.
-- **`tests/test_providers.py` — 32 new tests** covering every provider, the auto-detection logic, error paths (missing key, API failure, connection refused), the o-series special-case handling, cost estimation, default models, and `LLMClient` backward compatibility. Uses `httpx.MockTransport` for network-free testing of OpenAI / Ollama. Full suite is now **77/77 passing** (was 45).
+- **`MockProvider`** — deterministic mock backend for tests, with two modes (static response cycling, templated responder callable). Records every call it received so tests can assert agent prompts.
+- **`tests/test_providers.py` — 32 new tests** covering every provider, the auto-detection logic, error paths (missing key, API failure, connection refused), the o-series special-case handling, cost estimation, default models, and `LLMClient` backward compatibility. Uses `httpx.MockTransport` for network-free testing of OpenAI / Ollama.
 - **`examples/using_openai.py` and `examples/using_ollama.py`** — runnable end-to-end demos showing the exact same Hive code reasoning through different backends.
-- **`pyproject.toml`** — version bumped to **0.2.0**, `httpx>=0.27` added as an explicit dependency.
-- **`docs/api.md` § Configuration** — completely rewritten with the multi-provider matrix (Anthropic / OpenAI / Ollama / custom), env var table, per-role default model table, and switching examples.
-- **`opus-core/README.md`** — new "Pick your LLM backend" section above the install instructions, expanded layout diagram showing the providers/ subpackage, test count updated to 77.
 
-### Added
+#### Autogenesis (the colony reading and improving itself)
 
-- **`/now` — dedicated page for the colony's three latest moves.** Single source of truth at `opus-web/src/data/colonyNow.ts` (TypeScript types + array of `ColonyDecision`, capped at three). Page hero with the "N O W" wordmark matching the other dedicated pages, three stacked cards with clear visual differentiation: the **in-progress** card carries a gold border, a subtle gold-tint background, a pulsing gold dot, and an `IN PROGRESS` mono label; **shipped** cards carry a dim border, a silver ✓, and a `SHIPPED` mono label. Every shipped card links to its real commit hash on GitHub so the page is provable, not decorative. Each card also links to its `lore/colony-decisions/` entry where applicable. Footer reminder: *"Never more than three at a time. Nothing teased. Nothing hidden. The colony works on what the colony has surfaced."* Added to top nav between OpusAI and Whitepaper.
-- **`lore/colony-decisions/` — the colony's public reasoning log.** One markdown file per decision, with the question posed, candidates considered, verdict surfaced, reasoning, and the action being taken. Format documented in the folder README. First entry logged: `2026-05-19_next-bottleneck.md` — the colony surfaces Modal deployment of `opus-core` (Phase α) as the next highest-conviction move, with three candidates evaluated, reasoning given, and funding allocated from the 20% Scaling bucket. Phase α is now active.
-- **`treasury-log.md` — the colony's public ledger (execution begins).** Append-only, newest-first, four entry types (Inflow, Buyback & Burn, Operations, Scaling). Each entry references the policy bucket it executes against, with USD amounts, transaction hashes, and invoice references. Cadence section at the top documents the execution schedule (weekly buybacks on Sundays at 22:00 UTC, monthly operations itemisation, scaling spend as the colony surfaces bottlenecks). Genesis entry logged: treasury initialised, CA confirmed, allocation policy locked, first buyback cycle scheduled. Treasury cannot move funds without leaving a trace in the git history.
-- **`docs/tokenomics.md` — the colony's Creator Rewards allocation policy.** Fixed at launch, locked until a fresh deliberation overturns it. 45% to Buybacks & Burns (weekly cadence, on-chain tx hashes posted within 24h), 35% to Swarm Operations (Anthropic API, Modal compute, Vercel hosting, observability — monthly itemisation), 20% to Scaling & Development (deployed against the next bottleneck the colony surfaces). Includes the CA, the cadence per bucket, the reasoning behind the percentages, a wallets section ready to fill as addresses are deployed, and transparency commitments. Linked from main README.
-- **Official $OPUS Solana CA published on all surfaces.** `FjGZibcd8DBzxoL3H2srMayap1h7S5Q5NuPoaJcVpump` is now visible at the top of the main `README.md` (centered callout above the badges), at the top of `opus-core/README.md` (matching callout, framework-level), and in the website hero under the subtitle (click-to-copy button, replacing the previous placeholder address). One canonical address, three surfaces, no ambiguity.
-- **`docs/quickstart.md` — zero-to-running guide for the API.** Plain-spoken, cross-platform (PowerShell-first for Windows, bash for macOS/Linux), aimed at someone who has never installed a Python package from source before. Covers prerequisites (Python, git, Anthropic key) with one-line install commands per OS, the full install path, first-query walkthrough, programmatic `Hive` usage, the `AutogenesisLoop` pattern, and a "common issues" section addressing the four problems first-time users actually hit. Surfaced and verified by the swarm in deliberation as the highest-conviction next move for accessibility. Linked prominently from both READMEs.
+- **`opus.autogenesis` — functional autonomous-mode module.** Implements the autogenesis loop OPUS uses on itself: pose → deliberate → implement → verify → hand back to the caller. Provides `AutogenesisLoop` (the orchestrator) and `Step` (the per-iteration result, with verified status, plan, implementation, and costs). The `commit_handler` callback is intentionally pluggable — the colony surfaces verified verdicts, the user decides where they land (open a PR, write to disk, drop in Slack, anything). ~200 lines, fully type-hinted, no external dependencies beyond the rest of `opus`.
+- **`opus.introspection` — the colony reading itself.** The missing functional piece between `AutogenesisLoop` (which needs a goal handed in) and `lore/colony-decisions/` (which captures verdicts after they're deliberated). Provides `Observation` (structured finding), `RepoAnalyst` (four scanners out of the box: `find_todos`, `find_stale_links`, `find_missing_docstrings`, `find_test_gaps` — walks plain text and Python AST, zero new dependencies), and `surface_bottlenecks` (hands the observations to the Hive, returns a verdict suitable as the goal for an `AutogenesisLoop`).
+- **`examples/autogenesis_demo.py`** — runnable end-to-end demo of the loop with a sample goal and a `commit_handler` that prints each verified step.
+- **`examples/autogenesis_continuous.py`** — the full pipeline as one runnable script: scan → surface → loop → commit. Default target is the OPUS repo itself, so anyone with an Anthropic key can watch the colony work on its own codebase end to end.
+- **`tests/test_introspection.py` — 27 tests** proving the introspection module actually works. Covers `Observation` invariants, every `RepoAnalyst` scanner (positive + negative cases), `scan()` orchestration, ignore-list and custom-extensions behaviour, and `surface_bottlenecks` against a stubbed Hive.
 
-### Added — `opus-core` (real new code, not just docs)
+#### Public API + version
 
-- **`tests/test_introspection.py` — 27 tests proving `opus.introspection` actually works.** Covers `Observation` (default construction, severity override, line format, frozen-dataclass invariant), every `RepoAnalyst` scanner (`find_todos`, `find_stale_links`, `find_missing_docstrings`, `find_test_gaps`) with positive and negative cases, the `scan()` orchestration (merges all scanners, sorts by severity, handles empty repos), ignore-list and custom-extensions behaviour, and `surface_bottlenecks` (with-observations path, empty-observations path, max-observations truncation) against a stubbed Hive so no API credit is required. Full repo suite is now **45/45 passing** (was 18). All tests use `pytest`'s `tmp_path` fixture for isolation; no network, no live API.
-- **`opus.introspection` — the colony reading itself.** The missing functional piece between `AutogenesisLoop` (which needs a goal handed in) and `lore/colony-decisions/` (which captures verdicts after they're deliberated). This module is the *what should we deliberate about?* step. Provides `Observation` (structured finding), `RepoAnalyst` (four scanners out of the box: `find_todos`, `find_stale_links`, `find_missing_docstrings`, `find_test_gaps` — walks plain text and Python AST, zero new dependencies), and `surface_bottlenecks` (hands the observations to the Hive, returns a verdict suitable as the goal for an `AutogenesisLoop`). Surfaced on the public API via `opus/__init__.py`. Documented in `docs/api.md` § Introspection.
-- **`examples/autogenesis_continuous.py`** — the full pipeline as one runnable script: scan → surface → loop → commit. Default target is the OPUS repo itself, so anyone with an Anthropic key can watch the colony work on its own codebase end to end. Writes each verified step to `.autogenesis-output/step-NNN.json` so the run leaves a verifiable trail. Roughly $2–$6 per full cycle.
-- **`lore/colony-decisions/2026-05-19_autogenesis-live.md`** — the verdict authorising this commit. Three candidates considered (introspection module, dashboard, newsletter), introspection module chosen as the load-bearing piece. Phase α.1 (continuous autogenesis loop on a schedule against this repository) added to the queue, funded from the 20% Scaling bucket. Autogenesis is now operationally complete: the loop has somewhere to land.
-- **`opus.autogenesis` — functional autonomous-mode module.** Implements the autogenesis loop OPUS uses on itself: pose → deliberate → implement → verify → hand back to the caller. Provides `AutogenesisLoop` (the orchestrator) and `Step` (the per-iteration result, with verified status, plan, implementation, and costs). The `commit_handler` callback is intentionally pluggable — the colony surfaces verified verdicts, the user decides where they land (open a PR, write to disk, drop in Slack, anything). About 200 lines, fully type-hinted, no external dependencies beyond the rest of `opus`.
-- **`examples/autogenesis_demo.py`** — runnable end-to-end demo of the loop with a sample goal, a `commit_handler` that prints each verified step, and a 2-iteration cap.
-- **Public API surfaced in `opus/__init__.py`** — `Hive`, `LLMClient`, `Budget`, `AutogenesisLoop`, `Step` now importable directly from `opus`. Existing submodule imports continue to work.
-- **`docs/api.md`** — full API reference covering install, configuration, CLI, library API (`Hive` · `LLMClient` · `Budget` · `RunResult`), the autogenesis loop (`AutogenesisLoop` · `Step`), provenance & cost format, and FAQ. Linked from main README and `opus-core/README.md`.
-- **`opus-core/README.md` rewritten** with three usage paths (CLI · Library · Autogenesis), with the autogenesis example as a first-class section.
+- **Public API surfaced in `opus/__init__.py`** — `Hive`, `LLMClient`, `Budget`, `AutogenesisLoop`, `Step`, `RepoAnalyst`, `Observation`, `surface_bottlenecks`, `LLMProvider`, `CompletionResult`, `AnthropicProvider`, `OpenAIProvider`, `OllamaProvider`, `MockProvider`, `auto_provider`, plus three error types. **16 public exports.**
+- **`pyproject.toml`** — version bumped to **2.0.0**, `httpx>=0.27` added as an explicit dependency, `[serve]` optional extra added.
 
-### Added
+### Added — `docs/` (knowledge & onboarding)
 
-- **`/api` — fully dedicated API page (the *multiplicatio* doctrine).** OPUS is fully open-source, so anyone can spawn their own colony — the entire architecture, in your own process, on your own keys. The page makes that landable for non-developers and concrete for developers: hero with the "T H E A P I" wordmark + `OPEN · MIT · SELF-HOSTED · YOUR KEYS · YOUR COLONY` mono subtitle, then five sections — §1 The Premise (multiplicatio, the stage of the Great Work where the stone replicates itself), §2 Spawn a colony (four-line install + the one-verb `hive.deliberate()` library API), §3 Tell it what to build (the directed mode with four real example questions), §4 **Let it build itself** (the autonomous mode, with the loop-pattern code that any user can point at their own repo), §5 Where to start (four doors — repo · whitepaper · autogenesis · live swarm). Closes with: *"The colony is open. Take it. Spawn your own."*
-- **Nav: "API" added** between Whitepaper and Build Log. Now six items: OpusAI · Whitepaper · API · Build Log · Autogenesis · Team. Current-page highlight wired up.
-- **Live Swarm page** — moved the "— A note on the demo —" callout from the middle of the page (between widget and article) to the very bottom as a quiet final whisper in dim italic serif, no border, no eyebrow chip. Less interruption of the swarm experience; honest caveat still preserved for anyone who reads to the end.
-- **`/live-swarm` — fully dedicated OpusAI Live Swarm page.** The interactive swarm widget gets its own destination route, hero ("LIVE SWARM" wordmark, gold mono subtitle, italic serif tagline), an embedded honest "cinematic preview" note explaining current state vs Phase α, and four substantive explainer sections below: §1 How to use it (+ §1.1 on questions that suit it), §2 What to use it for (researchers, founders, writers, engineers, anyone wrestling with a real decision), §3 Why this is the future (the case against the lonely oracle — multiple perspectives, falsification, provenance), §4 How it was made (opus-core, Anthropic models, the Llull/Hearsay-II/Grassé lineage, MIT-licensed, autogenetic).
-- **LiveSwarm component refactor** — accepts an optional `embedded` prop. When true, hides the homepage `§4 — A swarm in motion` eyebrow/title/subtitle block and tightens vertical padding so the dedicated `/live-swarm` page can wrap the widget in its own page hero. Homepage section is unchanged.
-- **Nav: "OpusAI" now points to `/live-swarm`** directly (clean dedicated route) instead of the homepage anchor `/#live-swarm`. Current-page highlight wired up.
-- **Cross-links updated** — "Try the Swarm" footer on `/build-log` and "Pose a question" footer on `/autogenesis` now point to `/live-swarm`.
-- **Autogenesis "In plain terms" callout** — accessible four-bullet preamble placed at the top of both the `/autogenesis` page and `lore/autogenesis/README.md`, before the alchemical deep-dive. States plainly what the colony does every day: analyses itself, searches for ways to improve, searches for what would serve its users better, pushes its own updates to this repository. Gold-bordered card on the web page, equivalent bullet list on GitHub. Mirrors verbatim across both surfaces.
-- **Autogenesis** — the doctrine at the centre of the project, articulated explicitly for the first time. OPUS was not built top-down by a single mind; it was built — and continues to be built — by the swarm it is. Shipped across three surfaces:
-  - **`/autogenesis` route** on the website — full thesis page (hero, the Ouroboros sigil, four sections: The Premise · The Ouroboros · How a Feature is Born · The Compact). Added to top-left nav between Build Log and Team.
-  - **Homepage `Autogenesis` showcase section** — placed between BuildLog and CallToAction. Two-column layout (Ouroboros sigil + tight thesis + CTA into `/autogenesis` and the GitHub lore folder), faint radial gold glow behind, motion-staggered reveal.
-  - **`lore/autogenesis/`** — the canonical doctrine on GitHub. Includes `ouroboros.svg` (the meta-sigil — armillary sphere with its equatorial band become a serpent biting its own tail, gold at the convergence) and a long-form `README.md` covering the premise, the Ouroboros principle, the five-step workflow by which every feature is born, and the compact that shapes everything downstream.
-- **Main `README.md` Premise section** — extended with a single paragraph stating the Autogenesis doctrine plainly, with links to both the lore folder and the live page.
-- **New top-level `lore/` folder** — a home for OPUS artifacts that live outside the codebase but belong to the work (sigils, future lineage essays, architect's notes). Sibling to `opus-core/` and `opus-web/`.
-- **`lore/sigils/`** — the sixteen daily build-log artworks reframed as a closed alchemical codex. Contains the 16 SVGs (`sigil-i.svg` through `sigil-xvi.svg`), the bundled `opus-sigils.zip`, and a long-form `README.md` with the full thesis ("On the Sigils"), the visual-grammar glossary (sphere · ember · diamond · circle · ledger lines · gold), and an interpretive note for each piece. Renders as the canonical sigils codex on GitHub. Original `/opus-web/public/build-log/` artwork paths unchanged.
+- **`docs/quickstart.md` — zero-to-running guide.** Plain-spoken, cross-platform (PowerShell-first for Windows, bash for macOS/Linux), aimed at someone who has never installed a Python package from source before. Covers prerequisites with one-line install commands per OS, the full install path, first-query walkthrough, programmatic `Hive` usage, the `AutogenesisLoop` pattern, and a "common issues" section.
+- **`docs/api.md` — complete API reference** (~350 lines) covering install, configuration with the multi-provider matrix, CLI, library API (`Hive` · `LLMClient` · `Budget` · `RunResult`), the autogenesis loop, the introspection module, the provenance JSONL format, and FAQ.
+- **`docs/tokenomics.md` — the colony's Creator Rewards allocation policy.** Fixed at launch, locked until a fresh deliberation overturns it. 45 % to Buybacks & Burns (weekly cadence, on-chain tx hashes posted within 24 h), 35 % to Swarm Operations, 20 % to Scaling & Development. Includes the CA, the cadence per bucket, reasoning behind the percentages, wallets section ready to fill, and transparency commitments.
+- **`docs/release-notes-v2.md`** — formal release notes for v2.0.0 (this release).
 
-### Coming next (Phase α)
+### Added — `opus-web` (the public site)
 
-- `opus-core` deployed on Modal exposing the swarm via a Server-Sent Events endpoint
-- `LiveSwarm` component on the website consuming **real** Records from a live deliberation (currently a cinematic preview)
-- Per-IP rate limiting via Upstash Redis on the hosted demo
+- **`/api` — fully dedicated API page** (the *multiplicatio* doctrine). Hero with the "T H E A P I" wordmark + `OPEN · MIT · SELF-HOSTED · YOUR KEYS · YOUR COLONY` mono subtitle. Five sections covering the premise, install path, directed mode, autonomous mode, and where to start.
+- **`/live-swarm` — fully dedicated OpusAI Live Swarm page.** The interactive swarm widget gets its own destination route, with an honest "cinematic preview" note explaining Phase α and four substantive explainer sections.
+- **`/now` — dedicated page for the colony's three latest moves.** Single source of truth at `opus-web/src/data/colonyNow.ts`. Three stacked cards with clear in-progress vs shipped differentiation. Every shipped card links to its real commit hash on GitHub.
+- **Nav: 6 + 1 items, mobile-swipeable.** OpusAI · Now · Whitepaper · API · Build Log · Autogenesis · Team, plus a small GitHub icon button anchored on the right edge. Brand mark stays anchored on the left; nav items scroll horizontally on mobile with a subtle right-edge fade indicator.
+- **Nav: always-on top atmosphere gradient.** A 128 px-tall vertical fade (`opus-black/90` → transparent) sits behind the nav so labels are legible against any background, including the cinematic hero on mobile.
+- **Solana CA published in the hero** — click-to-copy button with mobile truncation. Mirrors the canonical CA shown in both repository READMEs.
+- **Homepage Autogenesis section** placed between BuildLog and CallToAction. Ouroboros sigil + tight thesis + CTA into `/autogenesis`.
+- **Autogenesis page: "In plain terms" callout** placed above the alchemical thesis on both the web page and the GitHub lore essay. Mirrored verbatim across both surfaces.
+- **Multi-step homepage reorganisation** — narrative flow ends on Materials (the colony's tech stack as a colophon), not in the middle.
 
-### Coming later (Phase β)
+### Added — `lore/` (the cultural surface)
 
-- Web search and tool use for Scout and Researcher agents
-- Vector memory adapter (Qdrant) for cross-query learning
-- Graph memory adapter (Neo4j) for entity-and-relation persistence
-- Redis Streams backend for the Blackboard (distributed deployments)
-- OpenTelemetry traces from the Hive
-- OpenAI/Anthropic-compatible API endpoint so any client can route through OPUS
+- **`lore/autogenesis/`** — the canonical doctrine on GitHub. Includes `ouroboros.svg` (the meta-sigil) and a long-form `README.md` covering the premise, the Ouroboros principle, the five-step workflow, and the compact.
+- **`lore/colony-decisions/`** — the colony's public reasoning log. One markdown file per decision, with the question posed, candidates considered, verdict surfaced, reasoning, and action being taken. Three entries logged: `2026-05-19_next-bottleneck.md` (Modal deployment as the next move), `2026-05-19_autogenesis-live.md` (introspection module ships), `2026-05-19_v2-released.md` (this v2.0.0 release).
+- **`lore/sigils/`** — the sixteen daily build-log artworks reframed as a closed alchemical codex with thesis, glossary of recurring glyphs, and per-piece interpretive notes. PNG versions at 1080×1080 also bundled at `lore/sigils-png/` for direct social-media use.
+- **`lore/launch-thread/`** — the X launch thread assets: branded post cards (Post 2 · Post 3 · Post 4 · Post 5 · Post 6 + Llull quote card + compute card + autogenesis card) in OPUS register, plus 5:2 vision banner. All 1080×1080 PNG, ready to drop straight into X.
+- **`lore/teaser/`** — start-frame and end-frame keyframes (1920×1080) for the OPUS commercial teaser, with re-render scripts.
+
+### Added — top-level
+
+- **Official $OPUS Solana CA published on all surfaces.** `FjGZibcd8DBzxoL3H2srMayap1h7S5Q5NuPoaJcVpump` is now visible at the top of the main `README.md`, at the top of `opus-core/README.md`, and in the website hero. One canonical address, three surfaces, no ambiguity.
+- **`treasury-log.md` — the colony's public ledger.** Append-only, newest-first, four entry types (Inflow, Buyback & Burn, Operations, Scaling). Cadence section at the top documents the execution schedule.
+
+### Changed
+
+- **`opus-core/README.md` rewritten** with three usage paths (CLI · Library · Autogenesis · Local Web UI), expanded layout diagram showing the `providers/` and `server/` subpackages, test count updated to 84.
+- **Live Swarm page** — the "— A note on the demo —" callout moved to the very bottom of the page as a quiet final whisper in dim italic serif.
+- **LiveSwarm component refactored** with an optional `embedded` prop. Homepage behaviour unchanged; the dedicated `/live-swarm` page uses `embedded=true` to wrap the widget in its own page hero.
+
+### Deprecated · Removed · Security
+
+- *None.* This release is purely additive. Every public API from 0.1.0 continues to work unchanged.
+
+### Stats
+
+- **84 tests** passing (was 18) — Blackboard (5), Consensus (8), Hive (5), Introspection (27), Providers (32), Server (7)
+- **3,500+ lines** of new production code across `opus-core/src/opus/`
+- **6 new modules**: `autogenesis`, `introspection`, `llm.providers.{base, anthropic, openai, ollama, mock}`, `server.{app, ui}`
+- **4 new runnable examples**: `autogenesis_demo.py`, `autogenesis_continuous.py`, `using_openai.py`, `using_ollama.py`
+- **3 new documentation surfaces**: `docs/quickstart.md`, `docs/api.md`, `docs/tokenomics.md`
+- **4 new website routes**: `/api`, `/autogenesis`, `/live-swarm`, `/now`
+- **16 public API exports** from `opus/__init__.py` (was 1: just `__version__`)
+- **0 breaking changes**
 
 ---
 

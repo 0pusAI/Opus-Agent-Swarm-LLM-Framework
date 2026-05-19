@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080" role="img" aria-label="Ramon Llull quote card — The principles are few. Their combinations, infinite.">
+  <rect width="1080" height="1080" fill="#000"/>
+
+  <!-- Corner brackets -->
+  <g stroke="#787870" stroke-width="1.2" fill="none" opacity="0.6">
+    <path d="M40 40 L40 100 M40 40 L100 40"/>
+    <path d="M1040 40 L1040 100 M1040 40 L980 40"/>
+    <path d="M40 1040 L40 980 M40 1040 L100 1040"/>
+    <path d="M1040 1040 L1040 980 M1040 1040 L980 1040"/>
+  </g>
+
+  <!-- ── Eyebrow ─────────────────────────────────────── -->
+  <text x="540" y="135" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="22" letter-spacing="9"
+        fill="#D4AF7A">§ ARS &#183; MAGNA &#183; MCCCV</text>
+
+  <g>
+    <line x1="440" y1="170" x2="520" y2="170" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="170" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="170" x2="640" y2="170" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── Llullian wheel ───────────────────────────────── -->
+  <g transform="translate(540, 415)">
+
+    <!-- Concentric ring system -->
+    <g stroke="#F2EFE6" fill="none">
+      <circle cx="0" cy="0" r="200" stroke-width="1.3"/>
+      <circle cx="0" cy="0" r="174" stroke-width="0.65" opacity="0.5"/>
+      <circle cx="0" cy="0" r="138" stroke-width="0.75" opacity="0.55" stroke-dasharray="3 6"/>
+      <circle cx="0" cy="0" r="115" stroke-width="0.65" opacity="0.45"/>
+      <circle cx="0" cy="0" r="82" stroke-width="0.75" opacity="0.55" stroke-dasharray="3 6"/>
+      <circle cx="0" cy="0" r="58" stroke-width="0.65" opacity="0.45"/>
+    </g>
+
+    <!-- 9 radial spokes -->
+    <g stroke="#F2EFE6" stroke-width="0.65" opacity="0.42">
+      <line x1="0" y1="0" x2="0" y2="-200"/>
+      <line x1="0" y1="0" x2="129" y2="-153"/>
+      <line x1="0" y1="0" x2="197" y2="-38"/>
+      <line x1="0" y1="0" x2="176" y2="96"/>
+      <line x1="0" y1="0" x2="69" y2="188"/>
+      <line x1="0" y1="0" x2="-69" y2="188"/>
+      <line x1="0" y1="0" x2="-176" y2="96"/>
+      <line x1="0" y1="0" x2="-197" y2="-38"/>
+      <line x1="0" y1="0" x2="-129" y2="-153"/>
+    </g>
+
+    <!-- 9 letter nodes on the outer ring -->
+    <g fill="#000" stroke="#F2EFE6" stroke-width="0.9">
+      <circle cx="0"    cy="-188" r="14"/>
+      <circle cx="121"  cy="-144" r="14"/>
+      <circle cx="185"  cy="-36"  r="14"/>
+      <circle cx="165"  cy="90"   r="14"/>
+      <circle cx="64"   cy="177"  r="14"/>
+      <circle cx="-64"  cy="177"  r="14"/>
+      <circle cx="-165" cy="90"   r="14"/>
+      <circle cx="-185" cy="-36"  r="14"/>
+      <circle cx="-121" cy="-144" r="14"/>
+    </g>
+
+    <!-- 9 letters — Llull's principles B C D E F G H I K -->
+    <g fill="#F2EFE6" font-family="serif" font-size="16" text-anchor="middle" dominant-baseline="central">
+      <text x="0"    y="-188">B</text>
+      <text x="121"  y="-144">C</text>
+      <text x="185"  y="-36" >D</text>
+      <text x="165"  y="90"  >E</text>
+      <text x="64"   y="177" >F</text>
+      <text x="-64"  y="177" >G</text>
+      <text x="-165" y="90"  >H</text>
+      <text x="-185" y="-36" >I</text>
+      <text x="-121" y="-144">K</text>
+    </g>
+
+    <!-- Faint gold chord lines suggesting combinatorial pairings -->
+    <g stroke="#D4AF7A" stroke-width="0.4" opacity="0.32" fill="none">
+      <line x1="0"    y1="-188" x2="165"  y2="90"/>
+      <line x1="121"  y1="-144" x2="-64"  y2="177"/>
+      <line x1="185"  y1="-36"  x2="-165" y2="90"/>
+      <line x1="165"  y1="90"   x2="-185" y2="-36"/>
+      <line x1="64"   y1="177"  x2="-121" y2="-144"/>
+      <line x1="-64"  y1="177"  x2="185"  y2="-36"/>
+      <line x1="-165" y1="90"   x2="121"  y2="-144"/>
+      <line x1="-185" y1="-36"  x2="64"   y2="177"/>
+    </g>
+
+    <!-- Inner triangle -->
+    <polygon points="0,-44 38,22 -38,22"
+             stroke="#F2EFE6" stroke-width="0.8" fill="none" opacity="0.7"/>
+
+    <!-- Central ember -->
+    <circle cx="0" cy="0" r="24" stroke="#D4AF7A" stroke-width="0.9" fill="none"/>
+    <circle cx="0" cy="0" r="14" stroke="#D4AF7A" stroke-width="0.7" fill="none" opacity="0.6"/>
+    <circle cx="0" cy="0" r="8"  fill="#D4AF7A"/>
+
+    <!-- Top finial -->
+    <line x1="0" y1="-200" x2="0" y2="-222" stroke="#F2EFE6" stroke-width="1.1"/>
+    <circle cx="0" cy="-228" r="4" fill="#F2EFE6"/>
+  </g>
+
+  <!-- ── Hairline divider above the quote ─────────────── -->
+  <g>
+    <line x1="430" y1="690" x2="520" y2="690" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="690" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="690" x2="650" y2="690" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── The quote (two lines, Cinzel italic) ─────────── -->
+  <text x="540" y="775" text-anchor="middle"
+        font-family="Cinzel,'Trajan Pro','Times New Roman',serif"
+        font-style="italic"
+        font-size="42" letter-spacing="3"
+        fill="#F2EFE6">&#8220;The principles are few.</text>
+
+  <text x="540" y="830" text-anchor="middle"
+        font-family="Cinzel,'Trajan Pro','Times New Roman',serif"
+        font-style="italic"
+        font-size="42" letter-spacing="3"
+        fill="#F2EFE6">Their combinations, infinite.&#8221;</text>
+
+  <!-- ── Attribution ──────────────────────────────────── -->
+  <text x="540" y="905" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="16" letter-spacing="5"
+        fill="#D4AF7A">after RAMON LLULL &#183; ARS MAGNA &#183; c. MCCCV</text>
+
+  <!-- ── Footer ───────────────────────────────────────── -->
+  <text x="540" y="1010" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="14" letter-spacing="6"
+        fill="#787870">OPUS &#183; MMXXVI &#183; tryopusai.com</text>
+</svg>

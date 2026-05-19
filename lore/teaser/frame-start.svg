@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="OPUS teaser — start frame: armillary sphere emerging from volumetric fog, gold ember pulsing">
+  <defs>
+    <!-- Gold ember glow -->
+    <radialGradient id="ember-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#D4AF7A" stop-opacity="0.55"/>
+      <stop offset="40%"  stop-color="#D4AF7A" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#D4AF7A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ember-inner" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFE9C2" stop-opacity="1"/>
+      <stop offset="55%"  stop-color="#D4AF7A" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#D4AF7A" stop-opacity="0.4"/>
+    </radialGradient>
+    <!-- Volumetric fog blooms -->
+    <radialGradient id="fog-bottom" cx="50%" cy="120%" r="80%">
+      <stop offset="0%"   stop-color="#9c9c95" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fog-left" cx="0%" cy="55%" r="55%">
+      <stop offset="0%"   stop-color="#7c7c75" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="fog-right" cx="100%" cy="55%" r="55%">
+      <stop offset="0%"   stop-color="#7c7c75" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+    <!-- Top-down fog veil — what makes the sphere "emerge" -->
+    <linearGradient id="fog-top" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#000000" stop-opacity="0.38"/>
+      <stop offset="55%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+    <!-- Edge vignette -->
+    <radialGradient id="vignette" cx="50%" cy="55%" r="78%">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.32"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Black ground -->
+  <rect width="1920" height="1080" fill="#000000"/>
+
+  <!-- Volumetric fog (bottom + sides) -->
+  <rect width="1920" height="1080" fill="url(#fog-bottom)"/>
+  <rect width="1920" height="1080" fill="url(#fog-left)"/>
+  <rect width="1920" height="1080" fill="url(#fog-right)"/>
+
+  <!-- Faint corner brackets — barely there, nothing has resolved yet -->
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.18">
+    <path d="M52 52 L52 112 M52 52 L112 52"/>
+    <path d="M1868 52 L1868 112 M1868 52 L1808 52"/>
+    <path d="M52 1028 L52 968 M52 1028 L112 1028"/>
+    <path d="M1868 1028 L1868 968 M1868 1028 L1808 1028"/>
+  </g>
+
+  <!-- Drifting dust motes — kept off-sphere for depth -->
+  <g fill="#F2EFE6">
+    <circle cx="220" cy="180" r="1.6" opacity="0.30"/>
+    <circle cx="380" cy="290" r="1.1" opacity="0.20"/>
+    <circle cx="520" cy="160" r="1.4" opacity="0.26"/>
+    <circle cx="1430" cy="220" r="1.5" opacity="0.28"/>
+    <circle cx="1580" cy="320" r="1.2" opacity="0.22"/>
+    <circle cx="1700" cy="200" r="1.7" opacity="0.32"/>
+    <circle cx="260" cy="820" r="1.6" opacity="0.28"/>
+    <circle cx="420" cy="940" r="1.2" opacity="0.20"/>
+    <circle cx="1500" cy="880" r="1.3" opacity="0.24"/>
+    <circle cx="1640" cy="780" r="1.5" opacity="0.28"/>
+    <circle cx="1750" cy="920" r="1" opacity="0.18"/>
+    <circle cx="160" cy="560" r="1.3" opacity="0.22"/>
+    <circle cx="1780" cy="540" r="1.4" opacity="0.24"/>
+    <circle cx="620" cy="940" r="1" opacity="0.16"/>
+    <circle cx="1320" cy="900" r="1.1" opacity="0.18"/>
+    <circle cx="730" cy="200" r="0.9" opacity="0.16"/>
+    <circle cx="1230" cy="180" r="1.2" opacity="0.22"/>
+  </g>
+
+  <!-- ── THE ARMILLARY SPHERE ─ emerging, present enough to read ── -->
+  <g transform="translate(960,540)" opacity="0.95">
+    <g stroke="#F2EFE6" fill="none">
+      <circle cx="0" cy="0" r="240" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="240" ry="80" stroke-width="0.75" opacity="0.75"/>
+      <ellipse cx="0" cy="0" rx="80"  ry="240" stroke-width="0.75" opacity="0.75"/>
+      <ellipse cx="0" cy="0" rx="170" ry="170" stroke-width="0.55" opacity="0.40"/>
+      <ellipse cx="0" cy="0" rx="125" ry="170" stroke-width="0.55" opacity="0.35" transform="rotate(45)"/>
+      <ellipse cx="0" cy="0" rx="125" ry="170" stroke-width="0.55" opacity="0.35" transform="rotate(-45)"/>
+      <ellipse cx="0" cy="0" rx="240" ry="10"  stroke-width="0.65" opacity="0.65"/>
+      <line x1="0" y1="-240" x2="0" y2="240" stroke-width="0.75" opacity="0.7"/>
+      <!-- Top finial -->
+      <line x1="0" y1="-240" x2="0" y2="-274" stroke-width="0.95"/>
+      <circle cx="0" cy="-280" r="5" fill="#F2EFE6"/>
+      <!-- Base plate -->
+      <ellipse cx="0" cy="280" rx="42" ry="6" stroke-width="0.85"/>
+    </g>
+    <!-- Beaded equator -->
+    <g fill="#F2EFE6">
+      <circle cx="240" cy="0" r="3.6"/>
+      <circle cx="217" cy="0" r="2.8"/>
+      <circle cx="192" cy="0" r="2.6"/>
+      <circle cx="-240" cy="0" r="3.6"/>
+      <circle cx="-217" cy="0" r="2.8"/>
+      <circle cx="-192" cy="0" r="2.6"/>
+    </g>
+    <!-- Inner eye (cream ring + gold ring) -->
+    <circle cx="0" cy="0" r="42" stroke="#F2EFE6" stroke-width="0.85" fill="none"/>
+    <circle cx="0" cy="0" r="22" stroke="#D4AF7A" stroke-width="0.85" fill="none"/>
+    <!-- THE GOLD EMBER — radial glow + bright core (the only fully bright thing) -->
+    <circle cx="0" cy="0" r="78" fill="url(#ember-glow)"/>
+    <circle cx="0" cy="0" r="13" fill="url(#ember-inner)"/>
+  </g>
+
+  <!-- Heavy top-down fog veil — makes the upper half of the sphere "emerge" -->
+  <rect width="1920" height="1080" fill="url(#fog-top)"/>
+
+  <!-- Edge vignette to focus attention on the ember -->
+  <rect width="1920" height="1080" fill="url(#vignette)"/>
+</svg>

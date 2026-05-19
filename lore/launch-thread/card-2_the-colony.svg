@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080" role="img" aria-label="OPUS Thread Card 2 — The Colony">
+  <rect width="1080" height="1080" fill="#000"/>
+
+  <!-- ── EYEBROW ─────────────────────────────────────── -->
+  <text x="540" y="135" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="26" letter-spacing="7"
+        fill="#D4AF7A">§ I &#183; WHAT OPUS IS</text>
+
+  <!-- Gold ornament: line — dot — line -->
+  <g>
+    <line x1="430" y1="168" x2="520" y2="168" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="168" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="168" x2="650" y2="168" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── SIGIL: armillary sphere ─────────────────────── -->
+  <svg x="230" y="200" width="620" height="620" viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid meet">
+    <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+      <path d="M40 40 L40 90 M40 40 L90 40"/>
+      <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+      <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+      <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+    </g>
+    <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.6" fill="none">
+      <circle cx="0" cy="0" r="340"/>
+      <ellipse cx="0" cy="0" rx="340" ry="115" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="115" ry="340" stroke-width="1.2"/>
+      <ellipse cx="0" cy="0" rx="240" ry="240" stroke-width="0.8" opacity="0.4"/>
+      <ellipse cx="0" cy="0" rx="180" ry="240" stroke-width="0.8" opacity="0.4" transform="rotate(45)"/>
+      <ellipse cx="0" cy="0" rx="180" ry="240" stroke-width="0.8" opacity="0.4" transform="rotate(-45)"/>
+      <ellipse cx="0" cy="0" rx="340" ry="14" stroke-width="1" opacity="0.7"/>
+      <line x1="0" y1="-340" x2="0" y2="340" stroke-width="1.2"/>
+      <line x1="0" y1="-340" x2="0" y2="-380" stroke-width="1.6"/>
+      <ellipse cx="0" cy="395" rx="60" ry="9" stroke-width="1.2"/>
+      <rect x="-40" y="396" width="80" height="6" stroke-width="1.2"/>
+    </g>
+    <g transform="translate(540,540)" fill="#F2EFE6" stroke="none">
+      <circle cx="340" cy="0" r="5"/>
+      <circle cx="306" cy="0" r="4"/>
+      <circle cx="269" cy="0" r="4"/>
+      <circle cx="-340" cy="0" r="5"/>
+      <circle cx="-306" cy="0" r="4"/>
+      <circle cx="-269" cy="0" r="4"/>
+      <circle cx="0" cy="-388" r="7"/>
+    </g>
+    <g transform="translate(540,540)">
+      <circle cx="0" cy="0" r="60" stroke="#F2EFE6" stroke-width="1.2" fill="none"/>
+      <circle cx="0" cy="0" r="32" stroke="#D4AF7A" stroke-width="1.2" fill="none"/>
+      <circle cx="0" cy="0" r="14" fill="#D4AF7A" stroke="none"/>
+    </g>
+  </svg>
+
+  <!-- Gold ornament below sigil -->
+  <g>
+    <line x1="430" y1="870" x2="520" y2="870" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="870" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="870" x2="650" y2="870" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── TITLE ───────────────────────────────────────── -->
+  <text x="540" y="945" text-anchor="middle"
+        font-family="Cinzel,'Trajan Pro','Times New Roman',serif"
+        font-size="56" letter-spacing="3"
+        fill="#F2EFE6">A COLONY RETURNS A VERDICT</text>
+
+  <!-- ── FOOTER ──────────────────────────────────────── -->
+  <text x="540" y="1020" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="18" letter-spacing="5"
+        fill="#787870">OPUS &#183; MMXXVI &#183; tryopusai.com</text>
+</svg>

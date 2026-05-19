@@ -94,7 +94,7 @@ async def test_status_reports_provider_and_models(client: httpx.AsyncClient):
     assert data["models"]["scout"] == "mock-scout"
     assert data["models"]["judge"] == "mock-judge"
     assert data["models"]["verifier"] == "mock-verifier"
-    assert data["version"] == "0.2.0"
+    assert data["version"] == "2.0.0"
     assert isinstance(data["spent_usd"], (int, float))
 
 

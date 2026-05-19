@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img" aria-label="The Llullian Wheel — Ramon Llull's Ars Magna, c. 1305">
+  <rect width="1080" height="1080" fill="#000"/>
+
+  <!-- Corner brackets — consistent with the sigil set -->
+  <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+    <path d="M40 40 L40 90 M40 40 L90 40"/>
+    <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+    <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+    <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+  </g>
+
+  <g transform="translate(540,540)">
+
+    <!-- ── Concentric ring system ─────────────────────── -->
+    <g stroke="#F2EFE6" fill="none">
+      <!-- Outermost letter ring -->
+      <circle cx="0" cy="0" r="420" stroke-width="1.4"/>
+      <circle cx="0" cy="0" r="370" stroke-width="0.7" opacity="0.5"/>
+      <!-- Middle rotating ring (dashed — Llull's wheels rotated) -->
+      <circle cx="0" cy="0" r="290" stroke-width="0.8" opacity="0.55" stroke-dasharray="4 8"/>
+      <circle cx="0" cy="0" r="240" stroke-width="0.7" opacity="0.45"/>
+      <!-- Inner rotating ring -->
+      <circle cx="0" cy="0" r="170" stroke-width="0.8" opacity="0.55" stroke-dasharray="4 8"/>
+      <circle cx="0" cy="0" r="120" stroke-width="0.7" opacity="0.45"/>
+    </g>
+
+    <!-- ── 9 radial spokes (Llull's 9 principles) ─────── -->
+    <g stroke="#F2EFE6" stroke-width="0.7" opacity="0.45">
+      <line x1="0" y1="0" x2="0" y2="-420"/>
+      <line x1="0" y1="0" x2="270" y2="-322"/>
+      <line x1="0" y1="0" x2="413" y2="-79"/>
+      <line x1="0" y1="0" x2="368" y2="202"/>
+      <line x1="0" y1="0" x2="144" y2="395"/>
+      <line x1="0" y1="0" x2="-144" y2="395"/>
+      <line x1="0" y1="0" x2="-368" y2="202"/>
+      <line x1="0" y1="0" x2="-413" y2="-79"/>
+      <line x1="0" y1="0" x2="-270" y2="-322"/>
+    </g>
+
+    <!-- ── 9 small node circles on the outer ring ─────── -->
+    <g fill="#000" stroke="#F2EFE6" stroke-width="1">
+      <circle cx="0"    cy="-395" r="22"/>
+      <circle cx="254"  cy="-302" r="22"/>
+      <circle cx="389"  cy="-74"  r="22"/>
+      <circle cx="346"  cy="190"  r="22"/>
+      <circle cx="135"  cy="372"  r="22"/>
+      <circle cx="-135" cy="372"  r="22"/>
+      <circle cx="-346" cy="190"  r="22"/>
+      <circle cx="-389" cy="-74"  r="22"/>
+      <circle cx="-254" cy="-302" r="22"/>
+    </g>
+
+    <!-- ── 9 letters — Llull's principles B C D E F G H I K -->
+    <g fill="#F2EFE6" font-family="serif" font-size="26" text-anchor="middle" dominant-baseline="central">
+      <text x="0"    y="-395">B</text>
+      <text x="254"  y="-302">C</text>
+      <text x="389"  y="-74" >D</text>
+      <text x="346"  y="190" >E</text>
+      <text x="135"  y="372" >F</text>
+      <text x="-135" y="372" >G</text>
+      <text x="-346" y="190" >H</text>
+      <text x="-389" y="-74" >I</text>
+      <text x="-254" y="-302">K</text>
+    </g>
+
+    <!-- ── Chord lines (suggesting combinatorial pairings) -->
+    <g stroke="#D4AF7A" stroke-width="0.5" opacity="0.35" fill="none">
+      <line x1="0"    y1="-395" x2="346"  y2="190"/>
+      <line x1="254"  y1="-302" x2="-135" y2="372"/>
+      <line x1="389"  y1="-74"  x2="-346" y2="190"/>
+      <line x1="346"  y1="190"  x2="-389" y2="-74"/>
+      <line x1="135"  y1="372"  x2="-254" y2="-302"/>
+      <line x1="-135" y1="372"  x2="389"  y2="-74"/>
+      <line x1="-346" y1="190"  x2="254"  y2="-302"/>
+      <line x1="-389" y1="-74"  x2="135"  y2="372"/>
+    </g>
+
+    <!-- ── Inner triangle — the trinity at the heart ──── -->
+    <g stroke="#F2EFE6" stroke-width="0.9" fill="none" opacity="0.7">
+      <polygon points="0,-90 78,45 -78,45"/>
+    </g>
+
+    <!-- ── Central ember (gold) — the prima materia ───── -->
+    <circle cx="0" cy="0" r="50" stroke="#D4AF7A" stroke-width="1" fill="none"/>
+    <circle cx="0" cy="0" r="30" stroke="#D4AF7A" stroke-width="0.8" fill="none" opacity="0.7"/>
+    <circle cx="0" cy="0" r="14" fill="#D4AF7A"/>
+
+    <!-- ── Top finial — matches the brand mark ────────── -->
+    <line x1="0" y1="-420" x2="0" y2="-462" stroke="#F2EFE6" stroke-width="1.2"/>
+    <circle cx="0" cy="-470" r="6" fill="#F2EFE6"/>
+  </g>
+</svg>

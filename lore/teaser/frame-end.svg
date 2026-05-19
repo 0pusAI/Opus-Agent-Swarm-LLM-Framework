@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080" role="img" aria-label="OPUS teaser — end frame: sphere resolved, OPUS wordmark and subtitle revealed">
+  <defs>
+    <!-- Gold ember glow — brighter, steady -->
+    <radialGradient id="ember-glow2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#D4AF7A" stop-opacity="0.72"/>
+      <stop offset="38%"  stop-color="#D4AF7A" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#D4AF7A" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ember-inner2" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"   stop-color="#FFF2D6" stop-opacity="1"/>
+      <stop offset="45%"  stop-color="#D4AF7A" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#D4AF7A" stop-opacity="0.55"/>
+    </radialGradient>
+    <!-- Soft page vignette -->
+    <radialGradient id="vignette2" cx="50%" cy="50%" r="80%">
+      <stop offset="0%"   stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
+    </radialGradient>
+    <!-- Thin lingering atmosphere at bottom -->
+    <linearGradient id="atmos" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%"  stop-color="#7c7c75" stop-opacity="0.08"/>
+      <stop offset="40%" stop-color="#000000" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Black ground -->
+  <rect width="1920" height="1080" fill="#000000"/>
+
+  <!-- Faint lingering atmosphere -->
+  <rect width="1920" height="1080" fill="url(#atmos)"/>
+
+  <!-- Vignette -->
+  <rect width="1920" height="1080" fill="url(#vignette2)"/>
+
+  <!-- Corner brackets — full presence (consistent with sigil set) -->
+  <g stroke="#787870" stroke-width="1.2" fill="none" opacity="0.65">
+    <path d="M52 52 L52 112 M52 52 L112 52"/>
+    <path d="M1868 52 L1868 112 M1868 52 L1808 52"/>
+    <path d="M52 1028 L52 968 M52 1028 L112 1028"/>
+    <path d="M1868 1028 L1868 968 M1868 1028 L1808 1028"/>
+  </g>
+
+  <!-- A few residual dust motes near the edges (settled) -->
+  <g fill="#F2EFE6">
+    <circle cx="240" cy="200" r="1" opacity="0.16"/>
+    <circle cx="1680" cy="220" r="1.1" opacity="0.20"/>
+    <circle cx="320" cy="900" r="1.2" opacity="0.18"/>
+    <circle cx="1600" cy="880" r="1" opacity="0.16"/>
+  </g>
+
+  <!-- ── THE ARMILLARY SPHERE ─ resolved, raised to leave room for type ── -->
+  <g transform="translate(960,430)">
+    <g stroke="#F2EFE6" fill="none">
+      <circle cx="0" cy="0" r="240" stroke-width="1.4"/>
+      <ellipse cx="0" cy="0" rx="240" ry="80" stroke-width="0.85" opacity="0.90"/>
+      <ellipse cx="0" cy="0" rx="80"  ry="240" stroke-width="0.85" opacity="0.90"/>
+      <ellipse cx="0" cy="0" rx="170" ry="170" stroke-width="0.6" opacity="0.55"/>
+      <ellipse cx="0" cy="0" rx="125" ry="170" stroke-width="0.6" opacity="0.45" transform="rotate(45)"/>
+      <ellipse cx="0" cy="0" rx="125" ry="170" stroke-width="0.6" opacity="0.45" transform="rotate(-45)"/>
+      <ellipse cx="0" cy="0" rx="240" ry="10" stroke-width="0.75" opacity="0.75"/>
+      <line x1="0" y1="-240" x2="0" y2="240" stroke-width="0.85" opacity="0.85"/>
+      <!-- Top finial -->
+      <line x1="0" y1="-240" x2="0" y2="-275" stroke-width="1.1"/>
+      <circle cx="0" cy="-281" r="5.5" fill="#F2EFE6"/>
+      <!-- Base plate -->
+      <ellipse cx="0" cy="280" rx="42" ry="6" stroke-width="0.95"/>
+      <rect x="-28" y="281" width="56" height="4" stroke-width="0.95"/>
+    </g>
+    <!-- Beaded equator -->
+    <g fill="#F2EFE6">
+      <circle cx="240" cy="0" r="3.8"/>
+      <circle cx="217" cy="0" r="3.1"/>
+      <circle cx="192" cy="0" r="2.8"/>
+      <circle cx="-240" cy="0" r="3.8"/>
+      <circle cx="-217" cy="0" r="3.1"/>
+      <circle cx="-192" cy="0" r="2.8"/>
+    </g>
+    <!-- Inner eye -->
+    <circle cx="0" cy="0" r="42" stroke="#F2EFE6" stroke-width="0.95" fill="none"/>
+    <circle cx="0" cy="0" r="22" stroke="#D4AF7A" stroke-width="0.95" fill="none"/>
+    <!-- THE GOLD EMBER — brighter, steady -->
+    <circle cx="0" cy="0" r="86" fill="url(#ember-glow2)"/>
+    <circle cx="0" cy="0" r="14" fill="url(#ember-inner2)"/>
+  </g>
+
+  <!-- Gold hairline divider above the wordmark -->
+  <line x1="850" y1="790" x2="1070" y2="790" stroke="#D4AF7A" stroke-width="1" opacity="0.75"/>
+  <circle cx="960" cy="790" r="2.2" fill="#D4AF7A"/>
+
+  <!-- O P U S wordmark -->
+  <text x="960" y="888"
+        text-anchor="middle"
+        font-family="Cinzel, 'Trajan Pro', 'Times New Roman', serif"
+        font-size="92"
+        font-weight="400"
+        fill="#F2EFE6"
+        letter-spacing="4">O&#160;&#160;P&#160;&#160;U&#160;&#160;S</text>
+
+  <!-- Subtitle: gold monospaced -->
+  <text x="960" y="952"
+        text-anchor="middle"
+        font-family="'JetBrains Mono', 'Courier New', monospace"
+        font-size="16"
+        letter-spacing="7"
+        fill="#D4AF7A"
+        opacity="0.88">ARS &#183; MAGNA &#8212; A COLONY THAT REASONS AGAINST ITSELF</text>
+
+  <!-- Gold hairline divider below the subtitle -->
+  <line x1="880" y1="982" x2="1040" y2="982" stroke="#D4AF7A" stroke-width="0.8" opacity="0.55"/>
+</svg>

@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080" role="img" aria-label="OPUS Thread Card 3 — How It Thinks">
+  <rect width="1080" height="1080" fill="#000"/>
+
+  <!-- ── EYEBROW ─────────────────────────────────────── -->
+  <text x="540" y="135" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="26" letter-spacing="7"
+        fill="#D4AF7A">§ II &#183; THE ARCHITECTURE</text>
+
+  <g>
+    <line x1="430" y1="168" x2="520" y2="168" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="168" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="168" x2="650" y2="168" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── SIGIL: eight roles around the hive ──────────── -->
+  <svg x="230" y="200" width="620" height="620" viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid meet">
+    <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+      <path d="M40 40 L40 90 M40 40 L90 40"/>
+      <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+      <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+      <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+    </g>
+    <g transform="translate(540,540)" stroke="#F2EFE6" stroke-width="1.6" fill="none">
+      <circle cx="0" cy="0" r="290" stroke-dasharray="3 6" opacity="0.4"/>
+      <g opacity="0.45">
+        <line x1="0" y1="0" x2="0" y2="-290"/>
+        <line x1="0" y1="0" x2="205" y2="-205"/>
+        <line x1="0" y1="0" x2="290" y2="0"/>
+        <line x1="0" y1="0" x2="205" y2="205"/>
+        <line x1="0" y1="0" x2="0" y2="290"/>
+        <line x1="0" y1="0" x2="-205" y2="205"/>
+        <line x1="0" y1="0" x2="-290" y2="0"/>
+        <line x1="0" y1="0" x2="-205" y2="-205"/>
+      </g>
+      <circle cx="0" cy="-290" r="26"/>
+      <circle cx="205" cy="-205" r="26"/>
+      <circle cx="205" cy="-205" r="8" fill="#F2EFE6" stroke="none"/>
+      <g transform="translate(290,0) rotate(45)">
+        <rect x="-22" y="-22" width="44" height="44"/>
+      </g>
+      <circle cx="205" cy="205" r="26"/>
+      <circle cx="205" cy="205" r="16" opacity="0.6"/>
+      <g transform="translate(0,290) rotate(45)">
+        <rect x="-22" y="-22" width="44" height="44" stroke="#D4AF7A" fill="#D4AF7A"/>
+      </g>
+      <polygon points="-180,205 -195,180 -225,180 -240,205 -225,230 -195,230" transform="translate(35,0)"/>
+      <rect x="-316" y="-26" width="52" height="52"/>
+      <polygon points="-205,-235 -175,-185 -235,-185"/>
+      <polygon points="0,-70 60,-35 60,35 0,70 -60,35 -60,-35" stroke="#D4AF7A" stroke-width="2.2" fill="none"/>
+      <circle cx="0" cy="0" r="22" fill="#D4AF7A" stroke="none"/>
+    </g>
+  </svg>
+
+  <g>
+    <line x1="430" y1="870" x2="520" y2="870" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="870" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="870" x2="650" y2="870" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── TITLE ───────────────────────────────────────── -->
+  <text x="540" y="945" text-anchor="middle"
+        font-family="Cinzel,'Trajan Pro','Times New Roman',serif"
+        font-size="56" letter-spacing="4"
+        fill="#F2EFE6">EIGHT ROLES &#183; ONE COLONY</text>
+
+  <!-- ── FOOTER ──────────────────────────────────────── -->
+  <text x="540" y="1020" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="18" letter-spacing="5"
+        fill="#787870">OPUS &#183; MMXXVI &#183; tryopusai.com</text>
+</svg>

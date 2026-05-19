@@ -13,7 +13,7 @@ provenance helpers) import from the submodules directly:
     from opus.provenance import ProvenanceSummary
 """
 
-__version__ = "0.2.0"
+__version__ = "2.0.0"
 
 from .agents.base import Budget
 from .autogenesis import AutogenesisLoop, Step

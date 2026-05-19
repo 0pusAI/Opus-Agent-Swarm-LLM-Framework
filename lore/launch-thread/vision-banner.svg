@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 800" width="2000" height="800" role="img" aria-label="OPUS Vision Banner — After the Lonely Oracle">
+  <rect width="2000" height="800" fill="#000"/>
+
+  <!-- ── Corner brackets ─────────────────────────────── -->
+  <g stroke="#787870" stroke-width="1.2" fill="none" opacity="0.6">
+    <path d="M40 40 L40 100 M40 40 L100 40"/>
+    <path d="M1960 40 L1960 100 M1960 40 L1900 40"/>
+    <path d="M40 760 L40 700 M40 760 L100 760"/>
+    <path d="M1960 760 L1960 700 M1960 760 L1900 760"/>
+  </g>
+
+  <!-- ── Top eyebrow ─────────────────────────────────── -->
+  <text x="1000" y="105" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="22" letter-spacing="9"
+        fill="#D4AF7A">§ THE VISION &#183; MMXXVI</text>
+
+  <g>
+    <line x1="870" y1="138" x2="980" y2="138" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="1000" cy="138" r="2.4" fill="#D4AF7A"/>
+    <line x1="1020" y1="138" x2="1130" y2="138" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── Starfield above the horizon ─────────────────── -->
+  <g fill="#F2EFE6">
+    <circle cx="180" cy="220" r="1.4" opacity="0.42"/>
+    <circle cx="320" cy="180" r="1.1" opacity="0.30"/>
+    <circle cx="480" cy="240" r="1.7" opacity="0.48"/>
+    <circle cx="620" cy="190" r="1.3" opacity="0.38"/>
+    <circle cx="780" cy="210" r="1.0" opacity="0.28"/>
+    <circle cx="1220" cy="200" r="1.5" opacity="0.44"/>
+    <circle cx="1380" cy="230" r="1.0" opacity="0.30"/>
+    <circle cx="1520" cy="180" r="1.6" opacity="0.46"/>
+    <circle cx="1680" cy="210" r="1.2" opacity="0.34"/>
+    <circle cx="1820" cy="240" r="1.4" opacity="0.40"/>
+    <circle cx="260" cy="310" r="1.2" opacity="0.32"/>
+    <circle cx="1740" cy="300" r="1.5" opacity="0.42"/>
+    <circle cx="100" cy="340" r="0.9" opacity="0.24"/>
+    <circle cx="1900" cy="350" r="1.0" opacity="0.28"/>
+    <circle cx="900" cy="180" r="1.1" opacity="0.30"/>
+    <circle cx="1100" cy="170" r="1.0" opacity="0.28"/>
+  </g>
+
+  <!-- ── Horizon: thin gold dashed line ──────────────── -->
+  <line x1="110" y1="545" x2="1890" y2="545"
+        stroke="#D4AF7A" stroke-width="0.8" opacity="0.5" stroke-dasharray="3 12"/>
+
+  <!-- ── Smallest spheres (far distance) — left ─────── -->
+  <g transform="translate(160, 535)">
+    <circle r="10" stroke="#F2EFE6" stroke-width="0.6" fill="none"/>
+    <circle r="2" fill="#D4AF7A"/>
+  </g>
+  <!-- ── Smallest spheres (far distance) — right ─────── -->
+  <g transform="translate(1840, 535)">
+    <circle r="10" stroke="#F2EFE6" stroke-width="0.6" fill="none"/>
+    <circle r="2" fill="#D4AF7A"/>
+  </g>
+
+  <!-- ── Small spheres — left and right -->
+  <g transform="translate(290, 525)">
+    <circle r="20" stroke="#F2EFE6" stroke-width="0.8" fill="none"/>
+    <ellipse rx="20" ry="6.5" stroke="#F2EFE6" stroke-width="0.5" fill="none"/>
+    <circle r="3" fill="#D4AF7A"/>
+  </g>
+  <g transform="translate(1710, 525)">
+    <circle r="20" stroke="#F2EFE6" stroke-width="0.8" fill="none"/>
+    <ellipse rx="20" ry="6.5" stroke="#F2EFE6" stroke-width="0.5" fill="none"/>
+    <circle r="3" fill="#D4AF7A"/>
+  </g>
+
+  <!-- ── Medium spheres — left and right -->
+  <g transform="translate(460, 510)">
+    <circle r="40" stroke="#F2EFE6" stroke-width="1" fill="none"/>
+    <ellipse rx="40" ry="13" stroke="#F2EFE6" stroke-width="0.7" fill="none"/>
+    <ellipse rx="13" ry="40" stroke="#F2EFE6" stroke-width="0.7" fill="none"/>
+    <circle r="5" fill="#D4AF7A"/>
+  </g>
+  <g transform="translate(1540, 510)">
+    <circle r="40" stroke="#F2EFE6" stroke-width="1" fill="none"/>
+    <ellipse rx="40" ry="13" stroke="#F2EFE6" stroke-width="0.7" fill="none"/>
+    <ellipse rx="13" ry="40" stroke="#F2EFE6" stroke-width="0.7" fill="none"/>
+    <circle r="5" fill="#D4AF7A"/>
+  </g>
+
+  <!-- ── Closer flanking spheres — left and right ────── -->
+  <g transform="translate(680, 480)">
+    <circle r="70" stroke="#F2EFE6" stroke-width="1.3" fill="none"/>
+    <ellipse rx="70" ry="23" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+    <ellipse rx="23" ry="70" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+    <circle r="22" stroke="#D4AF7A" stroke-width="0.9" fill="none"/>
+    <circle r="8" fill="#D4AF7A"/>
+  </g>
+  <g transform="translate(1320, 480)">
+    <circle r="70" stroke="#F2EFE6" stroke-width="1.3" fill="none"/>
+    <ellipse rx="70" ry="23" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+    <ellipse rx="23" ry="70" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+    <circle r="22" stroke="#D4AF7A" stroke-width="0.9" fill="none"/>
+    <circle r="8" fill="#D4AF7A"/>
+  </g>
+
+  <!-- ── CENTRAL OPUS armillary sphere (the parent) ──── -->
+  <g transform="translate(1000, 450)">
+    <g stroke="#F2EFE6" stroke-width="1.6" fill="none">
+      <circle r="170"/>
+      <ellipse rx="170" ry="58" stroke-width="1.1"/>
+      <ellipse rx="58" ry="170" stroke-width="1.1"/>
+      <ellipse rx="118" ry="118" stroke-width="0.7" opacity="0.42"/>
+      <ellipse rx="86" ry="118" stroke-width="0.7" opacity="0.4" transform="rotate(45)"/>
+      <ellipse rx="86" ry="118" stroke-width="0.7" opacity="0.4" transform="rotate(-45)"/>
+      <ellipse rx="170" ry="8" stroke-width="0.8" opacity="0.7"/>
+      <line x1="0" y1="-170" x2="0" y2="170" stroke-width="0.9"/>
+    </g>
+    <!-- Beaded equator -->
+    <g fill="#F2EFE6">
+      <circle cx="170" cy="0" r="4.5"/>
+      <circle cx="152" cy="0" r="3.5"/>
+      <circle cx="-170" cy="0" r="4.5"/>
+      <circle cx="-152" cy="0" r="3.5"/>
+    </g>
+    <!-- Inner eye and gold ember -->
+    <circle r="32" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+    <circle r="18" stroke="#D4AF7A" stroke-width="1" fill="none"/>
+    <circle r="10" fill="#D4AF7A"/>
+    <!-- Top finial -->
+    <line x1="0" y1="-170" x2="0" y2="-198" stroke="#F2EFE6" stroke-width="1.1"/>
+    <circle cx="0" cy="-204" r="5" fill="#F2EFE6"/>
+    <!-- Base plate -->
+    <ellipse cx="0" cy="200" rx="36" ry="5" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+    <rect x="-22" y="201" width="44" height="4" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+  </g>
+
+  <!-- ── Bottom ornament ─────────────────────────────── -->
+  <g>
+    <line x1="850" y1="660" x2="970" y2="660" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="1000" cy="660" r="2.6" fill="#D4AF7A"/>
+    <line x1="1030" y1="660" x2="1150" y2="660" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── Title ───────────────────────────────────────── -->
+  <text x="1000" y="715" text-anchor="middle"
+        font-family="Cinzel,'Trajan Pro','Times New Roman',serif"
+        font-size="44" letter-spacing="5"
+        fill="#F2EFE6">AFTER THE LONELY ORACLE</text>
+
+  <!-- ── Footer ──────────────────────────────────────── -->
+  <text x="1000" y="755" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="14" letter-spacing="6"
+        fill="#787870">OPUS &#183; MMXXVI &#183; tryopusai.com</text>
+</svg>

@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080" role="img" aria-label="OPUS Thread Card 6 — Multiplicatio: one colony spawns many">
+  <rect width="1080" height="1080" fill="#000"/>
+
+  <!-- ── EYEBROW ─────────────────────────────────────── -->
+  <text x="540" y="135" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="26" letter-spacing="7"
+        fill="#D4AF7A">§ V &#183; MULTIPLICATIO</text>
+
+  <g>
+    <line x1="430" y1="168" x2="520" y2="168" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="168" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="168" x2="650" y2="168" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── SIGIL: parent colony spawning 6 child colonies ─ -->
+  <svg x="230" y="200" width="620" height="620" viewBox="0 0 1080 1080" preserveAspectRatio="xMidYMid meet">
+    <g stroke="#787870" stroke-width="1" fill="none" opacity="0.55">
+      <path d="M40 40 L40 90 M40 40 L90 40"/>
+      <path d="M1040 40 L1040 90 M1040 40 L990 40"/>
+      <path d="M40 1040 L40 990 M40 1040 L90 1040"/>
+      <path d="M1040 1040 L1040 990 M1040 1040 L990 1040"/>
+    </g>
+
+    <g transform="translate(540,540)">
+      <!-- Faint outer guide ring — the orbital field -->
+      <circle cx="0" cy="0" r="430" stroke="#787870" stroke-width="0.8" fill="none" opacity="0.30" stroke-dasharray="3 8"/>
+
+      <!-- Lineage lines: gold dashed from parent to each child -->
+      <g stroke="#D4AF7A" stroke-width="0.8" stroke-dasharray="3 10" opacity="0.5" fill="none">
+        <line x1="0" y1="0" x2="0" y2="-360"/>
+        <line x1="0" y1="0" x2="312" y2="-180"/>
+        <line x1="0" y1="0" x2="312" y2="180"/>
+        <line x1="0" y1="0" x2="0" y2="360"/>
+        <line x1="0" y1="0" x2="-312" y2="180"/>
+        <line x1="0" y1="0" x2="-312" y2="-180"/>
+      </g>
+
+      <!-- ── PARENT COLONY ── (central OPUS sphere) -->
+      <g stroke="#F2EFE6" stroke-width="1.8" fill="none">
+        <circle cx="0" cy="0" r="175"/>
+        <ellipse cx="0" cy="0" rx="175" ry="60" stroke-width="1.2"/>
+        <ellipse cx="0" cy="0" rx="60" ry="175" stroke-width="1.2"/>
+        <ellipse cx="0" cy="0" rx="120" ry="120" stroke-width="0.7" opacity="0.4"/>
+      </g>
+      <!-- Beaded equator on parent -->
+      <g fill="#F2EFE6">
+        <circle cx="175" cy="0" r="4.5"/>
+        <circle cx="155" cy="0" r="3.5"/>
+        <circle cx="-175" cy="0" r="4.5"/>
+        <circle cx="-155" cy="0" r="3.5"/>
+      </g>
+      <!-- Parent ember -->
+      <circle cx="0" cy="0" r="32" stroke="#D4AF7A" stroke-width="1.4" fill="none"/>
+      <circle cx="0" cy="0" r="14" fill="#D4AF7A"/>
+
+      <!-- ── CHILD COLONIES ── (6 satellites at hex positions) -->
+      <!-- Top (12 o'clock) -->
+      <g transform="translate(0,-360)">
+        <circle r="62" stroke="#F2EFE6" stroke-width="1.5" fill="none"/>
+        <ellipse rx="62" ry="20" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+        <line x1="0" y1="-62" x2="0" y2="62" stroke="#F2EFE6" stroke-width="0.6" opacity="0.6"/>
+        <circle r="8" fill="#D4AF7A"/>
+      </g>
+      <!-- 2 o'clock -->
+      <g transform="translate(312,-180)">
+        <circle r="62" stroke="#F2EFE6" stroke-width="1.5" fill="none"/>
+        <ellipse rx="62" ry="20" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+        <line x1="0" y1="-62" x2="0" y2="62" stroke="#F2EFE6" stroke-width="0.6" opacity="0.6"/>
+        <circle r="8" fill="#D4AF7A"/>
+      </g>
+      <!-- 4 o'clock -->
+      <g transform="translate(312,180)">
+        <circle r="62" stroke="#F2EFE6" stroke-width="1.5" fill="none"/>
+        <ellipse rx="62" ry="20" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+        <line x1="0" y1="-62" x2="0" y2="62" stroke="#F2EFE6" stroke-width="0.6" opacity="0.6"/>
+        <circle r="8" fill="#D4AF7A"/>
+      </g>
+      <!-- Bottom (6 o'clock) -->
+      <g transform="translate(0,360)">
+        <circle r="62" stroke="#F2EFE6" stroke-width="1.5" fill="none"/>
+        <ellipse rx="62" ry="20" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+        <line x1="0" y1="-62" x2="0" y2="62" stroke="#F2EFE6" stroke-width="0.6" opacity="0.6"/>
+        <circle r="8" fill="#D4AF7A"/>
+      </g>
+      <!-- 8 o'clock -->
+      <g transform="translate(-312,180)">
+        <circle r="62" stroke="#F2EFE6" stroke-width="1.5" fill="none"/>
+        <ellipse rx="62" ry="20" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+        <line x1="0" y1="-62" x2="0" y2="62" stroke="#F2EFE6" stroke-width="0.6" opacity="0.6"/>
+        <circle r="8" fill="#D4AF7A"/>
+      </g>
+      <!-- 10 o'clock -->
+      <g transform="translate(-312,-180)">
+        <circle r="62" stroke="#F2EFE6" stroke-width="1.5" fill="none"/>
+        <ellipse rx="62" ry="20" stroke="#F2EFE6" stroke-width="0.9" fill="none"/>
+        <line x1="0" y1="-62" x2="0" y2="62" stroke="#F2EFE6" stroke-width="0.6" opacity="0.6"/>
+        <circle r="8" fill="#D4AF7A"/>
+      </g>
+    </g>
+  </svg>
+
+  <g>
+    <line x1="430" y1="870" x2="520" y2="870" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+    <circle cx="540" cy="870" r="2.6" fill="#D4AF7A"/>
+    <line x1="560" y1="870" x2="650" y2="870" stroke="#D4AF7A" stroke-width="0.6" opacity="0.55"/>
+  </g>
+
+  <!-- ── TITLE ───────────────────────────────────────── -->
+  <text x="540" y="945" text-anchor="middle"
+        font-family="Cinzel,'Trajan Pro','Times New Roman',serif"
+        font-size="56" letter-spacing="5"
+        fill="#F2EFE6">OPEN &#183; YOURS &#183; INFINITE</text>
+
+  <!-- ── FOOTER ──────────────────────────────────────── -->
+  <text x="540" y="1020" text-anchor="middle"
+        font-family="'JetBrains Mono','Courier New',monospace"
+        font-size="18" letter-spacing="5"
+        fill="#787870">OPUS &#183; MMXXVI &#183; tryopusai.com</text>
+</svg>

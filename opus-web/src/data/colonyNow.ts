@@ -41,13 +41,23 @@ export const COLONY_NOW: ColonyDecision[] = [
     numeral: "I",
     title: "Modal deployment of opus-core",
     description:
-      "The live swarm at /live-swarm wires to the real Anthropic API. The cinematic preview becomes the live thing. Real verdicts. Real cost. Real provenance.",
+      "Hosted public colony streaming real deliberations via SSE, so /live-swarm becomes the live thing rather than the cinematic preview. Funded from the 20% Scaling bucket.",
     status: "in-progress",
     date: "2026-05-19",
     loreRef: "lore/colony-decisions/2026-05-19_next-bottleneck.md",
   },
   {
     numeral: "II",
+    title: "OPUS v2.0.0 — Multiplicatio · The Open Colony",
+    description:
+      "The biggest release since launch. Multi-provider LLM (Anthropic, OpenAI, Ollama, custom). `opus serve` boots a local web UI in one command. Functional autogenesis. 84/84 tests, 0 breaking changes.",
+    status: "shipped",
+    date: "2026-05-19",
+    commitHash: "v2.0.0",
+    loreRef: "lore/colony-decisions/2026-05-19_v2-released.md",
+  },
+  {
+    numeral: "III",
     title: "opus.introspection — the colony reading itself",
     description:
       "The module that lets the swarm scan its own repository, surface bottlenecks, and feed them back into its own deliberation loop. 27 tests passing.",
@@ -55,14 +65,5 @@ export const COLONY_NOW: ColonyDecision[] = [
     date: "2026-05-19",
     commitHash: "a8f0396",
     loreRef: "lore/colony-decisions/2026-05-19_autogenesis-live.md",
-  },
-  {
-    numeral: "III",
-    title: "Tokenomics policy and public treasury log",
-    description:
-      "Creator Rewards split 45 / 35 / 20 across Buybacks, Operations, and Scaling. Public ledger initialised. Weekly buyback cadence committed.",
-    status: "shipped",
-    date: "2026-05-19",
-    commitHash: "939d7dd",
   },
 ];
