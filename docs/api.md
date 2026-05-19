@@ -44,13 +44,36 @@ pytest                            # 18/18 should pass
 
 ## Configuration
 
-OPUS reads exactly one environment variable. Everything else is configured per-call.
+OPUS now runs on **any major LLM backend**. Pick one with an API key, or run locally on Ollama with no key at all. Set whichever variable your provider needs:
 
-| Variable | Required | Purpose |
+| Variable | Used by | Purpose |
 |---|---|---|
-| `ANTHROPIC_API_KEY` | yes | Your Anthropic API key. The colony reasons through this key, in your process, on your dime. Nothing routes through OPUS. |
+| `ANTHROPIC_API_KEY` | Anthropic | The default provider. Claude Opus 4.7 / Sonnet 4.6 / Haiku 4.5. |
+| `OPENAI_API_KEY` | OpenAI | GPT-4o / GPT-4.1 / o1 / o3. Also works with any OpenAI-compatible gateway (groq, together, fireworks, openrouter, vLLM, litellm-proxy, etc.) — point `OPENAI_BASE_URL` at it. |
+| `OPENAI_BASE_URL` | OpenAI (optional) | Override the default `https://api.openai.com/v1` endpoint. |
+| *(none)* | Ollama | Local models on your machine. Free, private, no rate limits. Install from [ollama.com](https://ollama.com), pull a model (`ollama pull llama3.3`), point `OLLAMA_HOST` at a non-default address if needed. |
+| `OPUS_PROVIDER` | All | Force a specific provider (`anthropic` / `openai` / `ollama`). Overrides auto-detection. |
 
-Put it in a `.env` file at the `opus-core/` root, or set it in your shell.
+When you don't pass a provider explicitly, `auto_provider()` picks one based on which key is in the environment, falling back to local Ollama. To pick explicitly:
+
+```python
+from opus import LLMClient, OpenAIProvider, OllamaProvider, auto_provider
+
+llm = LLMClient(provider=OpenAIProvider())   # OpenAI
+llm = LLMClient(provider=OllamaProvider())   # local
+llm = LLMClient(provider=auto_provider())    # auto — pick from env
+```
+
+Per-role default model names come from each provider automatically:
+
+| Role | Anthropic | OpenAI | Ollama |
+|---|---|---|---|
+| Worker | claude-opus-4-7 | gpt-4o | llama3.3 |
+| Scout | claude-sonnet-4-6 | gpt-4o-mini | llama3.2 |
+| Judge | claude-opus-4-7 | o1-mini | llama3.3 |
+| Verifier | claude-opus-4-7 | gpt-4o | llama3.3 |
+
+Override any of them with `LLMClient(default_worker_model="...", ...)`.
 
 ---
 

@@ -47,7 +47,7 @@ The colony returns three things at end of run:
 ```python
 from opus import Hive, LLMClient, Budget
 
-llm = LLMClient()
+llm = LLMClient()  # uses Anthropic by default
 hive = Hive(llm=llm)
 result = await hive.run(
     "What is the cleanest refactor for this module?",
@@ -56,6 +56,18 @@ result = await hive.run(
 print(result.answer)
 print(f"${result.summary.total_cost_usd:.4f}")
 ```
+
+### Pick your LLM backend (Anthropic / OpenAI / Ollama / anything)
+
+```python
+from opus import LLMClient, OpenAIProvider, OllamaProvider, auto_provider
+
+llm = LLMClient(provider=OpenAIProvider())     # GPT-4o / o1 / o3 / etc.
+llm = LLMClient(provider=OllamaProvider())     # local, free, private
+llm = LLMClient(provider=auto_provider())      # auto-detect from env
+```
+
+All four providers (Anthropic, OpenAI, Ollama, Mock for tests) expose the same `LLMProvider` interface — your Hive / agent / consensus code never has to branch on backend. Per-role default models come from each provider automatically; runnable demos at [`examples/using_openai.py`](examples/using_openai.py) and [`examples/using_ollama.py`](examples/using_ollama.py).
 
 ### Autogenesis — let the colony work on a goal autonomously
 
@@ -84,26 +96,37 @@ Full module documentation: [`docs/api.md` § Autogenesis loop](../docs/api.md#au
 pytest
 ```
 
-**45 tests pass** — Blackboard (5), Consensus (8), Hive (5), Introspection (27). Run in under a second. All use isolated fixtures; no network, no API key required.
+**77 tests pass** — Blackboard (5), Consensus (8), Hive (5), Introspection (27), Providers (32). Run in under 4 seconds. All use isolated fixtures or `httpx.MockTransport`; no network, no API key required.
 
 ## Layout
 
 ```
 src/opus/
-├── __init__.py        ── public API: Hive · LLMClient · Budget · AutogenesisLoop · Step
+├── __init__.py        ── public API (15 symbols)
 ├── hive.py            ── orchestrator
 ├── autogenesis.py     ── the autonomous deliberation loop
+├── introspection.py   ── repo scanner + bottleneck surfacer (27 tests)
 ├── blackboard.py      ── append-only Record store
 ├── consensus.py       ── borda · judge · verify
 ├── provenance.py      ── cost ledger + DAG serialisation
-├── agents/            ── one file per role
+├── agents/            ── one file per role (8 roles)
 ├── memory/            ── vector + graph wrappers (stubs in v0)
-├── llm/               ── Anthropic client (sole API surface)
+├── llm/
+│   ├── client.py       ── LLMClient — façade with budget tracking
+│   └── providers/      ── multi-backend abstraction
+│       ├── base.py     ── LLMProvider protocol + types
+│       ├── anthropic.py ─ Claude (Opus 4.7, Sonnet 4.6, Haiku 4.5)
+│       ├── openai.py   ── GPT-4o / o1 / + OpenAI-compatible gateways
+│       ├── ollama.py   ── local LLM, free, private, no key required
+│       └── mock.py     ── deterministic mock for tests
 └── cli.py             ── `opus query "..."`
 
 examples/
-├── hello_swarm.py     ── the smallest one-query example
-└── autogenesis_demo.py── the autonomous loop, end-to-end
+├── hello_swarm.py            ── smallest one-query example (Anthropic)
+├── autogenesis_demo.py       ── the autonomous loop, end-to-end
+├── autogenesis_continuous.py ── continuous scan → surface → loop pipeline
+├── using_openai.py           ── same colony, on OpenAI
+└── using_ollama.py           ── same colony, on local Ollama (free)
 ```
 
 See [`../docs/architecture.md`](../docs/architecture.md) for the file-by-file walk-through and [`../docs/api.md`](../docs/api.md) for the full API reference.

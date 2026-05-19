@@ -6,6 +6,19 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added — `opus-core` 0.2.0 · multi-provider LLM abstraction
+
+- **`opus.llm.providers` — pluggable LLM backends.** The colony now runs on Anthropic, OpenAI (and every OpenAI-compatible gateway — groq, together, fireworks, openrouter, vLLM, litellm-proxy), local Ollama (free, no API key, fully private), or any custom `LLMProvider` subclass. One protocol, four built-in implementations, zero code changes needed in the agent / consensus / Hive layers. Per-role default model names come from each provider automatically (worker / scout / judge / verifier) so the Hive just works on any backend out of the box. `auto_provider()` picks intelligently based on which API key is in the environment, with `OPUS_PROVIDER` env var as explicit override.
+- **`LLMClient` refactored** to delegate to a swappable provider while preserving its existing public API exactly. Existing code keeps working unchanged; new code can pass `provider=...` to switch backends.
+- **`OpenAIProvider`** — uses raw `httpx` (already a transitive dep, no new SDK) so it works with OpenAI proper, Azure OpenAI, or any OpenAI-API-compatible gateway. Handles the o-series quirks transparently (`max_completion_tokens` vs `max_tokens`, `reasoning_effort` mapping). Pricing table for gpt-4o / gpt-4o-mini / gpt-4.1 / o1 / o3-mini included.
+- **`OllamaProvider`** — local LLM via `http://localhost:11434` (or `OLLAMA_HOST` override). Always-free cost estimation. Lets anyone run the entire OPUS swarm on their own machine with zero recurring expense.
+- **`MockProvider`** — deterministic mock backend for tests, with two modes (static response cycling, templated responder callable). Records every call it received so tests can assert agent prompts. Powers the new test suite without burning a single API dollar.
+- **`tests/test_providers.py` — 32 new tests** covering every provider, the auto-detection logic, error paths (missing key, API failure, connection refused), the o-series special-case handling, cost estimation, default models, and `LLMClient` backward compatibility. Uses `httpx.MockTransport` for network-free testing of OpenAI / Ollama. Full suite is now **77/77 passing** (was 45).
+- **`examples/using_openai.py` and `examples/using_ollama.py`** — runnable end-to-end demos showing the exact same Hive code reasoning through different backends.
+- **`pyproject.toml`** — version bumped to **0.2.0**, `httpx>=0.27` added as an explicit dependency.
+- **`docs/api.md` § Configuration** — completely rewritten with the multi-provider matrix (Anthropic / OpenAI / Ollama / custom), env var table, per-role default model table, and switching examples.
+- **`opus-core/README.md`** — new "Pick your LLM backend" section above the install instructions, expanded layout diagram showing the providers/ subpackage, test count updated to 77.
+
 ### Added
 
 - **`/now` — dedicated page for the colony's three latest moves.** Single source of truth at `opus-web/src/data/colonyNow.ts` (TypeScript types + array of `ColonyDecision`, capped at three). Page hero with the "N O W" wordmark matching the other dedicated pages, three stacked cards with clear visual differentiation: the **in-progress** card carries a gold border, a subtle gold-tint background, a pulsing gold dot, and an `IN PROGRESS` mono label; **shipped** cards carry a dim border, a silver ✓, and a `SHIPPED` mono label. Every shipped card links to its real commit hash on GitHub so the page is provable, not decorative. Each card also links to its `lore/colony-decisions/` entry where applicable. Footer reminder: *"Never more than three at a time. Nothing teased. Nothing hidden. The colony works on what the colony has surfaced."* Added to top nav between OpusAI and Whitepaper.
