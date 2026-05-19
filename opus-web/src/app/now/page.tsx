@@ -4,6 +4,7 @@ import { Divider } from "@/components/ui/Divider";
 import {
   COLONY_NOW,
   REPO_BASE,
+  type CandidateOption,
   type ColonyDecision,
   type DecisionStatus,
 } from "@/data/colonyNow";
@@ -94,6 +95,7 @@ export default function NowPage() {
 
 function DecisionCard({ decision }: { decision: ColonyDecision }) {
   const isInProgress = decision.status === "in-progress";
+  const isDeliberating = isInProgress && (decision.candidates?.length ?? 0) > 0;
 
   return (
     <article
@@ -108,7 +110,7 @@ function DecisionCard({ decision }: { decision: ColonyDecision }) {
         <span className="opus-display text-opus-gold text-2xl md:text-3xl leading-none tracking-wider">
           {decision.numeral}
         </span>
-        <StatusBadge status={decision.status} />
+        <StatusBadge status={decision.status} deliberating={isDeliberating} />
       </div>
 
       {/* Title */}
@@ -121,9 +123,20 @@ function DecisionCard({ decision }: { decision: ColonyDecision }) {
         {decision.description}
       </p>
 
+      {/* Candidates block — only when present */}
+      {decision.candidates && decision.candidates.length > 0 && (
+        <CandidatesBlock candidates={decision.candidates} decideIn={decision.decideIn} />
+      )}
+
       {/* Meta row */}
       <div className="flex flex-wrap items-center gap-x-5 gap-y-2 opus-mono text-[0.62rem] md:text-[0.66rem] uppercase tracking-widest text-opus-dim">
         <span>{decision.date}</span>
+
+        {decision.decideIn && !decision.candidates && (
+          <span className="text-opus-gold">
+            Verdict in {decision.decideIn}
+          </span>
+        )}
 
         {decision.commitHash && (
           <a
@@ -154,10 +167,69 @@ function DecisionCard({ decision }: { decision: ColonyDecision }) {
 }
 
 // ──────────────────────────────────────────────────────────────────
+// CandidatesBlock — shown inside an in-progress card when the colony
+// is actively deliberating between named options. Two-column on
+// desktop, stacked on mobile.
+// ──────────────────────────────────────────────────────────────────
+
+function CandidatesBlock({
+  candidates,
+  decideIn,
+}: {
+  candidates: CandidateOption[];
+  decideIn?: string;
+}) {
+  return (
+    <div className="mb-7 -mx-1 md:-mx-2">
+      <p className="opus-mono text-opus-gold text-[0.62rem] md:text-[0.66rem] uppercase tracking-widest mb-4 px-1 md:px-2">
+        — Candidates on the ballot —
+      </p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-5">
+        {candidates.map((c) => (
+          <div
+            key={c.label}
+            className="border-l-2 border-opus-gold/60 bg-opus-black/40 pl-4 pr-3 py-4 md:py-5"
+          >
+            <p className="opus-display text-opus-gold text-[0.9rem] md:text-[1rem] leading-snug mb-2.5 tracking-wide">
+              {c.label}
+            </p>
+            <p className="opus-serif text-opus-bone text-[0.92rem] md:text-[0.98rem] leading-relaxed opacity-90">
+              {c.thesis}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      {decideIn && (
+        <div className="px-1 md:px-2 flex items-center gap-2.5">
+          <span
+            aria-hidden
+            className="relative inline-flex h-1.5 w-1.5"
+          >
+            <span className="absolute inline-flex h-full w-full rounded-full bg-opus-gold opacity-60 animate-ping" />
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-opus-gold" />
+          </span>
+          <span className="opus-mono text-opus-gold text-[0.62rem] md:text-[0.66rem] uppercase tracking-widest">
+            Verdict expected in {decideIn}
+          </span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ──────────────────────────────────────────────────────────────────
 // StatusBadge — gold pulsing dot for in-progress, silver ✓ for shipped
 // ──────────────────────────────────────────────────────────────────
 
-function StatusBadge({ status }: { status: DecisionStatus }) {
+function StatusBadge({
+  status,
+  deliberating = false,
+}: {
+  status: DecisionStatus;
+  deliberating?: boolean;
+}) {
   if (status === "in-progress") {
     return (
       <div className="flex items-center gap-2.5">
@@ -169,7 +241,7 @@ function StatusBadge({ status }: { status: DecisionStatus }) {
           <span className="relative inline-flex h-2 w-2 rounded-full bg-opus-gold" />
         </span>
         <span className="opus-mono text-opus-gold text-[0.62rem] md:text-[0.68rem] uppercase tracking-widest">
-          In Progress
+          {deliberating ? "Deliberating" : "In Progress"}
         </span>
       </div>
     );

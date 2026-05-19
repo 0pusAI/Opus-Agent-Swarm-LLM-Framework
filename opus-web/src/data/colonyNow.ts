@@ -10,12 +10,20 @@
  *   4. Every "shipped" entry must have a real `commitHash` on the main
  *      branch of the public repository — the page is provable, not
  *      decorative.
- *
- * The order of items in this array is the display order on the page
- * (top to bottom). The in-progress item belongs at the top.
+ *   5. An "in-progress" entry may carry `candidates` (a small list of
+ *      options the colony is choosing between) and `decideIn` (when
+ *      the verdict is expected). When both are present, the card
+ *      reads as a live deliberation rather than a generic todo.
  */
 
 export type DecisionStatus = "in-progress" | "shipped";
+
+export interface CandidateOption {
+  /** Short label, e.g. "Option A · 100% Buybacks & Burns". */
+  label: string;
+  /** One or two sentences explaining the thesis. Plain words. */
+  thesis: string;
+}
 
 export interface ColonyDecision {
   /** Roman numeral I / II / III — the visible index on the card. */
@@ -32,6 +40,10 @@ export interface ColonyDecision {
   commitHash?: string;
   /** Repo-relative path to the colony-decisions log entry, if any. */
   loreRef?: string;
+  /** Options the colony is choosing between (in-progress only). */
+  candidates?: CandidateOption[];
+  /** When the verdict is expected, e.g. "3–5 hours". */
+  decideIn?: string;
 }
 
 export const REPO_BASE = "https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework";
@@ -39,12 +51,25 @@ export const REPO_BASE = "https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framewo
 export const COLONY_NOW: ColonyDecision[] = [
   {
     numeral: "I",
-    title: "Modal deployment of opus-core",
+    title: "The tokenomics rebalance",
     description:
-      "Hosted public colony streaming real deliberations via SSE, so /live-swarm becomes the live thing rather than the cinematic preview. Funded from the 20% Scaling bucket.",
+      "With v2.0.0 shipped, the colony is reconsidering its allocation policy. The middle is off the ballot. Two extremes are on it.",
     status: "in-progress",
     date: "2026-05-19",
-    loreRef: "lore/colony-decisions/2026-05-19_next-bottleneck.md",
+    decideIn: "3–5 hours",
+    loreRef: "lore/colony-decisions/2026-05-19_tokenomics-rebalance.md",
+    candidates: [
+      {
+        label: "Option A · 100% Buybacks & Burns",
+        thesis:
+          "All creator rewards routed into weekly market buybacks of $OPUS, followed by burn. Pure scarcity instrument. Supply tightens; the architecture becomes a deflationary signal-amplifier for every holder.",
+      },
+      {
+        label: "Option B · 100% Scaling & Compute",
+        thesis:
+          "All creator rewards routed into upgrading the colony itself. Frontier-tier APIs, the largest models, the highest reasoning effort, new agent roles, better infrastructure. The token's value follows the architecture's value.",
+      },
+    ],
   },
   {
     numeral: "II",
