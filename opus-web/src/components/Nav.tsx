@@ -32,6 +32,7 @@ interface NavItem {
 
 const ITEMS: NavItem[] = [
   { label: "OpusAI",       href: "/live-swarm" },
+  { label: "Now",          href: "/now" },
   { label: "Whitepaper",   href: "/whitepaper" },
   { label: "API",          href: "/api" },
   { label: "Build Log",    href: "/build-log" },
@@ -80,6 +81,7 @@ export function Nav() {
     if (item.href === "/autogenesis") return pathname === "/autogenesis";
     if (item.href === "/live-swarm") return pathname === "/live-swarm";
     if (item.href === "/api") return pathname === "/api";
+    if (item.href === "/now") return pathname === "/now";
     return false;
   };
 
