@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+### Added
+
+- **`docs/quickstart.md` — zero-to-running guide for the API.** Plain-spoken, cross-platform (PowerShell-first for Windows, bash for macOS/Linux), aimed at someone who has never installed a Python package from source before. Covers prerequisites (Python, git, Anthropic key) with one-line install commands per OS, the full install path, first-query walkthrough, programmatic `Hive` usage, the `AutogenesisLoop` pattern, and a "common issues" section addressing the four problems first-time users actually hit. Surfaced and verified by the swarm in deliberation as the highest-conviction next move for accessibility. Linked prominently from both READMEs.
+
 ### Added — `opus-core` (real new code, not just docs)
 
 - **`opus.autogenesis` — functional autonomous-mode module.** Implements the autogenesis loop OPUS uses on itself: pose → deliberate → implement → verify → hand back to the caller. Provides `AutogenesisLoop` (the orchestrator) and `Step` (the per-iteration result, with verified status, plan, implementation, and costs). The `commit_handler` callback is intentionally pluggable — the colony surfaces verified verdicts, the user decides where they land (open a PR, write to disk, drop in Slack, anything). About 200 lines, fully type-hinted, no external dependencies beyond the rest of `opus`.

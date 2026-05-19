@@ -2,7 +2,9 @@
 
 The Python swarm engine for OPUS.
 
-For the architecture and motivation, see the [whitepaper](../docs/whitepaper.md). For the engineering reference, see [architecture.md](../docs/architecture.md). For programmatic usage, see the [**API reference**](../docs/api.md).
+**New here?** Start with the [**Quickstart**](../docs/quickstart.md) — zero to a running colony in under five minutes, Windows / macOS / Linux.
+
+For the architecture and motivation, see the [whitepaper](../docs/whitepaper.md). For the engineering reference, see [architecture.md](../docs/architecture.md). For the full programmatic API, see the [API reference](../docs/api.md).
 
 ---
 
