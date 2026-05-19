@@ -84,6 +84,8 @@ Full module documentation: [`docs/api.md` § Autogenesis loop](../docs/api.md#au
 pytest
 ```
 
+**45 tests pass** — Blackboard (5), Consensus (8), Hive (5), Introspection (27). Run in under a second. All use isolated fixtures; no network, no API key required.
+
 ## Layout
 
 ```
