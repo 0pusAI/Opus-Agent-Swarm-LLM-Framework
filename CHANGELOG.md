@@ -8,6 +8,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ### Added
 
+- **Official $OPUS Solana CA published on all surfaces.** `FjGZibcd8DBzxoL3H2srMayap1h7S5Q5NuPoaJcVpump` is now visible at the top of the main `README.md` (centered callout above the badges), at the top of `opus-core/README.md` (matching callout, framework-level), and in the website hero under the subtitle (click-to-copy button, replacing the previous placeholder address). One canonical address, three surfaces, no ambiguity.
 - **`docs/quickstart.md` — zero-to-running guide for the API.** Plain-spoken, cross-platform (PowerShell-first for Windows, bash for macOS/Linux), aimed at someone who has never installed a Python package from source before. Covers prerequisites (Python, git, Anthropic key) with one-line install commands per OS, the full install path, first-query walkthrough, programmatic `Hive` usage, the `AutogenesisLoop` pattern, and a "common issues" section addressing the four problems first-time users actually hit. Surfaced and verified by the swarm in deliberation as the highest-conviction next move for accessibility. Linked prominently from both READMEs.
 
 ### Added — `opus-core` (real new code, not just docs)

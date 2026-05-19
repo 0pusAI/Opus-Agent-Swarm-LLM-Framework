@@ -2,6 +2,16 @@
 
 > *Ars Magna — The Great Work*
 
+<div align="center">
+
+**Official $OPUS CA (Solana)**
+
+`FjGZibcd8DBzxoL3H2srMayap1h7S5Q5NuPoaJcVpump`
+
+</div>
+
+---
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-D4AF7A.svg?style=flat-square)](LICENSE)
 [![opus-core tests](https://img.shields.io/github/actions/workflow/status/0pusAI/Opus-Agent-Swarm-LLM-Framework/test.yml?branch=main&label=opus-core%20tests&style=flat-square&color=D4AF7A)](https://github.com/0pusAI/Opus-Agent-Swarm-LLM-Framework/actions/workflows/test.yml)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-F2EFE6.svg?style=flat-square)](https://www.python.org/downloads/)

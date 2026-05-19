@@ -7,8 +7,8 @@ import { Ornament } from "./ui/Ornament";
 import { CloudCanvas } from "./CloudCanvas";
 import { fadeIn, fadeUp } from "@/lib/motion";
 
-// Solana contract address — the public token mint for $OPUS.
-const CA = "FEbo4QzYag3u8WrABrNj3aJrnf1fe6awaLd2akLnEHfL";
+// Official Solana contract address — the public token mint for $OPUS.
+const CA = "FjGZibcd8DBzxoL3H2srMayap1h7S5Q5NuPoaJcVpump";
 
 // Sphere is heavy (R3F + drei + postprocessing). Load client-side only.
 const Sphere = dynamic(() => import("./Sphere").then((m) => m.Sphere), {
